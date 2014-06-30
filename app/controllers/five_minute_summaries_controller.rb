@@ -1,8 +1,9 @@
 class FiveMinuteSummariesController < ApplicationController
 
 	def show
-		@audit = Audit.find(params[:id])
+		@fms = FiveMinuteSummary.find(params[:id])
 
 	end
+
 
 end

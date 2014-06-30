@@ -1,12 +1,26 @@
 <% content_for :title do %>
-  Five Minute Summary for <%= @audit.name %>
+  Five Minute Summary for <%= @fms.audit.name %>
 <% end %>
 
-<p>
-Five Minute Summary for <%= @audit.name %><br>
+<h4>Five Minute Summary for <%= @fms.audit.name %></h4>
 
-<% @audit.five_minute_summary.sections.order_by(:position.asc).each do |s| %>
-	<%= s.display_name %><br>
+
+
+<% @fms.sections.order_by(:position.asc).each do |s| %>
+
+	<h3><%= s.display_name %></h3>
+
+	<% unless s.content_blocks.empty? %>
+
+	 <% s.content_blocks.order_by(:position.asc).each do |block| %>
+		<p><%= block.content %></p>
+		<p><%= link_to "Edit this block", edit_content_block_url(block) %></p>
+	 <% end %>
+
+		
+	
+	<% end %>
+
 <% end %>
 
 </p>

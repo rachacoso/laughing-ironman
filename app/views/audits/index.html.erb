@@ -8,9 +8,9 @@
 <% if flash[:notice] %>
 	<p><%= flash[:notice] %></p>
 <% end %>
-<%= link_to "Create new audit", new_audit_url %><br>
+<p><%= link_to "Create new audit", new_audit_url %></p>
 <% @audits.each do |audit| %>
-	<%= audit.name %><%= link_to "View Five Minute Summary", show_fms_url(audit) %><br><br>
+	<%= audit.name %> <%= link_to "View Five Minute Summary", five_minute_summary_url(audit.five_minute_summary) %><br><br>
 <% end %>
 
 

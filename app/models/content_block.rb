@@ -1,6 +1,10 @@
 class ContentBlock
   include Mongoid::Document
 
-  embedded_in :section
-  
+
+  field :content, type: String
+  field :position, type: Float
+
+  belongs_to :section
+
 end

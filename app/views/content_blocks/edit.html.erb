@@ -1,0 +1,18 @@
+<% content_for :title do %>
+  Edit Block - Five Minute Summary for <%= @auditname %>
+<% end %>
+
+<p>
+Edit Block - Five Minute Summary for <%= @auditname %><br>
+
+
+
+<%= form_for @block, url: content_block_url do |f| %>
+
+	<%= f.text_area :content %>
+	
+	<%= f.submit 'Update this block' %> <%= link_to 'Cancel', five_minute_summary_url(@block.section.five_minute_summary) %>
+
+<% end %>
+	
+</p>

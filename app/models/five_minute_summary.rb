@@ -2,8 +2,8 @@ class FiveMinuteSummary
   include Mongoid::Document
 
   belongs_to :audit
-  embeds_many :sections
-
+  has_many :sections
+  accepts_nested_attributes_for :sections, :audit
 
 
 end

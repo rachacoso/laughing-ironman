@@ -1,13 +1,31 @@
 Rails.application.routes.draw do
-  get 'audits/new' => 'audits#new', as: 'new_audit'
 
-  post 'audits/new' => 'audits#create', as: 'audits'
+
+
+resources :audits, only: [:new, :create, :show, :index]
+
+resources :five_minute_summaries, only: [:show, :edit]
+# resources :section, only: [:show, :edit, :update, :destroy]
+resources :content_blocks, only: [:show, :edit, :update, :destroy]
+
+resources :full_audits, only: [:show, :edit] do 
+  resources :sections, only: [:index, :new, :create, :destroy, :show, :edit]
+end
+
+
+  # get 'audits/new' => 'audits#new', as: 'new_audit'
+
+  # post 'audits/new' => 'audits#create', as: 'audits'
   
-  get 'audits/show' => 'audits#show'
+  # get 'audits/show' => 'audits#show'
 
-  get 'audits' => 'audits#index', as: 'index_audits'
+  # get 'audits' => 'audits#index', as: 'index_audits'
 
-  get 'fms/:id' => 'five_minute_summaries#show', as: 'show_fms'
+  # get 'audits/fms/:id' => 'five_minute_summaries#show', as: 'five_minute_summary'
+
+  # get 'audits/fms/editsection/:id' => 'sections#edit', as: 'edit_section'
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
