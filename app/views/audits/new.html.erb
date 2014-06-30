@@ -1,0 +1,27 @@
+<h1>Create an Audit</h1>
+<p>Find me in app/views/audits/new.html.erb</p>
+
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<% end %>
+<% if @errors %>
+	<p>
+	<% @errors.each do |k,v| %>
+		<%= k %> <%= v %><br>
+	<% end %>
+	</p>
+<% end %>
+
+<div class="row">
+	<div class="small-5 columns">
+		<%= form_for @audit do |f| %>
+			<%= f.text_field :name %>
+			<%= f.label :publication_date %>
+			<%= f.date_field :publication_date %>
+			<%= f.submit %>
+
+		<% end %>
+	</div>
+</div>
+
+

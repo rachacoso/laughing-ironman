@@ -1,0 +1,16 @@
+<% content_for :title do %>
+  List of Audits
+<% end %>
+
+<h1>Audits</h1>
+<p>Find me in app/views/audits/index.html.erb</p>
+
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<% end %>
+<%= link_to "Create new audit", new_audit_url %><br>
+<% @audits.each do |audit| %>
+	<%= audit.name %><%= link_to "View Five Minute Summary", show_fms_url(audit) %><br><br>
+<% end %>
+
+
