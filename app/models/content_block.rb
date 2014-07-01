@@ -3,7 +3,6 @@ class ContentBlock
 
 
   field :content, type: String
-  field :position, type: Float
 
   belongs_to :section
 

@@ -6,7 +6,7 @@ resources :audits, only: [:new, :create, :show, :index]
 
 resources :five_minute_summaries, only: [:show, :edit]
 # resources :section, only: [:show, :edit, :update, :destroy]
-resources :content_blocks, only: [:show, :edit, :update, :destroy]
+resources :content_blocks, only: [:show, :edit, :update, :destroy, :new]
 
 resources :full_audits, only: [:show, :edit] do 
   resources :sections, only: [:index, :new, :create, :destroy, :show, :edit]

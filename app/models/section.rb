@@ -4,7 +4,7 @@ class Section
 
   field :section_type, type: String
 	field :display_name, type: String
-	field :position, type: Float
+	field :block_order, type: Array
 
 	belongs_to :five_minute_summary
   has_many :content_blocks

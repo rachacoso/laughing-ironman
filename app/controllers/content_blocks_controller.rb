@@ -9,7 +9,10 @@ class ContentBlocksController < ApplicationController
 		block = ContentBlock.find(params[:id])
 		block.update!(content_block_params)
 		redirect_to five_minute_summary_path(block.section.five_minute_summary)
+	end
 
+	def new
+		@newblock = ContentBlock.new
 	end
 
 	private
