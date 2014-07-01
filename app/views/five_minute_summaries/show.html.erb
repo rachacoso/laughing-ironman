@@ -5,20 +5,19 @@
 <h4>Five Minute Summary for <%= @fms.audit.name %></h4>
 
 
+<%# display sections %>
+<% @fms.section_order.each do |sid| # iterate through sections in order%>
+	<% thissection = @fms.sections.find(sid) %>
+	<h3><%= thissection.display_name %></h3>
 
-<% @fms.sections.order_by(:position.asc).each do |s| %>
+	<% unless thissection.content_blocks.empty? %>
 
-	<h3><%= s.display_name %></h3>
-
-	<% unless s.content_blocks.empty? %>
-
-	 <% s.content_blocks.order_by(:position.asc).each do |block| %>
-		<p><%= block.content %></p>
-		<p><%= link_to "Edit this block", edit_content_block_url(block) %></p>
+	 <% thissection.block_order.each do |bid| %>
+		<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
+		<p><%= thisblock.content %></p>
+		<p><%= link_to "Edit this block", edit_content_block_url(thisblock) %></p>
 	 <% end %>
 
-		
-	
 	<% end %>
 
 <% end %>

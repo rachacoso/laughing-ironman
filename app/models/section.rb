@@ -16,7 +16,9 @@ class Section
 
   private
   def setcontent
-  	self.content_blocks.create(content: 'Content goes here')
+  	newblock = self.content_blocks.create(content: 'Content goes here')
+  	self.block_order = Array.new
+  	self.block_order << newblock.id
   end
 
 end
