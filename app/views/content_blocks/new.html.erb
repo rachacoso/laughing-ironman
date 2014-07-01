@@ -1,0 +1,23 @@
+<% content_for :title do %>
+  New Block - Five Minute Summary for <%= @auditname %>
+<% end %>
+
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<% end %>
+<% if @errors %>
+	<p>
+	<% @errors.each do |k,v| %>
+		<%= k %> <%= v %><br>
+	<% end %>
+	</p>
+<% end %>
+
+<%= form_for @newblock, url: new_content_block_url(@section, @position) do |f| %>
+	
+	<%= f.text_area :content %>
+
+	<%= f.submit %>
+
+
+<% end %>

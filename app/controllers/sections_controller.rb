@@ -20,8 +20,7 @@ class SectionsController < ApplicationController
     params.require(:five_minute_summary).permit(
     	sections_attributes: [ 
     		content_blocks_attributes: [
-    			:content,
-    			:position
+    			:content
   			] 
 			]
 		)

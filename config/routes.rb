@@ -6,7 +6,10 @@ resources :audits, only: [:new, :create, :show, :index]
 
 resources :five_minute_summaries, only: [:show, :edit]
 # resources :section, only: [:show, :edit, :update, :destroy]
-resources :content_blocks, only: [:show, :edit, :update, :destroy, :new]
+resources :content_blocks, only: [:show, :edit, :update, :destroy]
+
+get '/content_blocks/new/:sectionid/:position' => 'content_blocks#new', as: 'new_content_block'
+post '/content_blocks/new/:sectionid/:position' => 'content_blocks#create'
 
 resources :full_audits, only: [:show, :edit] do 
   resources :sections, only: [:index, :new, :create, :destroy, :show, :edit]
