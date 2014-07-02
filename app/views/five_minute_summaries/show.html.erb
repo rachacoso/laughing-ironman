@@ -20,6 +20,17 @@
 			<p><%= link_to "Edit this block", edit_content_block_url(thisblock) %></p>
 			
 			<p><%= link_to "Add a block after", new_content_block_url(thissection.id, index + 1 ) %></p>
+		
+
+			<a href="#" data-reveal-id="myModal_<%= bid %>">Delete this block</a>
+
+			<div id="myModal_<%= bid %>" class="reveal-modal tiny" data-reveal>
+			  <h6><%= bid %></h6>
+			  <p class="lead"><%= thisblock.content %></p>
+			  <%= button_to "Delete", content_block_path(thisblock), :method => 'delete' %>
+			  
+			  <a class="close-reveal-modal">&#215;</a>
+			</div>
 		</div>
 	 <% end %>
 

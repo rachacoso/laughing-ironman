@@ -35,6 +35,17 @@ class ContentBlocksController < ApplicationController
     end
 	end
 
+	def destroy
+		block_to_destroy = ContentBlock.find(params[:id])
+		parent_section = block_to_destroy.section
+		parent_section.block_order.delete(block_to_destroy.id)
+		parent_section.content_blocks.delete(block_to_destroy)
+		parent_section.save
+		redirect_to five_minute_summary_path(parent_section.five_minute_summary)
+
+	end
+
+
 	private
   def content_block_params
     params.require(:content_block).permit(
