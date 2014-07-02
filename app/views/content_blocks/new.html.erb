@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  New Block - Five Minute Summary for <%= @auditname %>
+  New Block - Five Minute Summary for <%= @section.five_minute_summary.audit.name %>
 <% end %>
 
 <% if flash[:notice] %>
@@ -13,11 +13,11 @@
 	</p>
 <% end %>
 
-<%= form_for @newblock, url: new_content_block_url(@section, @position) do |f| %>
+<%= form_for @newblock, url: new_content_block_url(@section.id, @position) do |f| %>
 	
 	<%= f.text_area :content %>
 
-	<%= f.submit %>
+	<%= f.submit %> <%= link_to 'Cancel', @section.five_minute_summary %>
 
 
 <% end %>

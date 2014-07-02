@@ -12,7 +12,7 @@ class ContentBlocksController < ApplicationController
 	end
 
 	def new
-		@section = Section.find(params[:sectionid]).id
+		@section = Section.find(params[:sectionid])
 		@newblock = ContentBlock.new
 		@position = params[:position]
 	end
@@ -28,7 +28,7 @@ class ContentBlocksController < ApplicationController
 		else 
 		  @errors = new_block.errors
     	flash[:notice] = "Sorry there was an error. Your block was not created."
-			@section = Section.find(params[:sectionid]).id
+			@section = section
 			@newblock = ContentBlock.new
 			@position = params[:position]
       render action: "new"
