@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
 resources :audits, only: [:new, :create, :show, :index]
 
-resources :five_minute_summaries, only: [:show, :edit]
+resources :five_minute_summaries, only: [:show, :edit, :update]
 # resources :section, only: [:show, :edit, :update, :destroy]
 resources :content_blocks, only: [:show, :edit, :update, :destroy]
 

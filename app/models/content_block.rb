@@ -11,5 +11,6 @@ class ContentBlock
 	validates :content, presence: true
 
   belongs_to :section
+  has_many :inline_photos
 
 end
