@@ -8,7 +8,7 @@ class ContentBlocksController < ApplicationController
 	def update
 		block = ContentBlock.find(params[:id])
 		block.update!(content_block_params)
-		redirect_to five_minute_summary_path(block.section.five_minute_summary)
+		redirect_to edit_five_minute_summary_path(block.section.five_minute_summary)
 	end
 
 	def new
@@ -24,7 +24,7 @@ class ContentBlocksController < ApplicationController
 			section.content_blocks << new_block
 			section.block_order.insert(params[:position].to_i, new_block.id)
 			section.save!
-			redirect_to five_minute_summary_path(section.five_minute_summary)
+			redirect_to edit_five_minute_summary_path(section.five_minute_summary)
 		else 
 		  @errors = new_block.errors
     	flash[:notice] = "Sorry there was an error. Your block was not created."
@@ -41,7 +41,7 @@ class ContentBlocksController < ApplicationController
 		parent_section.block_order.delete(block_to_destroy.id)
 		parent_section.content_blocks.delete(block_to_destroy)
 		parent_section.save
-		redirect_to five_minute_summary_path(parent_section.five_minute_summary)
+		redirect_to edit_five_minute_summary_path(parent_section.five_minute_summary)
 
 	end
 

@@ -1,5 +1,7 @@
 class FiveMinuteSummariesController < ApplicationController
 
+	layout "five_minute_summary", only: [:show]
+
 	def show
 		@fms = FiveMinuteSummary.find(params[:id])
 
@@ -29,7 +31,7 @@ class FiveMinuteSummariesController < ApplicationController
 		if params[:five_minute_summary][:fifth_background_photo]
 			set_bg_photo(fms, :fifth_background_photo, params[:five_minute_summary][:fifth_background_photo])
 		end 
-		
+
 		redirect_to edit_five_minute_summary_path(fms)
 	end
 

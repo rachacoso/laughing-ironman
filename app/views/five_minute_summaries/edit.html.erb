@@ -15,22 +15,33 @@
 	 <% thissection.block_order.each_with_index do |bid, index| %>
 		<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
 		<div class="backpanel">
-			<p><%= link_to "Add a block before", new_content_block_url(thissection.id, index ) %></p>
+
+
 			<p><%= thisblock.content %></p>
-			<p><%= link_to "Edit this block", edit_content_block_url(thisblock) %></p>
 			
-			<p><%= link_to "Add a block after", new_content_block_url(thissection.id, index + 1 ) %></p>
-		
+			<%= link_to new_content_block_url(thissection.id, index ) do %>
+				<i class="fi-arrow-up"></i> <small>Add a block before</small>
+			<% end %>
+			| 			
+			<%= link_to edit_content_block_url(thisblock) do %>
+				<i class="fi-pencil"></i> <small>Edit this block</small>
+			<% end %>
+			| 
+			<a href="#" data-reveal-id="myModal_<%= bid %>">
+					<i class="fi-x"></i> <small>Delete this block</small>
+			</a>
+			| 
+			<%= link_to new_content_block_url(thissection.id, index + 1 ) do %>
+				<i class="fi-arrow-down"></i> <small>Add a block after</small>
+			<% end %>
 
-			<a href="#" data-reveal-id="myModal_<%= bid %>">Delete this block</a>
-
-			<div id="myModal_<%= bid %>" class="reveal-modal tiny" data-reveal>
-			  <h6><%= bid %></h6>
-			  <p class="lead"><%= thisblock.content %></p>
-			  <%= button_to "Delete", content_block_path(thisblock), :method => 'delete' %>
-			  
-			  <a class="close-reveal-modal">&#215;</a>
-			</div>
+		</div>
+		<div id="myModal_<%= bid %>" class="reveal-modal tiny" data-reveal>
+		  <h6><%= bid %></h6>
+		  <p class="lead"><%= thisblock.content %></p>
+		  <%= button_to "Delete", content_block_path(thisblock), :method => 'delete' %>
+		  
+		  <a class="close-reveal-modal">&#215;</a>
 		</div>
 	 <% end %>
 

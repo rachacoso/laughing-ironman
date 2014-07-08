@@ -42,3 +42,6 @@ gem "mongoid-paperclip", :require => "mongoid_paperclip"
 
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
+
+gem 'foundation-icons-sass-rails'
+

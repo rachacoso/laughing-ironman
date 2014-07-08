@@ -12,6 +12,7 @@
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 
+
 // $experimental: true;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
@@ -46,7 +47,7 @@
 
 // We use these to control various global styles
 $body-bg: #eee;
-// $body-font-color: #222;
+$body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
@@ -146,6 +147,12 @@ $body-bg: #eee;
 // $h2-font-reduction: rem-calc(10) !default;
 // $h3-font-reduction: rem-calc(5) !default;
 // $h4-font-reduction: rem-calc(5) !default;
+$h1-font-size: rem-calc(40) !default;
+$h2-font-size: rem-calc(30) !default;
+$h3-font-size: rem-calc(24) !default;
+$h4-font-size: rem-calc(22) !default;
+
+
 // $h5-font-reduction: 0 !default;
 // $h6-font-reduction: 0 !default;
 
@@ -819,8 +826,10 @@ $body-bg: #eee;
 
 // We use these to control the background and border styles
 // $panel-bg: scale-color(#fff, $lightness: -5%);
+$panel-bg: scale-color(#F8E0B0, $lightness: -5%);
 // $panel-border-style: solid;
 // $panel-border-size: 1px;
+$panel-border-size: 5px;
 
 // We use this % to control how much we darken things on hover
 // $panel-function-factor: -11%;
@@ -829,6 +838,7 @@ $body-bg: #eee;
 // We use these to set default inner padding and bottom margin
 // $panel-margin-bottom: rem-calc(20);
 // $panel-padding: rem-calc(20);
+$panel-padding: rem-calc(25);
 
 // We use these to set default font colors
 // $panel-font-color: #333;
@@ -1090,8 +1100,10 @@ $body-bg: #eee;
 
 // These control the background color for the table and even rows
 // $table-bg: #fff;
-// $table-even-row-bg: #f9f9f9  ;
+$table-bg: #F8E0B0;
 
+// $table-even-row-bg: #f9f9f9  ;
+$table-even-row-bg: darken(#F8E0B0, 5%);
 // These control the table cell border style
 // $table-border-style: solid;
 // $table-border-size: 1px;
@@ -1099,6 +1111,7 @@ $body-bg: #eee;
 
 // These control the table head styles
 // $table-head-bg: #f5f5f5  ;
+$table-head-bg: darken(#F8E0B0, 20%);
 // $table-head-font-size: rem-calc(14);
 // $table-head-font-color: #222;
 // $table-head-font-weight: $font-weight-bold;
@@ -1188,6 +1201,9 @@ $body-bg: #eee;
 // Background color for the top bar
 // $topbar-bg-color: #333;
 // $topbar-bg: $topbar-bg-color;
+
+$topbar-bg-color: #E64417;
+$topbar-bg: $topbar-bg-color;
 
 // Height and margin
 // $topbar-height: 45px;
@@ -1298,3 +1314,683 @@ $body-bg: #eee;
 // $range-slider-handle-cursor: pointer;
 
 @import 'foundation';
+@import 'foundation-icons';
+
+
+
+//  LACO CUSTOM CSS
+
+/* add border for structure troubleshooting */
+
+
+
+.RAborder {
+  border:2px solid !important;
+}
+
+// div {
+//   border:2px solid !important;
+// }
+
+
+// FOOTER COLOR
+$footer_color: #FF3700;
+$footer_alpha: 0.8;
+
+// FIVE MINUTE SUMMARY COLORS
+
+// Background color for Five Minute Summary Audit HEADER
+$FMbackground_color_head: #4F8699;
+$FMalpha_head: 0.8;
+
+// Background color for Five Minute Summary Audit "SUMMARY"
+// $FMbackground_color_summary: tint($FMbackground_color_head, 80%);
+$FMbackground_color_summary: #000;
+$FMalpha_summary: 0.25;
+
+// Background color #2 for Five Minute Summary Audit  "BACKGROUND"
+// $FMbackground_color_up: tint($FMbackground_color_head, 80%);
+$FMbackground_color_up: lighten($FMbackground_color_head, 80%);
+// $FMbackground_color_background: shade($FMbackground_color_up, 10%);
+$FMbackground_color_background: darken($FMbackground_color_up, 10%);
+$FMalpha_background: 0.95;
+
+// Background color #3 for Five Minute Summary Audit "OVERALL ASSESSMENT"
+// $FMbackground_color_overallassessment: shade($FMbackground_color_up, 20%);
+$FMbackground_color_overallassessment: darken($FMbackground_color_up, 20%);
+$FMalpha_overallassessment: 0.95;
+
+
+
+// Background color Five Minute Summary Audit section floating submenu
+$floatmenu_color: #E64417;
+$floatmenu_alpha: 0.95;
+
+
+// FULL AUDIT COLORS
+
+// Background color for Full Audit HEADER
+$FAbackground_color_head: #000000;
+$FAalpha_head: 0.6;
+
+// Background color for Full Audit "EXECUTIVE SUMMARY"
+$FAbackground_color_executivesummary: #ffffff;
+$FAalpha_executivesummary: 0.95;
+
+// Background color for Full Audit "AUDIT ACTION PLAN"
+$FAbackground_color_auditactionplan: #ffffff;
+$FAalpha_auditactionplan: 0.95;
+
+// Background color for Full Audit "INTRO AND BACKGROUND"
+$FAbackground_color_introandbackground: #ffffff;
+$FAalpha_introandbackground: 0.95;
+
+// Background color for Full Audit "FINDINGS AND RECOMMENDATIONS"
+$FAbackground_color_findingsandrecommendations: #ffffff;
+$FAalpha_findingsandrecommendations: 0.95;
+
+
+
+// GENERAL STYLES
+
+
+// IMAGES & CAPTIONS
+
+
+.imagecaption {
+  font-size: x-small;
+  color: lighten($body-font-color, 40%);
+  margin-top: 1em;
+  width: 60%;
+  line-height: 1.25em;
+}
+
+
+// Transparent backgrounds
+
+@mixin transparent($color, $alpha) {
+  $rgba: rgba($color, $alpha);
+  // $rgb: rgb($color);
+  $ie-hex-str: ie-hex-str($rgba);
+  /* Fallback for web browsers that doesn't support RGBa */
+  // background: $rgb;
+  background: $color;
+  /* RGBa with opacity */
+  background: $rgba;
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str}, endColorstr=#{$ie-hex-str})";
+}
+
+// Used to calculate shadow color for text (and color for findings backgrounds)
+@function shadowcolor($color) {
+  @return darken($color, 20%);
+}
+
+
+// Menu Top Bar
+// Logo background
+
+
+@media #{$small-up} { 
+
+  .lacologoback {
+    background: white;
+    width: 200px;
+    height: 45px;
+  }
+
+}
+
+@media #{$large-up} { 
+
+  .lacologoback {
+    background: white;
+    width: 300px;
+    height: 45px;
+  }
+
+}
+
+
+#rglogo{
+  vertical-align: top;
+}
+
+#sealcontainer, #logocontainer{
+  padding:1px;
+
+}
+
+#sealcontainer, #logocontainer{
+  padding:5px;
+}
+
+// RG Signature SVG : Fallback 
+
+.no-svg .rgsig {
+  width: 225px;
+  background-image: url(img/RGsig.png);
+}
+
+
+
+
+// Summary Section font changes
+
+
+
+// Floating Menu
+
+#fl_menu{
+  // display: none;
+  position:absolute; 
+  top:100px; 
+  left:0px; 
+  z-index:9999; 
+  width:150px; 
+  height:50px;
+  .label{
+    padding-left:20px; 
+    line-height:50px; 
+    font-size:10px; 
+    font-weight:bold;
+    @include transparent ($floatmenu_color, $floatmenu_alpha);
+    // background:#000; 
+    color:#fff; 
+    letter-spacing:7px;
+  }
+  .menu{
+    display:none;
+    .menu_item{
+      display:block; 
+      @include transparent ($floatmenu_color, $floatmenu_alpha);
+      color:#bbb; 
+      border-top:1px solid #333; 
+      padding:10px 20px; 
+      font-size:12px; 
+      text-decoration:none;
+    }
+
+    a.menu_item:hover{
+      background:#333; 
+      color:#fff;
+    }
+  }
+}
+
+/*Section Background Panels*/
+
+.headWrapper {
+    /*Content below fold on start*/
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    // background:#333;
+}
+
+.topWrapper, .headWrapper,{
+
+    width: 100%;
+
+}
+
+.headWrapper, .sectionWrapper, .footerWrapper, .topWrapper{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: initial;
+}
+
+.sectionWrapper, .footerWrapper{
+  
+  // floating panel for five minute
+  .fiveminute & {
+    width: 85%;
+  }
+  
+  // full width for full audit 
+  .fullaudit & {
+    width: 100%;
+    ul :not(.top-bar-section ul) {
+      list-style-type:disc;
+    }  
+  }
+}
+
+
+
+.sectionWrapper {
+  padding: 6em 2em;
+}
+
+.footerWrapper {
+  @include transparent ($footer_color, $footer_alpha);
+  height: 45px;
+  color: white !important;
+  font-size: smaller !important;
+  padding-top: 1em;
+}
+
+
+/*adjust top margin for smaller and larger screens*/
+.RAmargintop {
+	padding-top: 5px;
+}
+        
+@media screen and (min-width: 768px){
+    // .rwd-break { display: none; } /*line breaks for buttons */
+    .RAmargintop { padding-top: 100px; } /*adjust top margin for smaller and larger screens*/
+}
+
+/*transparent background for content area*/
+.RAtransparent{
+  background: transparent;
+}
+
+.RASectionSpacer{
+  background: transparent;
+  height: 300px;
+}
+
+
+
+/*Adjust font size for Key Findings List ordinals*/
+.KFNum {
+  font-size: 2.125rem;
+}
+/*Adjust font size for Key Findings List ordinals larger screen*/
+@media only screen and (min-width: 40.063em) {
+  .KFNum {
+    font-size: 2.75rem; }
+}
+
+
+/* override color/size of the blockquote line */
+blockquote {
+  margin: 0 0 1.25rem;
+  padding: 0.5625rem 1.25rem 0 1.1875rem;
+  border-left: 2px solid #0078ff; 
+}
+
+.KeyFindingsHead {
+  min-height: 100px;
+}
+
+.KeyFindingsItemHead {
+  margin-bottom: 2em;
+}
+
+/*Reveal modal full screen for mobile*/
+
+@media only screen and (max-width: 641px) {
+  .reveal-modal.xlarge {
+   width: 100% !important;
+   top: 0px !important;
+   left: 0px !important;
+   margin: 0px !important;
+   padding: 0px !important;
+  }
+}
+
+
+//Magellan adjustments
+.RAmagellan {
+  border-style:solid;
+  border-width:1px;
+  a {
+    color: black !important;
+  }
+}
+
+// styling for the magellan active class
+.RAactive, .RAactive a{
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-weight: normal;
+  background: #E64417;
+  // padding: 0.16667rem;
+  cursor: default;
+  color: white !important;
+}
+
+
+[data-magellan-expedition-clone] {
+  visibility: hidden;
+}
+
+
+// fix table font
+table ul {
+  font-size:inherit;
+}
+
+
+
+
+// full audit nav bar
+#RAFAnav {
+  left: 20px;
+  list-style: none;
+  margin: 0;
+  position: fixed;
+  top: 50px;
+}
+
+#RAFAnav li {
+  margin-bottom: 2px;
+}
+
+#RAFAnav a {
+  background: #ededed;
+  color: #666;
+  display: block;
+  font-size: 14px;
+  padding: 5px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#RAFAnav a:hover {
+  background: #dedede;
+}
+
+#RAFAnav .current a {
+  background: #666;
+  color: #ededed;
+}
+
+#fullauditnav {
+  display:block;
+}
+
+
+
+
+
+
+
+
+// FIVE MINUTE SUMMARY SPECIFIC STYLES
+.fiveminute {
+
+  #subnav-auditNameHeader{
+    font-size: 0.6rem;
+  }
+
+  #backgroundShade {
+    height:100%;
+    width:100%;
+    position:fixed;
+    left:0px;
+    top:0px;
+    @include transparent (#000, 0.5);
+    z-index: -999;
+    display: none;
+  }
+
+  .top-bar-section .active a{
+    background: $FMbackground_color_head !important;
+  }
+  // Background colors for five minute summary sections
+
+  #WPsummary {
+    // @include transparent ($FMbackground_color_summary, $FMalpha_summary);
+    color: #EDEDED;
+    width: 100%;
+    padding-top: 7em;
+
+    h1,h2,h3,h4 {
+      // text-shadow: 1px 1px shadowcolor($FMbackground_color_summary);
+      text-shadow: 1px 1px #000;
+      display: inline;
+    }
+    p {
+      font-size: rem-calc(20);
+    }
+    p, ul li {
+      // text-shadow: 2px 2px #000;
+    }
+    ul li {
+      font-size: rem-calc(18);
+      line-height: 1.5;
+      margin: 0 0 0.5em 0;
+    }
+
+  }
+
+  #WPbackground{
+    @include transparent ($FMbackground_color_background, $FMalpha_background);
+    h1, h4 {
+      text-shadow: 1px 1px shadowcolor($FMbackground_color_background);
+    }
+  }
+
+  #WPoverallassessment{
+    @include transparent ($FMbackground_color_overallassessment, $FMalpha_overallassessment);
+    h1, h4 {
+      text-shadow: 1px 1px shadowcolor($FMbackground_color_overallassessment);
+    }
+  }
+
+  // header background color
+  .headback {
+    padding: 0.5rem;
+    @include transparent ($FMbackground_color_head, $FMalpha_head);
+
+    // color override for header
+    h1,h2,h3,h3 small,h4,h5,h6{
+      color: white !important;
+    }
+    h1,h2,h3 {
+      text-shadow: 1px 1px shadowcolor($FMbackground_color_head);
+    }
+  }
+  #gotoFull{
+    margin: 0 auto;
+    text-align: center;
+    a{
+      color: white;
+      font-size: rem-calc(24);
+
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+// FULL AUDIT SPECIFIC STLYES
+.fullaudit {
+  
+  // smallerize the text in panels
+  .panel {
+    p, ul, ol, li {
+      font-size: rem-calc(14);
+    }
+    h1,h2,h3,h4,h5,h6 {
+      margin-top:0 !important;
+    }
+  }
+
+
+  // FIGURES (DIAGRAM/IMG/CHART)
+
+  .chart{
+    margin: 4em 1em;
+
+    figcaption{
+      text-align: center;
+      text-transform: uppercase;
+      padding: 2em 1em;
+    }
+
+  }
+
+  // #DCA_Structure {
+
+  // }
+
+  #exhib1_2 {
+    width: 75%;
+    margin: auto;
+  }
+
+  // #exhib1_1{
+    
+  // }
+
+  // Header styling
+  .sectionWrapper {
+    h1, h2, h3, h4, h5, h6{
+      margin-top:2em;
+      margin-bottom: 1em;
+    }
+    h1, h2, h3 {
+      text-transform: uppercase;
+    }
+    h6 {
+      text-decoration: underline;
+    }
+  }
+  
+
+  // Background colors for full audit sections
+
+  #WPexecutivesummary {
+    @include transparent ($FAbackground_color_executivesummary, $FAalpha_executivesummary);
+    h1 {
+      text-shadow: 1px 1px shadowcolor($FAbackground_color_executivesummary);
+    }
+  }
+  #WPauditactionplan {
+    @include transparent ($FAbackground_color_auditactionplan, $FAalpha_auditactionplan);
+    h1 {
+      text-shadow: 1px 1px shadowcolor($FAbackground_color_auditactionplan);
+    }
+  }
+  #WPintroandbackground {
+    @include transparent ($FAbackground_color_introandbackground, $FAalpha_introandbackground);
+    h1 {
+      text-shadow: 1px 1px shadowcolor($FAbackground_color_introandbackground);
+    }
+
+  }
+  #WPfindingsandrecommendations {
+    @include transparent ($FAbackground_color_findingsandrecommendations, $FAalpha_findingsandrecommendations);
+    h1 {
+      text-shadow: 1px 1px shadowcolor($FAbackground_color_findingsandrecommendations);
+    }
+
+  }
+
+  // header background color
+  .headback {
+    padding: 0.5rem;
+    @include transparent ($FAbackground_color_head, $FAalpha_head);
+
+    // color override for header
+    h1,h2,h3,h3 small,h4,h5,h6{
+      color: white !important;
+    }
+    h1 {
+      text-shadow:none;
+    }
+  }  
+
+  .sub-nav dt, .sub-nav dd, .sub-nav li {
+    font-size: 0.6rem;
+  }
+  
+  
+  // format the panel for the asides in full audit
+  .panel {
+
+    h6 {text-decoration:underline;}
+
+  }
+  
+  // style the panel
+  .panel {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: small !important;
+  }
+
+
+  // Style the key findings list
+
+  .keyfindings {
+    font-weight:bolder;
+  }
+
+  // Style the RAfindings
+  .RAfinding {
+    padding: 1em;
+    background-color: shadowcolor(#ffffff);
+    margin-bottom: 2em;
+  }
+
+  .findingWrapper{
+    border-left: 2px solid lighten(#5C89C4, 20%);
+    border-bottom: 2px solid lighten(#5C89C4, 20%);
+    // border-left: 2px solid lighten(#5C89C4, 20%);
+    padding-left: 1em;
+    margin-bottom: 4em;
+    margin-top: 3em;
+  }
+
+
+  // Style the RArecommendation
+  
+  .RArecommendation {
+    padding: 1em;
+    // background-color: shadowcolor(#ffffff);
+    // border:2px solid #5C89C4; 
+    background-color: lighten(#5C89C4, 20%);
+    margin-bottom: 2em;
+  }
+
+  // Page Map
+
+  #pageMap{
+    display: none;
+    position: fixed;
+    left:1em;
+    bottom:3em;
+    width: 10em;
+    // height: 3em;
+    padding: 10px 10px;
+    color: #fff;
+    font-size: 0.5em;
+    @include transparent ($FAbackground_color_head, $FAalpha_head);
+       
+
+  }
+
+
+  .imageblock {
+    margin-top: 5em;
+    margin-bottom: 5em;
+  }
+  .imageblock.notfullwidth {
+    width: 70%;
+    margin: auto;
+    padding-top: 5em;
+    padding-bottom: 5em;
+  }
+
+  table {
+    margin: 2em auto;
+
+  }
+
+}
+

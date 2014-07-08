@@ -1,0 +1,34 @@
+<!-- BEGIN FIVE MINUTE SUMMARY SECTION BACKGROUND-->
+<a name="background"></a>
+<div class="sectionWrapper" id="WPbackground">
+  <div class="row contentbg">
+
+    <div class="small-12 medium-3 columns">
+      <div class="RAfull">
+        
+        
+        <h4 data-magellan-destination="background" class="text-right">BACKGROUND</h4>
+      </div>
+    </div>
+
+
+    <div class="small-12 medium-9 columns">
+      <div class="RAfull">
+
+					<% unless thissection.content_blocks.empty? %>
+
+						<% thissection.block_order.each_with_index do |bid, index| %>
+							<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
+							
+								<p><%= thisblock.content %></p>
+							
+						<% end %>
+
+					<% end %>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END FIVE MINUTE SUMMARY SECTION BACKGROUND-->

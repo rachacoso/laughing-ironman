@@ -1,0 +1,28 @@
+<div class="sectionWrapper" id="WPsummary">
+  <div class="row contentbg">
+    <div class="small-12 medium-10 columns small-centered">
+      
+      <div class="RAfull">
+             
+        <h4 data-magellan-destination="summary"></h4>
+        <div id="backgroundShadeTop"></div>
+
+				
+					<% unless thissection.content_blocks.empty? %>
+
+						<% thissection.block_order.each_with_index do |bid, index| %>
+							<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
+							
+								<p><%= thisblock.content %></p>
+							
+						<% end %>
+
+					<% end %>
+
+
+        <div id="backgroundShadeBottom"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END FIVE MINUTE SUMMARY SECTION INTRO-->

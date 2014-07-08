@@ -14,7 +14,18 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require Chart
+//= require d3.min
 //= require jquery.backstretch
+//= require jquery.colorbox
+//= require jquery.easing.1.3
+//= require jquery.nav
+//= require jquery.photoset-grid
+//= require jquery.simplemodal-1.4.4
+//= require jquery.smooth-scroll
+//= require waypoints-sticky
+//= require waypoints.min
+
 //= require_tree .
 
 
