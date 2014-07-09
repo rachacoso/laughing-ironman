@@ -1,5 +1,8 @@
 <% content_for :title do %>
-  <%= @fms.audit.name %>
+  <%= @fms.audit.name  %>
+<% end %>
+<% content_for :bodytitle do %>
+  <%= simple_format(@fms.audit.name, {}, wrapper_tag: "div")  %>
 <% end %>
 <% content_for :publication_date do %>
   <%= @fms.audit.publication_date.strftime("%B %d, %Y") %>
@@ -25,15 +28,11 @@
 	<% end %>
 <% end %>
 
-<h4>Five Minute Summary for <%= @fms.audit.name %></h4>
-
-<%= link_to "Edit this Five Minute Summary", edit_five_minute_summary_url(@fms) %>
 
 <%# display sections %>
 <% @fms.section_order.each do |sid| # iterate through sections in order%>
 
 	<% thissection = @fms.sections.find(sid) %>
-	<h3><%= thissection.display_name %></h3>
 	
 
 		<%= render partial: thissection.section_type.downcase, locals: {thissection: thissection} %>
@@ -46,7 +45,10 @@
 
 <% end %>
 
-
-</p>
-
+<div id="adminfooter">
+	<div class="wrap">
+		<h6>Five Minute Summary for <%= @fms.audit.name %> | <%= link_to "Edit this Five Minute Summary", edit_five_minute_summary_url(@fms) %> | <%= link_to "Go to Audits List", audits_url %> </h6>
+		
+	</div>
+</div>
 

@@ -62,7 +62,7 @@
     <div class="small-10 columns small-centered RAmargintop">
       <div class="headback">
             <!-- <h3>City of Los Angeles | Office of the Controller</h3> -->
-            <h1><strong><%= yield(:title) %></strong></h1>
+            <h1><strong><%= yield(:bodytitle) %></strong></h1>
             <h3>&mdash; Five Minute Summary &mdash;</h3>
             <h4><%= yield(:publication_date) %>
             <object type="image/svg+xml" data="/img/RGsig.svg" width="275" class="rgsig">
@@ -82,7 +82,7 @@
           <dd data-magellan-arrival="background"><a href="#background"><strong>Background</strong></a></dd>
           <dd data-magellan-arrival="overallassessment"><a href="#overallassessment"><strong>Overall Assessment</strong></a></dd>
           <dd>&nbsp;</dd>
-          <dd class="subnav-auditName" id="subnav-auditNameHeader"><strong><%= yield(:title) %></strong></dd>
+          <dd class="subnav-auditName" id="subnav-auditNameHeader"><strong><%= yield(:bodytitle) %></strong></dd>
           
         </dl>
 

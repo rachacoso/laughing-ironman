@@ -2,7 +2,8 @@
   Five Minute Summary for <%= @fms.audit.name %>
 <% end %>
 
-<h4>Five Minute Summary for <%= @fms.audit.name %></h4>
+--Edit Five Minute Summary --
+<h4><%= simple_format(@fms.audit.name, {}, wrapper_tag: "div")  %> </h4>
 
 <%= link_to "View Five Minute Summary", five_minute_summary_url(@fms) %>
 <%# display sections %>

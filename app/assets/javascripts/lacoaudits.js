@@ -1,13 +1,9 @@
-
-
 // CUSTOM JS/QUERY
 
 $( document ).ready(function() {
   //Hide the Title from nav-bar on load
 	$(".subnav-auditName").hide();
 	// $("#pageMap").hide();
-
-
 });
 
 
@@ -636,10 +632,3 @@ $(window).scroll(function() {
 		$('.RAmagellan[data-magellan-expedition]').hide(500,'swing');
 	}
 });
-
-
-// add hr before each "finding"
-// $(".RAfinding").before("<hr>");
-
-
-

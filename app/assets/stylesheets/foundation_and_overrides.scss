@@ -1994,3 +1994,27 @@ table ul {
 
 }
 
+// ADMIN STYLES
+
+.wrap {
+	position:relative;
+	margin:0 auto;
+             /*replace 900px with your width*/
+	width:100%;
+	padding: 1em;
+}
+
+#adminfooter {
+
+	width:100%;
+	float:left;
+	background-color: white;
+	position:fixed;
+	bottom:0;
+	z-index:999999;
+
+}
+
+textarea {
+    resize: none;
+}

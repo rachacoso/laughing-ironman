@@ -12,21 +12,25 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
-//= require turbolinks
-//= require Chart
-//= require d3.min
-//= require jquery.backstretch
-//= require jquery.colorbox
-//= require jquery.easing.1.3
-//= require jquery.nav
-//= require jquery.photoset-grid
-//= require jquery.simplemodal-1.4.4
-//= require jquery.smooth-scroll
-//= require waypoints-sticky
-//= require waypoints.min
 
+// FOUNDATION
+//= require foundation/foundation
+// Needed to make edits to foundation js -- 
+// these are in the custom file magellanedit.js in vendor/scripts
+//= require magellanedit
+
+// EXTRA 3rd PARTY JS
+//= require jquery.backstretch
+//= require waypoints.min
+//= require jquery.photoset-grid
+//= require jquery.colorbox
+
+// LACO CUSTOM JS
+//= require lacoaudits
 //= require_tree .
 
 
 $(function(){ $(document).foundation(); });
+
+
+
