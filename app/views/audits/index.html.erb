@@ -9,8 +9,27 @@
 	<p><%= flash[:notice] %></p>
 <% end %>
 <p><%= link_to "Create new audit", new_audit_url %></p>
-<% @audits.each do |audit| %>
-	<%= audit.name %> <%= link_to "View Five Minute Summary", five_minute_summary_url(audit.five_minute_summary) %><br><br>
-<% end %>
 
+
+<table>
+  <thead>
+    <tr>
+      <th>Audit Name</th>
+      <th width="200"> </th>
+    </tr>
+  </thead>
+  <tbody>
+<% @audits.each do |audit| %>
+	
+	<tr>
+		<td>
+			<%= simple_format(audit.name, {}, wrapper_tag: "div") %>
+		</td>
+		<td>
+			<%= link_to "View Five Minute Summary", five_minute_summary_url(audit.five_minute_summary) %>
+		</td>
+	</tr>
+<% end %>
+	</tbody>
+</table>
 

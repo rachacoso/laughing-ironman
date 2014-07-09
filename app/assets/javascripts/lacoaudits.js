@@ -28,7 +28,221 @@ $('.photoset-grid-lightbox').photosetGrid({
 
 
 // Backstrech image in a div $("#WPtopHead").backstretch("./img/LABanner.jpg");
-$.backstretch( bgOne, {fade: 500});
+
+// Check if the background images have been set
+var has_bgOne = typeof bgOne != 'undefined';
+var bgOne_default = "#F3F3F7";
+var has_bgTwo = typeof bgTwo != 'undefined';
+var bgTwo_default = "#F2F2F6";
+var has_bgThree = typeof bgThree != 'undefined';
+var bgThree_default = "#F0F0F5";
+var has_bgFour = typeof bgFour != 'undefined';
+var bgFour_default = "#D8D8DC";
+var has_bgFive = typeof bgFive != 'undefined';
+var bgFive_default = "#C0C0C4";
+
+if (has_bgOne) {
+	$.backstretch( bgOne, {fade: 500});	
+} else {
+	$( 'body' ).css( "background-color", bgOne_default );
+};
+
+
+// Five Minute Summary Waypoints
+
+$('#WPtop').waypoint(function() {
+	if (has_bgOne) {
+		$.backstretch( bgOne, {fade: 500});	
+	} else {
+		$( 'body' ).css( "background-color", "#F0F0F5" );
+	};
+});
+
+$('#WPsummary').waypoint(function() {
+	if (has_bgTwo) {
+		$.backstretch( bgTwo, {fade: 500});	
+	} else {
+		$( 'body' ).css( "background-color", bgTwo_default );
+	};
+}, {
+	offset: function() {
+	  var raWindow = $.waypoints('viewportHeight');
+	  return raWindow / 2;
+}
+});
+
+$('#WPsummary').waypoint(function(direction) {
+	if (direction == 'up') {
+		if (has_bgTwo) {
+			$.backstretch( bgTwo, {fade: 500});	
+		} else {
+			$( 'body' ).css( "background-color", bgTwo_default );
+		};
+	}
+}, {
+	offset: function() {
+		return -($(this).height()*.95);
+	}
+});
+
+$('#WPbackground').waypoint(function() {
+	if (has_bgThree) {
+		$.backstretch( bgThree, {fade: 500});	
+	} else {
+		$( 'body' ).css( "background-color", bgThree_default );
+	};
+}, {
+offset: function() {
+	  var raWindow = $.waypoints('viewportHeight');
+	  return raWindow / 2;
+}
+});
+
+$('#WPoverallassessment').waypoint(function() {
+	if (has_bgFour) {
+		$.backstretch( bgFour, {fade: 500});	
+	} else {
+		$( 'body' ).css( "background-color", bgFour_default );
+	};
+}, {
+offset: function() {
+	  var raWindow = $.waypoints('viewportHeight');
+	  return raWindow / 2;
+}
+});
+
+$('#WPoverallassessment').waypoint(function() {
+	if (has_bgFive) {
+		$.backstretch( bgFive, {fade: 500});	
+	} else {
+		$( 'body' ).css( "background-color", bgFive_default );
+	};
+}, {
+	offset: function() {
+	return -$(window).height();
+}
+});
+
+
+// Background shade waypoints
+
+$('#backgroundShadeTop').waypoint(function(direction) {
+	if (direction == 'down') {
+		$('#backgroundShade').fadeIn(500);
+	}
+}, {
+	offset: function() {
+		var raWindow = $.waypoints('viewportHeight');
+		return raWindow * 0.75;
+	}
+});
+
+$('#backgroundShadeTop').waypoint(function(direction) {
+	if (direction == 'up') {
+		$('#backgroundShade').fadeOut(500);
+	}
+}, {
+	offset: function() {
+		var raWindow = $.waypoints('viewportHeight');
+		return raWindow * 0.75;
+	}
+});
+
+$('#backgroundShadeBottom').waypoint(function(direction) {
+	if (direction == 'down') {
+		$('#backgroundShade').fadeOut(500);
+	}
+}, {
+	offset: function() {
+		var raWindow = $.waypoints('viewportHeight');
+		return raWindow * 0.35;
+	}
+});
+
+$('#backgroundShadeBottom').waypoint(function(direction) {
+	if (direction == 'up') {
+		$('#backgroundShade').fadeIn(500);
+	}
+}, {
+	offset: function() {
+		var raWindow = $.waypoints('viewportHeight');
+		return raWindow * 0.35;
+	}
+});
+
+
+// Background Shade for "Go to Full Audit"
+
+$('#gotoFull').waypoint(function(direction) {
+	if (direction == 'down') {
+		$('#backgroundShade').fadeIn(500);
+	}
+}, {
+	offset: function() {
+		var raWindow = $.waypoints('viewportHeight');
+		return raWindow * 0.75;
+	}
+});
+
+$('#gotoFull').waypoint(function(direction) {
+	if (direction == 'up') {
+		$('#backgroundShade').fadeOut(500);
+	}
+}, {
+	offset: function() {
+		var raWindow = $.waypoints('viewportHeight');
+		return raWindow * 0.75;
+	}
+});
+
+
+// hide subnav when final div off viewport  
+$('#WPoverallassessment').waypoint(function() {
+	if ($(window).scrollTop() + $(window).height() <= $(document).height()) {
+		$('.RAmagellan[data-magellan-expedition]').toggle(500,'swing');
+	}
+
+}, {
+	offset: function() {
+		return -$(this).height();
+	}
+});
+
+// unhide when scrolling up if still hidden
+// 5 Minute Summary
+$('#WPoverallassessment').waypoint(function(direction) {
+	if (direction == 'up') {
+		$('.RAmagellan[data-magellan-expedition]').show(500,'swing');
+	}
+}, {
+	offset: function() {
+		return -($(this).height()*.85);
+	}
+});
+
+// Full Audit
+
+
+$('#auditContentBottom').waypoint(function(direction) {
+	if (direction == 'up') {
+		$('.RAmagellan[data-magellan-expedition]').show(500,'swing');
+	}
+}, {
+	offset: function() {
+		var raWindow = $.waypoints('viewportHeight');
+		return raWindow * 0.75;
+	}
+});
+
+// hide subnav when hit bottom (in cases where final div still in viewport due to browser size)
+
+$(window).scroll(function() {
+	if(
+		$(window).scrollTop() + $(window).height() == $(document).height()
+	) {
+		$('.RAmagellan[data-magellan-expedition]').hide(500,'swing');
+	}
+});
 
 
 // Full Audit Waypoints
@@ -52,8 +266,6 @@ $('#WPexecutivesummary').waypoint(function() {
 });
 
 // lets go with the pages now
-
-
 
 
 $('#p1').waypoint(function() {
@@ -454,181 +666,3 @@ $('#p49').waypoint(function() {
 });
 
 
-
-// Five Minute Summary Waypoints
-
-
-
-
-$('#WPtop').waypoint(function() {
-	$.backstretch(bgOne, {fade: 500});
-});
-
-$('#WPsummary').waypoint(function() {
-	$.backstretch(bgTwo, {fade: 500});
-}, {
-	offset: function() {
-	  var raWindow = $.waypoints('viewportHeight');
-	  return raWindow / 2;
-}
-});
-
-$('#WPsummary').waypoint(function(direction) {
-	if (direction == 'up') {
-		$.backstretch(bgTwo, {fade: 500});
-	}
-}, {
-	offset: function() {
-		return -($(this).height()*.95);
-	}
-});
-
-
-$('#WPbackground').waypoint(function() {
-	$.backstretch(bgThree, {fade: 500});
-}, {
-offset: function() {
-	  var raWindow = $.waypoints('viewportHeight');
-	  return raWindow / 2;
-}
-});
-
-$('#WPoverallassessment').waypoint(function() {
-	$.backstretch(bgFour, {fade: 500});
-}, {
-offset: function() {
-	  var raWindow = $.waypoints('viewportHeight');
-	  return raWindow / 2;
-}
-});
-
-$('#WPoverallassessment').waypoint(function() {
-	$.backstretch(bgFive, {fade: 500});
-}, {
-	offset: function() {
-	return -$(window).height();
-}
-});
-
-
-// Background shade waypoints
-
-
-$('#backgroundShadeTop').waypoint(function(direction) {
-	if (direction == 'down') {
-		$('#backgroundShade').fadeIn(500);
-	}
-}, {
-	offset: function() {
-		var raWindow = $.waypoints('viewportHeight');
-		return raWindow * 0.75;
-	}
-});
-
-$('#backgroundShadeTop').waypoint(function(direction) {
-	if (direction == 'up') {
-		$('#backgroundShade').fadeOut(500);
-	}
-}, {
-	offset: function() {
-		var raWindow = $.waypoints('viewportHeight');
-		return raWindow * 0.75;
-	}
-});
-
-
-$('#backgroundShadeBottom').waypoint(function(direction) {
-	if (direction == 'down') {
-		$('#backgroundShade').fadeOut(500);
-	}
-}, {
-	offset: function() {
-		var raWindow = $.waypoints('viewportHeight');
-		return raWindow * 0.35;
-	}
-});
-
-$('#backgroundShadeBottom').waypoint(function(direction) {
-	if (direction == 'up') {
-		$('#backgroundShade').fadeIn(500);
-	}
-}, {
-	offset: function() {
-		var raWindow = $.waypoints('viewportHeight');
-		return raWindow * 0.35;
-	}
-});
-
-
-// Background Shade for "Go to Full Audit"
-
-$('#gotoFull').waypoint(function(direction) {
-	if (direction == 'down') {
-		$('#backgroundShade').fadeIn(500);
-	}
-}, {
-	offset: function() {
-		var raWindow = $.waypoints('viewportHeight');
-		return raWindow * 0.75;
-	}
-});
-
-$('#gotoFull').waypoint(function(direction) {
-	if (direction == 'up') {
-		$('#backgroundShade').fadeOut(500);
-	}
-}, {
-	offset: function() {
-		var raWindow = $.waypoints('viewportHeight');
-		return raWindow * 0.75;
-	}
-});
-
-
-// hide subnav when final div off viewport  
-$('#WPoverallassessment').waypoint(function() {
-	if ($(window).scrollTop() + $(window).height() <= $(document).height()) {
-		$('.RAmagellan[data-magellan-expedition]').toggle(500,'swing');
-	}
-
-}, {
-	offset: function() {
-		return -$(this).height();
-	}
-});
-
-// unhide when scrolling up if still hidden
-// 5 Minute Summary
-$('#WPoverallassessment').waypoint(function(direction) {
-	if (direction == 'up') {
-		$('.RAmagellan[data-magellan-expedition]').show(500,'swing');
-	}
-}, {
-	offset: function() {
-		return -($(this).height()*.85);
-	}
-});
-
-// Full Audit
-
-
-$('#auditContentBottom').waypoint(function(direction) {
-	if (direction == 'up') {
-		$('.RAmagellan[data-magellan-expedition]').show(500,'swing');
-	}
-}, {
-	offset: function() {
-		var raWindow = $.waypoints('viewportHeight');
-		return raWindow * 0.75;
-	}
-});
-
-// hide subnav when hit bottom (in cases where final div still in viewport due to browser size)
-
-$(window).scroll(function() {
-	if(
-		$(window).scrollTop() + $(window).height() == $(document).height()
-	) {
-		$('.RAmagellan[data-magellan-expedition]').hide(500,'swing');
-	}
-});

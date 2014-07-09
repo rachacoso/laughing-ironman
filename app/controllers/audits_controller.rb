@@ -9,9 +9,6 @@ class AuditsController < ApplicationController
   	if new_audit.valid?
    		new_audit.five_minute_summary = FiveMinuteSummary.new
    		new_audit.generate_new_fms
-	   	#new_audit.five_minute_summary.sections << Section.new(section_type: 'FMSsummary', display_name: 'Summary')
-  		#new_audit.five_minute_summary.sections << Section.new(section_type: 'FMSbackground', display_name: 'Background')
-  		#new_audit.five_minute_summary.sections << Section.new(section_type: 'FMSfindings', display_name: 'Findings and Recommendations')
     	new_audit.full_audit = FullAudit.new
       redirect_to audits_path, notice:  "You have successfully created a new audit."
     else
