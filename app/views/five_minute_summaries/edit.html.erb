@@ -2,81 +2,104 @@
   Five Minute Summary for <%= @fms.audit.name %>
 <% end %>
 
---Edit Five Minute Summary --
-<h4><%= simple_format(@fms.audit.name, {}, wrapper_tag: "div")  %> </h4>
 
-<%= link_to "View Five Minute Summary", five_minute_summary_url(@fms) %>
-<%# display sections %>
-<% @fms.section_order.each do |sid| # iterate through sections in order%>
-	<% thissection = @fms.sections.find(sid) %>
-	<h3><%= thissection.display_name %></h3>
+<div class="row">
+	<div class="small-12 columns">
+		<%# display sections %>
+		<% @fms.section_order.each do |sid| # iterate through sections in order%>
+			<% thissection = @fms.sections.find(sid) %>
+			<h3><%= thissection.display_name %></h3>
 
-	<% unless thissection.content_blocks.empty? %>
+			<% unless thissection.content_blocks.empty? %>
 
-	 <% thissection.block_order.each_with_index do |bid, index| %>
-		<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
-		<div class="backpanel">
+			 <% thissection.block_order.each_with_index do |bid, index| %>
+				<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
+				<div class="backpanel">
 
 
-			<p><%= thisblock.content %></p>
-			
-			<%= link_to new_content_block_url(thissection.id, index ) do %>
-				<i class="fi-arrow-up"></i> <small>Add a block before</small>
+					<p><%= thisblock.content %></p>
+					
+					<%= link_to new_content_block_url(thissection.id, index ) do %>
+						<i class="fi-arrow-up"></i> <small>Add a block before</small>
+					<% end %>
+					| 			
+					<%= link_to edit_content_block_url(thisblock) do %>
+						<i class="fi-pencil"></i> <small>Edit this block</small>
+					<% end %>
+					| 
+					<a href="#" data-reveal-id="myModal_<%= bid %>">
+							<i class="fi-x"></i> <small>Delete this block</small>
+					</a>
+					| 
+					<%= link_to new_content_block_url(thissection.id, index + 1 ) do %>
+						<i class="fi-arrow-down"></i> <small>Add a block after</small>
+					<% end %>
+
+				</div>
+				<div id="myModal_<%= bid %>" class="reveal-modal tiny" data-reveal>
+				  <h6><%= bid %></h6>
+				  <p class="lead"><%= thisblock.content %></p>
+				  <%= button_to "Delete", content_block_path(thisblock), :method => 'delete' %>
+				  
+				  <a class="close-reveal-modal">&#215;</a>
+				</div>
+			 <% end %>
+
 			<% end %>
-			| 			
-			<%= link_to edit_content_block_url(thisblock) do %>
-				<i class="fi-pencil"></i> <small>Edit this block</small>
+
+		<% end %>
+
+		<div class="backpanel">
+			<h3> Background Images </h3>
+			<%= form_for @fms, url: five_minute_summary_path do |f| %>
+				
+				<div class="backpanel">
+				<%= @fms.first_background_photo ? (image_tag @fms.first_background_photo.photo(:small)) : 'No Photo' %>
+				<%= f.file_field :first_background_photo %>
+				</div>
+				<div class="backpanel">
+				<%= @fms.second_background_photo ? (image_tag @fms.second_background_photo.photo(:small)) : 'No Photo' %>
+				<%= f.file_field :second_background_photo %>
+				</div>
+				<div class="backpanel">
+				<%= @fms.third_background_photo ? (image_tag @fms.third_background_photo.photo(:small)) : 'No Photo' %>
+				<%= f.file_field :third_background_photo %>
+				</div>
+				<div class="backpanel">
+				<%= @fms.fourth_background_photo ? (image_tag @fms.fourth_background_photo.photo(:small)) : 'No Photo' %>
+				<%= f.file_field :fourth_background_photo %>
+				</div>
+				<div class="backpanel">
+				<%= @fms.fifth_background_photo ? (image_tag @fms.fifth_background_photo.photo(:small)) : 'No Photo' %>
+				<%= f.file_field :fifth_background_photo %>
+				</div>
+				<%= f.submit 'Upload Background Images' %>
+
 			<% end %>
-			| 
-			<a href="#" data-reveal-id="myModal_<%= bid %>">
-					<i class="fi-x"></i> <small>Delete this block</small>
-			</a>
-			| 
-			<%= link_to new_content_block_url(thissection.id, index + 1 ) do %>
-				<i class="fi-arrow-down"></i> <small>Add a block after</small>
-			<% end %>
-
 		</div>
-		<div id="myModal_<%= bid %>" class="reveal-modal tiny" data-reveal>
-		  <h6><%= bid %></h6>
-		  <p class="lead"><%= thisblock.content %></p>
-		  <%= button_to "Delete", content_block_path(thisblock), :method => 'delete' %>
-		  
-		  <a class="close-reveal-modal">&#215;</a>
-		</div>
-	 <% end %>
-
-	<% end %>
-
-<% end %>
-
-<div class="backpanel">
-	<h3> Background Images </h3>
-	<%= form_for @fms, url: five_minute_summary_path do |f| %>
-		
-		<div class="backpanel">
-		<%= @fms.first_background_photo ? (image_tag @fms.first_background_photo.photo(:small)) : 'No Photo' %>
-		<%= f.file_field :first_background_photo %>
-		</div>
-		<div class="backpanel">
-		<%= @fms.second_background_photo ? (image_tag @fms.second_background_photo.photo(:small)) : 'No Photo' %>
-		<%= f.file_field :second_background_photo %>
-		</div>
-		<div class="backpanel">
-		<%= @fms.third_background_photo ? (image_tag @fms.third_background_photo.photo(:small)) : 'No Photo' %>
-		<%= f.file_field :third_background_photo %>
-		</div>
-		<div class="backpanel">
-		<%= @fms.fourth_background_photo ? (image_tag @fms.fourth_background_photo.photo(:small)) : 'No Photo' %>
-		<%= f.file_field :fourth_background_photo %>
-		</div>
-		<div class="backpanel">
-		<%= @fms.fifth_background_photo ? (image_tag @fms.fifth_background_photo.photo(:small)) : 'No Photo' %>
-		<%= f.file_field :fifth_background_photo %>
-		</div>
-		<%= f.submit 'Upload Background Images' %>
-
-	<% end %>
+	</div>
 </div>
-</p>
 
+<!-- BEGIN SECTION SPACER -->
+<div class="RASectionSpacer">
+
+</div>
+<!-- END SECTION SPACER -->
+<div id="adminfooter">
+	<div class="wrap">
+		<div class="row">
+			<div class="small-3 columns text-right">
+				Edit Five Minute Summary for <strong><%= simple_format(@fms.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			</div>
+			<div class="small-9 columns text-left">
+				<%= link_to five_minute_summary_url(@fms) do %> 
+					<i class="fi-eye" ></i> View Five Minute Summary
+				<% end %>
+				<br>
+				<%= link_to audits_url do %>
+					<i class="fi-list-bullet" ></i> View All Audits List
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

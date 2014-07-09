@@ -31,15 +31,15 @@ $('.photoset-grid-lightbox').photosetGrid({
 
 // Check if the background images have been set
 var has_bgOne = typeof bgOne != 'undefined';
-var bgOne_default = "#F3F3F7";
+var bgOne_default = "#F9FBFB";
 var has_bgTwo = typeof bgTwo != 'undefined';
-var bgTwo_default = "#F2F2F6";
+var bgTwo_default = "#F3F7F7";
 var has_bgThree = typeof bgThree != 'undefined';
-var bgThree_default = "#F0F0F5";
+var bgThree_default = "#EDF3F3";
 var has_bgFour = typeof bgFour != 'undefined';
-var bgFour_default = "#D8D8DC";
+var bgFour_default = "#E7EFEF";
 var has_bgFive = typeof bgFive != 'undefined';
-var bgFive_default = "#C0C0C4";
+var bgFive_default = "#E0EAEA";
 
 if (has_bgOne) {
 	$.backstretch( bgOne, {fade: 500});	
@@ -54,7 +54,7 @@ $('#WPtop').waypoint(function() {
 	if (has_bgOne) {
 		$.backstretch( bgOne, {fade: 500});	
 	} else {
-		$( 'body' ).css( "background-color", "#F0F0F5" );
+		$( 'body' ).css( "background-color", bgOne_default );
 	};
 });
 

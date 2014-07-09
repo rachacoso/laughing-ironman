@@ -1,27 +1,56 @@
-<h1>Create an Audit</h1>
-<p>Find me in app/views/audits/new.html.erb</p>
-
-<% if flash[:notice] %>
-	<p><%= flash[:notice] %></p>
-<% end %>
-<% if @errors %>
-	<p>
-	<% @errors.each do |k,v| %>
-		<%= k %> <%= v %><br>
-	<% end %>
-	</p>
-<% end %>
 
 <div class="row">
-	<div class="small-5 columns">
-		<%= form_for @audit do |f| %>
-			<%= f.text_area :name, cols: 20, rows: 5 %>
-			<%= f.label :publication_date %>
-			<%= f.date_field :publication_date %>
-			<%= f.submit %> <%= link_to 'Cancel', audits_path %>
+	<div class="small-9 small-centered columns">
 
+		<% if flash[:notice] %>
+			<div data-alert class="alert-box alert round">
+		  	<%= flash[:notice] %>
+			  <a href="#" class="close">&times;</a>
+			</div>
 		<% end %>
+		<% if @errors %>
+			<div data-alert class="alert-box warning radius">
+				<strong>Here's Why:</strong><br>		
+					<% @errors.each do |k,v| %>
+						<%= k %> <%= v %><br>
+					<% end %>
+			  <a href="#" class="close">&times;</a>
+			</div>
+		<% end %>
+
+		<div class="row">
+			<div class="small-5 columns">
+				<%= form_for @audit do |f| %>
+					<%= f.text_area :name, cols: 20, rows: 5 %>
+					<%= f.label :publication_date %>
+					<%= f.date_field :publication_date %>
+					<%= f.submit %>
+
+				<% end %>
+			</div>
+		</div>
+
 	</div>
 </div>
 
+<!-- BEGIN SECTION SPACER -->
+<div class="RASectionSpacer">
+
+</div>
+<!-- END SECTION SPACER -->
+<div id="adminfooter">
+	<div class="wrap">
+		<div class="row">
+			<div class="small-3 columns text-right">
+				Create a new<br>
+				<strong>Audit</strong> 
+			</div>
+			<div class="small-9 columns text-left">
+				<%= link_to audits_path do %>
+					<i class="fi-arrow-left" ></i> Cancel
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 

@@ -5,7 +5,7 @@ class FiveMinuteSummary
 
 
   belongs_to :audit
-  has_many :sections 
+  has_many :sections, :dependent => :destroy
 
   has_one :first_background_photo, class_name: 'BackgroundPhoto', :dependent => :destroy, inverse_of: :fms_bg_one
   has_one :second_background_photo, class_name: 'BackgroundPhoto', :dependent => :destroy, inverse_of: :fms_bg_two

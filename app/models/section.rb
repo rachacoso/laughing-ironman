@@ -7,7 +7,7 @@ class Section
 	field :block_order, type: Array
 
 	belongs_to :five_minute_summary
-  has_many :content_blocks
+  has_many :content_blocks, :dependent => :destroy
   accepts_nested_attributes_for :content_blocks, :five_minute_summary
 
 

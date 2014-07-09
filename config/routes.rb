@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
 
-resources :audits, only: [:new, :create, :show, :index]
+resources :audits, only: [:new, :create, :index, :destroy, :update, :edit]
 
 resources :five_minute_summaries, only: [:show, :edit, :update]
 # resources :section, only: [:show, :edit, :update, :destroy]

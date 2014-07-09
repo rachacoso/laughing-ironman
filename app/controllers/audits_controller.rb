@@ -20,11 +20,26 @@ class AuditsController < ApplicationController
 
   end
 
-  def show
+  def edit
+    @audit = Audit.find(params[:id])
+  end
+
+  def update
+    audit = Audit.find(params[:id])
+    audit.update(audit_parameters)
+    redirect_to edit_audit_path(audit)
+
   end
 
   def index
   	@audits = Audit.all
+  end
+
+  def destroy
+    audit_to_destroy = Audit.find(params[:id])
+    audit_to_destroy.destroy
+    redirect_to audits_path
+
   end
 
   private

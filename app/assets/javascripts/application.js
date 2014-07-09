@@ -15,6 +15,8 @@
 
 // FOUNDATION
 //= require foundation/foundation
+//= require foundation/foundation.reveal
+//= require foundation/foundation.alert
 // Needed to make edits to foundation js -- 
 // these are in the custom file magellanedit.js in vendor/scripts
 //= require magellanedit

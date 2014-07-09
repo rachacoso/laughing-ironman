@@ -1,0 +1,42 @@
+<% content_for :title do %>
+  Edit Audit - <%= @audit.name %>
+<% end %>
+
+<div class="backpanel">
+<h3>Edit Audit Title/Publication Date</h3>
+<div class="backpanel">
+<div class="headWrapper topHead">
+  <div class="row" id="WPtop">
+    <div class="small-10 columns small-centered RAmargintop">
+      <div class="headback">
+            <h1><strong><%= simple_format(@audit.name, {}, wrapper_tag: "div")  %></strong></h1>
+            <h3>&mdash; Five Minute Summary &mdash;</h3>
+            <h4><%= @audit.publication_date.strftime("%B %d, %Y") %>
+            <object type="image/svg+xml" data="/img/RGsig.svg" width="275" class="rgsig">
+              RG Signature <!-- fallback image in CSS -->
+            </object></h4>
+            <!-- <h3>Ron Galperin <small>City Controller</small></h3> -->
+      </div>
+    </div>
+  </div>
+</div>
+</div></div>
+
+
+
+
+<%= form_for @audit, url: audit_url do |f| %>
+
+	<%= f.text_area :name, cols: 2, rows: 5 %>
+	<%= f.label :publication_date %>
+	<%= f.date_field :publication_date %>
+	
+	<%= f.submit 'Update this Audit' %> 
+				<%= link_to audits_url do %>
+					<i class="fi-list-bullet" ></i> Back to All Audits List
+				<% end %>
+
+
+<% end %>
+	
+</p>

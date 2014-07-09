@@ -6,8 +6,8 @@ class Audit
   validates :name, presence: true, uniqueness: true
 	validates :publication_date, presence: true
 
-  has_one :five_minute_summary
-  has_one :full_audit
+  has_one :five_minute_summary, :dependent => :destroy
+  has_one :full_audit, :dependent => :destroy
 
   def generate_new_fms
 
