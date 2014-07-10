@@ -17,7 +17,7 @@
 				<div class="backpanel">
 
 
-					<p><%= thisblock.content %></p>
+					<p><%= thisblock.content.html_safe %></p>
 					
 					<%= link_to new_content_block_url(thissection.id, index ) do %>
 						<i class="fi-arrow-up"></i> <small>Add a block before</small>

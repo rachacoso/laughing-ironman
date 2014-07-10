@@ -8,7 +8,7 @@
 
 <%= form_for @block, url: content_block_url do |f| %>
 
-	<%= f.text_area :content %>
+	<%= f.text_area :content, rows: "18", class: "resizeable" %>
 	
 	<%= f.submit 'Update this block' %> 
 

@@ -20,7 +20,7 @@
 						<% thissection.block_order.each_with_index do |bid, index| %>
 							<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
 							
-								<p><%= thisblock.content %></p>
+								<%= thisblock.content.html_safe %>
 							
 						<% end %>
 

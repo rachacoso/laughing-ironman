@@ -20,8 +20,8 @@
 
 		<%= form_for @newblock, url: new_content_block_url(@section.id, @position) do |f| %>
 			
-			<%= select_tag('name', options_from_collection_for_select(@display_types, :first, :last, '2')) %>
-			<%= f.text_area :content %>
+			<%#= select_tag('name', options_from_collection_for_select(@display_types, :first, :last, '2')) %>
+			<%= f.text_area :content, rows: "18", class: "resizeable"%>
 
 			<%= f.submit 'Add new block' %> 
 
