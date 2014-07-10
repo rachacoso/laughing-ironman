@@ -2,17 +2,37 @@
   Edit Block - Five Minute Summary for <%= @auditname %>
 <% end %>
 
-<p>
-Edit Block - Five Minute Summary for <%= @auditname %><br>
-
+<div class="row">
+	<div class="small-9 small-centered columns">
 
 
 <%= form_for @block, url: content_block_url do |f| %>
 
 	<%= f.text_area :content %>
 	
-	<%= f.submit 'Update this block' %> <%= link_to 'Cancel', edit_five_minute_summary_url(@block.section.five_minute_summary) %>
+	<%= f.submit 'Update this block' %> 
 
 <% end %>
 	
-</p>
+	</div>
+</div>
+
+
+<!-- BEGIN SECTION SPACER -->
+<div class="RASectionSpacer">
+
+</div>
+<!-- END SECTION SPACER -->
+<div id="adminfooter">
+	<div class="wrap">
+		<div class="row">
+			<div class="small-3 columns text-right">
+				Edit Block <strong><%= simple_format(@auditname, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			</div>
+			<div class="small-9 columns text-left">
+				<%= link_to 'Cancel', edit_five_minute_summary_url(@block.section.five_minute_summary) %>
+
+			</div>
+		</div>
+	</div>
+</div>

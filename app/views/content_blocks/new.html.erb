@@ -20,12 +20,31 @@
 
 		<%= form_for @newblock, url: new_content_block_url(@section.id, @position) do |f| %>
 			
+			<%= select_tag('name', options_from_collection_for_select(@display_types, :first, :last, '2')) %>
 			<%= f.text_area :content %>
 
-			<%= f.submit 'Add new block' %> <%= link_to 'Cancel', edit_five_minute_summary_url(@section.five_minute_summary) %>
+			<%= f.submit 'Add new block' %> 
 
 		<% end %>
 
 	</div>
 </div>
 
+<!-- BEGIN SECTION SPACER -->
+<div class="RASectionSpacer">
+
+</div>
+<!-- END SECTION SPACER -->
+<div id="adminfooter">
+	<div class="wrap">
+		<div class="row">
+			<div class="small-3 columns text-right">
+				New Content Block <strong><%= simple_format(@section.five_minute_summary.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			</div>
+			<div class="small-9 columns text-left">
+				<%= link_to 'Cancel', edit_five_minute_summary_url(@section.five_minute_summary) %>
+
+			</div>
+		</div>
+	</div>
+</div>
