@@ -36,17 +36,21 @@
 					<% end %>
 
 				</div>
-				<div id="myModal_<%= bid %>" class="reveal-modal tiny" data-reveal>
-				  <h6><%= bid %></h6>
-				  <p class="lead"><%= thisblock.content %></p>
-				  <%= button_to "Delete", content_block_path(thisblock), :method => 'delete' %>
+				<div id="myModal_<%= bid %>" class="reveal-modal" data-reveal>
+				  <h6><strong>Delete this Content?</strong></h6>
+				  <p class="lead"><%= thisblock.content.html_safe %></p>
+				  <%= button_to "Yes, Delete this content", content_block_path(thisblock), :method => 'delete', class: "small radius success button"  %>
 				  
 				  <a class="close-reveal-modal">&#215;</a>
 				</div>
 			 <% end %>
 
 			<% end %>
+			<!-- BEGIN SECTION SPACER -->
+			<div class="AdminSectionSpacer">
 
+			</div>
+			<!-- END SECTION SPACER -->
 		<% end %>
 
 		<div class="backpanel">

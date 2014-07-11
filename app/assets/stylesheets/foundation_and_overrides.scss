@@ -2028,3 +2028,20 @@ textarea {
 .resizeable {
     resize: vertical;
 }
+
+.AdminSectionSpacer{
+  background: transparent;
+  height: 5em;
+}
+
+.my-modal{
+	position: relative !important;
+	// font-weight: normal !important;
+	font-size: 1em !important;
+}
+
+.custom-reveal-class {
+  @include reveal-close(
+    $color:$reveal-close-color
+  );
+}

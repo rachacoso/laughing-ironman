@@ -7,7 +7,7 @@
 <% content_for :publication_date do %>
   <%= @fms.audit.publication_date.strftime("%B %d, %Y") %>
 <% end %>
-<% content_for :full_audit_link do %>#<% end %>
+<% content_for :full_audit_link do %><%= full_audit_path(@fms.audit.full_audit).html_safe %><% end %>
 
 <% content_for :javascript_head do %>
 	<%= javascript_tag do %>

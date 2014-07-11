@@ -15,7 +15,6 @@ class ContentBlocksController < ApplicationController
 		@section = Section.find(params[:sectionid])
 		@newblock = ContentBlock.new
 		@position = params[:position]
-		@display_types = FMS_DISPLAY_TYPES
 	end
 
 	def create
@@ -46,6 +45,10 @@ class ContentBlocksController < ApplicationController
 
 	end
 
+	def keyfindings
+
+		
+	end
 
 	private
   def content_block_params
