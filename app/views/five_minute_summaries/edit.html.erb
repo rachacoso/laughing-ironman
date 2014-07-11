@@ -46,6 +46,10 @@
 					<%= link_to new_content_block_url(thissection.id, index ) do %>
 						<i class="fi-arrow-up"></i> <small>Add a block before</small>
 					<% end %>
+					| 
+					<%= link_to new_content_block_url(thissection.id, index + 1 ) do %>
+						<i class="fi-arrow-down"></i> <small>Add a block after</small>
+					<% end %>
 					| 			
 					<%= link_to edit_content_block_url(thisblock) do %>
 						<i class="fi-pencil"></i> <small>Edit this block</small>
@@ -54,10 +58,6 @@
 					<a href="#" data-reveal-id="myModal_<%= bid %>">
 							<i class="fi-x"></i> <small>Delete this block</small>
 					</a>
-					| 
-					<%= link_to new_content_block_url(thissection.id, index + 1 ) do %>
-						<i class="fi-arrow-down"></i> <small>Add a block after</small>
-					<% end %>
 
 				</div>
 				<div id="myModal_<%= bid %>" class="reveal-modal" data-reveal>

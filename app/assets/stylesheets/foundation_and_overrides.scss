@@ -2045,3 +2045,13 @@ textarea {
     $color:$reveal-close-color
   );
 }
+
+// override top bar default for Full Audit link color
+
+.top-bar-section li.active:not(.has-form) a:not(.button) {
+  padding: 0 15px;
+  line-height: 45px;
+  color: white;
+  background: #5c5c5c;
+}
+

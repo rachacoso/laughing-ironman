@@ -12,9 +12,11 @@ get '/content_blocks/new/:sectionid/:position' => 'content_blocks#new', as: 'new
 post '/content_blocks/new/:sectionid/:position' => 'content_blocks#create'
 post '/content_blocks/keyfindings' => 'content_blocks#keyfindings', as: 'content_block_keyfindings_helper'
 
-resources :full_audits, only: [:show, :edit] do 
-  resources :sections, only: [:index, :new, :create, :destroy, :show, :edit]
-end
+resources :full_audits, only: [:show, :edit, :update]
+resources :sections, only: [:edit, :update, :destroy]
+
+get '/sections/new/:full_audit_id/:position' => 'sections#new', as: 'new_section'
+post '/sections/new/:full_audit_id/:position' => 'sections#create'
 
 
   # get 'audits/new' => 'audits#new', as: 'new_audit'

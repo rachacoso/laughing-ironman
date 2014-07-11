@@ -1,7 +1,44 @@
 <% content_for :title do %>
-  Edit Section - Five Minute Summary for <%#= @audit.name %>
+  Edit Section - Full Audit for <%= @auditname %>
 <% end %>
 
-<p>
-Edit Section - Five Minute Summary for <%#= @audit.name %><br>
+<div class="row">
+	<div class="small-12 columns">
 
+<h4>Edit Section Title</h4>
+
+
+<%= form_for @section, url: section_url do |f| %>
+
+	<%= f.text_field :display_name, label: false %>
+	<%= f.submit 'Change Section Title', class: "tiny radius success button" %> <%= link_to 'Cancel', edit_full_audit_url(@section.full_audit), class: "tiny radius info button"  %>
+
+<% end %>
+
+	</div>
+</div>
+
+
+<!-- BEGIN SECTION SPACER -->
+<div class="RASectionSpacer">
+
+</div>
+<!-- END SECTION SPACER -->
+<div id="adminfooter">
+	<div class="wrap">
+		<div class="row">
+			<div class="small-3 columns text-right">
+				Edit Full Audit for <strong><%= simple_format(@auditname, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			</div>
+			<div class="small-9 columns text-left">
+				<%= link_to edit_full_audit_url(@section.full_audit) do %> 
+					<i class="fi-eye" ></i> Back to Edit Full Audit
+				<% end %>
+				<br>
+				<%= link_to audits_url do %>
+					<i class="fi-list-bullet" ></i> View All Audits List
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

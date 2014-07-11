@@ -50,11 +50,11 @@
 	<div class="wrap">
 		<div class="row">
 			<div class="small-3 columns text-right">
-				Full Audit for <strong><%= simple_format(@fms.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+				Five Minute Summary for <strong><%= simple_format(@fms.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
 			</div>
 			<div class="small-9 columns text-left">
-				<%= link_to edit_full_audit_url(@fms) do %> 
-					<i class="fi-pencil" ></i> Edit Full Audit
+				<%= link_to edit_five_minute_summary_url(@fms) do %> 
+					<i class="fi-pencil" ></i> Edit Five Minute Summary
 				<% end %>
 				<br>
 				<%= link_to audits_url do %>

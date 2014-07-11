@@ -15,5 +15,6 @@ class BackgroundPhoto
 	belongs_to :fms_bg_three, class_name: "FiveMinuteSummary", inverse_of: :third_background_photo
 	belongs_to :fms_bg_four, class_name: "FiveMinuteSummary", inverse_of: :fourth_background_photo
 	belongs_to :fms_bg_five, class_name: "FiveMinuteSummary", inverse_of: :fifth_background_photo
+	belongs_to :full_audit
 
 end

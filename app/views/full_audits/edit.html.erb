@@ -1,0 +1,145 @@
+<% content_for :title do %>
+  Full Audit for <%= @fa.audit.name %>
+<% end %>
+
+
+<div class="row">
+	<div class="small-12 columns">
+
+    <div class="backpanel">
+    <div class="headWrapper topHead">
+      <div class="row" id="WPtop">
+        <div class="small-10 columns small-centered RAmargintop">
+          <div class="headback">
+                <h1><strong><%= simple_format(@fa.audit.name, {}, wrapper_tag: "div")  %></strong></h1>
+                <h4><%= @fa.audit.publication_date.strftime("%B %d, %Y") %>
+                <object type="image/svg+xml" data="/img/RGsig.svg" width="275" class="rgsig">
+                  RG Signature <!-- fallback image in CSS -->
+                </object></h4>
+                <!-- <h3>Ron Galperin <small>City Controller</small></h3> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+		<!-- BEGIN SECTION SPACER -->
+		<div class="AdminSectionSpacer">
+
+		</div>
+		<!-- END SECTION SPACER -->
+
+		<%# display sections %>
+		<% @fa.section_order.each_with_index do |sid, index| # iterate through sections in order%>
+			<% thissection = @fa.sections.find(sid) %>
+			<h3><%= thissection.display_name %></h3>
+					<%= link_to new_section_url(@fa.id, index ) do %>
+						<i class="fi-arrow-up"></i> <small>Add a section before</small>
+					<% end %>
+					| 
+					<%= link_to new_section_url(@fa.id, index + 1 ) do %>
+						<i class="fi-arrow-down"></i> <small>Add a section after</small>
+					<% end %>					
+					| 			
+					 
+					<%= link_to edit_section_url(thissection) do %>
+						<i class="fi-pencil"></i> <small>Edit section title</small>
+					<% end %>
+					| 
+					<a href="#" data-reveal-id="mySectionModalDelete_<%= sid %>">
+							<i class="fi-x"></i> <small>Delete this section</small>
+					</a>
+
+
+				<div id="mySectionModalDelete_<%= sid %>" class="reveal-modal" data-reveal>
+				  <h6><strong>Delete this Section?</strong></h6>
+				  <h3><%= thissection.display_name %></h3>
+				  <p>All content blocks in this section will also be deleted.</p>
+				  <%= button_to "Yes, Delete this section", section_path(thissection), :method => 'delete', class: "tiny radius alert button" %> <a class="tiny radius info button custom-close-reveal-modal">No, I've changed my mind!</a>
+				  
+				  <a class="close-reveal-modal">&#215;</a>
+				</div>
+
+
+			<% unless thissection.content_blocks.empty? %>
+
+			 <% thissection.block_order.each_with_index do |bid, index| %>
+				<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
+				<div class="backpanel">
+
+
+					<p><%= thisblock.content.html_safe %></p>
+					
+					<%= link_to new_content_block_url(thissection.id, index ) do %>
+						<i class="fi-arrow-up"></i> <small>Add a block before</small>
+					<% end %>
+					| 
+					<%= link_to new_content_block_url(thissection.id, index + 1 ) do %>
+						<i class="fi-arrow-down"></i> <small>Add a block after</small>
+					<% end %>					
+					| 			
+					<%= link_to edit_content_block_url(thisblock) do %>
+						<i class="fi-pencil"></i> <small>Edit this block</small>
+					<% end %>
+					| 
+					<a href="#" data-reveal-id="myModal_<%= bid %>">
+							<i class="fi-x"></i> <small>Delete this block</small>
+					</a>
+
+
+				</div>
+				<div id="myModal_<%= bid %>" class="reveal-modal" data-reveal>
+				  <h6><strong>Delete this Content?</strong></h6>
+				  <p class="lead"><%= thisblock.content.html_safe %></p>
+				  <%= button_to "Yes, Delete this content", content_block_path(thisblock), :method => 'delete', class: "tiny radius alert button" %> <a class="tiny radius info button custom-close-reveal-modal">No, I've changed my mind!</a>
+				  
+				  <a class="close-reveal-modal">&#215;</a>
+				</div>
+			 <% end %>
+
+			<% end %>
+			<!-- BEGIN SECTION SPACER -->
+			<div class="AdminSectionSpacer">
+
+			</div>
+			<!-- END SECTION SPACER -->
+		<% end %>
+
+		<div class="backpanel">
+			<h3> Background Image </h3>
+			<%= form_for @fa, url: full_audit_path do |f| %>
+				
+				<div class="backpanel">
+				<%= @fa.background_photo ? (image_tag @fa.background_photo.photo(:small)) : 'No Photo' %>
+				<%= f.file_field :background_photo %>
+				</div>
+
+				<%= f.submit 'Upload Background Image' %>
+
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<!-- BEGIN SECTION SPACER -->
+<div class="RASectionSpacer">
+
+</div>
+<!-- END SECTION SPACER -->
+<div id="adminfooter">
+	<div class="wrap">
+		<div class="row">
+			<div class="small-3 columns text-right">
+				Edit Full Audit for <strong><%= simple_format(@fa.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			</div>
+			<div class="small-9 columns text-left">
+				<%= link_to full_audit_url(@fa) do %> 
+					<i class="fi-eye" ></i> View Full Audit
+				<% end %>
+				<br>
+				<%= link_to audits_url do %>
+					<i class="fi-list-bullet" ></i> View All Audits List
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

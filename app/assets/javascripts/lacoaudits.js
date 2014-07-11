@@ -673,3 +673,28 @@ $('#p49').waypoint(function() {
 });
 
 
+// Content Block Helper JQuery
+// Key Findings Helper
+$( document ).ready(function() {
+	$( '#keyfindingsHelperForm' ).submit(function( event ) {
+	 	
+	  // Stop form from submitting normally
+	  event.preventDefault();
+	 
+	  // Get some values from elements on the page:
+	  var $form = $( this ),
+			data = $form.serialize(),
+	    url = $form.attr( "action" );
+	 
+	  // Send the data using post
+	  var posting = $.post( url, data );
+
+	  // Put the results in a div
+	  posting.done(function( data ) {
+	    $( "#content_block_content" ).val( $('#content_block_content').val() + data );
+	  });
+	  $('#keyFindingModal').foundation('reveal', 'close');
+	});
+});
+
+
