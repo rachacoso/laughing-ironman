@@ -5,6 +5,30 @@
 
 <div class="row">
 	<div class="small-12 columns">
+
+    <div class="backpanel">
+    <div class="headWrapper topHead">
+      <div class="row" id="WPtop">
+        <div class="small-10 columns small-centered RAmargintop">
+          <div class="headback">
+                <h1><strong><%= simple_format(@fms.audit.name, {}, wrapper_tag: "div")  %></strong></h1>
+                <h3>&mdash; Five Minute Summary &mdash;</h3>
+                <h4><%= @fms.audit.publication_date.strftime("%B %d, %Y") %>
+                <object type="image/svg+xml" data="/img/RGsig.svg" width="275" class="rgsig">
+                  RG Signature <!-- fallback image in CSS -->
+                </object></h4>
+                <!-- <h3>Ron Galperin <small>City Controller</small></h3> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+		<!-- BEGIN SECTION SPACER -->
+		<div class="AdminSectionSpacer">
+
+		</div>
+		<!-- END SECTION SPACER -->
+
 		<%# display sections %>
 		<% @fms.section_order.each do |sid| # iterate through sections in order%>
 			<% thissection = @fms.sections.find(sid) %>

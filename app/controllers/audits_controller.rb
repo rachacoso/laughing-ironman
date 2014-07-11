@@ -10,6 +10,7 @@ class AuditsController < ApplicationController
    		new_audit.five_minute_summary = FiveMinuteSummary.new
    		new_audit.generate_new_fms
     	new_audit.full_audit = FullAudit.new
+      new_audit.generate_new_fa
       redirect_to audits_path, notice:  "You have successfully created a new audit."
     else
     	@errors = new_audit.errors

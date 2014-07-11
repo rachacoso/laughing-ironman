@@ -27,4 +27,24 @@ class Audit
 
   end
 
+    def generate_new_fa
+
+      # default section setup
+      sections = [
+        'Executive Summary',
+        'Audit Action Plan',
+        'Introduction and Background',
+        'Findings and Recommendations'
+      ]
+
+      self.full_audit.section_order = Array.new
+      sections.each do |dn|
+        newsummary = Section.new(section_type: 'full_audit_section', display_name: dn)
+        self.full_audit.sections << newsummary
+        self.full_audit.section_order << newsummary.id
+      end 
+      self.full_audit.save!
+
+  end
+
 end

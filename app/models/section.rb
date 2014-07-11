@@ -7,8 +7,9 @@ class Section
 	field :block_order, type: Array
 
 	belongs_to :five_minute_summary
+  belongs_to :full_audit
   has_many :content_blocks, :dependent => :destroy
-  accepts_nested_attributes_for :content_blocks, :five_minute_summary
+  accepts_nested_attributes_for :content_blocks, :five_minute_summary, :full_audit
 
 
   # create a starter content block for each new section created

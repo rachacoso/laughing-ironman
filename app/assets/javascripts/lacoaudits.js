@@ -36,6 +36,7 @@ $('.photoset-grid-lightbox').photosetGrid({
 // Backstrech image in a div $("#WPtopHead").backstretch("./img/LABanner.jpg");
 
 // Check if the background images have been set
+// and set default background colors
 var has_bgOne = typeof bgOne != 'undefined';
 var bgOne_default = "#F9FBFB";
 var has_bgTwo = typeof bgTwo != 'undefined';

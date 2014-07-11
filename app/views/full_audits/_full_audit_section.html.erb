@@ -1,15 +1,13 @@
 <!-- BEGIN FULL AUDIT SECTION-->
-<a name="executivesummary"></a>
+<a name="<%= thissection.id %>"></a>
 <div class="sectionWrapper" id="WPexecutivesummary">
   <div class="row contentbg">
     <div class="small-12 medium-10 columns small-centered">
       
-        <h4 data-magellan-destination="executivesummary"></h4>
+        <h4 data-magellan-destination="<%= thissection.id %>"></h4>
         
-        <a name="p1" id="p1"></a>
-        <h2>Executive Summary</h2>
+        <h2><%= thissection.display_name %></h2>
 
-				
 					<% unless thissection.content_blocks.empty? %>
 
 						<% thissection.block_order.each_with_index do |bid, index| %>
@@ -21,8 +19,7 @@
 
 					<% end %>
 
-
     </div>
-  </div>
+	</div>
 </div>
-<!-- END FULL AUDIT SECTION-->
+<!-- END EXECUTIVE SUMMARY SECTION-->

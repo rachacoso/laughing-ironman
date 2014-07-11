@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= content_for?(:title) ? yield(:title) : "Los Angeles Controller's Office Audits" %></title>
+  <link rel="shortcut icon" href="/img/lacoseal.ico" />
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= csrf_meta_tags %>
+
+  <%= yield(:javascript_head) %>
+</head>
+
+
+<body class="fullaudit">
+
+<a name="audittop"></a>
+
+<!-- Menu Bar START -->
+
+<div class="topWrapper" style="background: transparent !important;">
+
+  <nav class="top-bar" data-topbar>
+
+    <ul class="title-area">
+      <li class="name">
+        <div class="lacologoback">
+          <div class="row">
+            <div class="small-3 large-5 columns" id="sealcontainer">
+              <img src="/img/lacoseal300.png" alt="Seal of the Los Angeles City Controller"  id="lacoseal">
+            </div>
+            <div class="small-9 large-7 columns end" id="logocontainer">
+              <img src="/img/RGlogo.png" alt="Ron Galperin, Los Angeles City Controller"  id="rglogo">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li><a href="<%= yield(:five_minute_summary_link) %>">Five Minute Summary</a></li>
+        <li class="active fa"><a href="#"><strong>Full Audit</strong></a></li>
+      </ul>
+    </section>
+
+  </nav>
+
+</div>
+
+<!-- Menu Bar END -->
+
+
+<div class="headWrapper topHead">
+
+
+  <div class="row" id="WPFAtop">
+    <div class="small-10 columns small-centered RAmargintop">
+      <div class="headback">    
+        <!-- <h3>City of Los Angeles | Office of the Controller</h3> -->
+        <h1><strong><%= yield(:bodytitle) %></strong></h1>
+        <h4><%= yield(:publication_date) %> &nbsp; <object type="image/svg+xml" data="/img/RGsig.svg" width="275" class="rgsig">RG Signature <!-- fallback image in CSS --></object> </h4>
+        <!-- <h3>Ron Galperin <small>City Controller</small></h3> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-10 columns small-centered end">
+      <div data-magellan-expedition="fixed" class="RAmagellan">
+        <dl class="sub-nav" id="fullauditnav">
+          <dd class="subnav-auditName" data-magellan-arrival="audittop"><a href="#audittop">&#8593;</a></dd>
+
+          <% @fa.section_order.each do |sid| # iterate through sections in order%>
+            <% thissection = @fa.sections.find(sid) %>
+            <dd data-magellan-arrival="<%= thissection.id %>"><a href="#<%= thissection.id %>"><strong><%= thissection.display_name %></strong></a></dd>
+
+          <% end %>
+          <dd>&nbsp;</dd>
+          <dd class="subnav-auditName" data-magellan-arrival="audittop"><strong><%= yield(:bodytitle) %></strong></dd>
+
+        </dl>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<%= yield %>
+
+
+
+<!-- Page Map div -->
+<div id="pageMap">
+</div>
+
+<!-- BEGIN SECTION SPACER -->
+<div class="RASectionSpacer">
+
+</div>
+<!-- END SECTION SPACER -->
+
+<!-- BEGIN FOOTER  -->
+<div class="footerWrapper">
+  <div class="row">
+    <div class="small-6 columns">
+      &copy; 2014 City of Los Angeles
+    </div>
+    <div class="small-6 columns text-right">
+      design/build by Roberto Achacoso
+    </div>
+  </div>
+</div>
+<!-- END FOOTER -->
+
+
+  <%= javascript_include_tag "application" %>
+  
+  </body>
+</html>

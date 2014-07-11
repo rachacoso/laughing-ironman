@@ -1,0 +1,56 @@
+<% content_for :title do %>
+  <%= @fa.audit.name  %>
+<% end %>
+<% content_for :bodytitle do %>
+  <%= simple_format(@fa.audit.name, {}, wrapper_tag: "div")  %>
+<% end %>
+<% content_for :publication_date do %>
+  <%= @fa.audit.publication_date.strftime("%B %d, %Y") %>
+<% end %>
+<% content_for :five_minute_summary_link do %><%= five_minute_summary_path(@fa.audit.five_minute_summary).html_safe %><% end %>
+
+<% content_for :javascript_head do %>
+	<%= javascript_tag do %>
+		<% if @fa.background_photo %>
+		  window.bgOne = '<%= j @fa.background_photo.photo(:large) %>';
+		<% end %>  
+	<% end %>
+<% end %>
+
+
+
+<%# display sections %>
+<% @fa.section_order.each do |sid| # iterate through sections in order%>
+
+	<% thissection = @fa.sections.find(sid) %>
+	
+
+		<%= render partial: thissection.section_type.downcase, locals: {thissection: thissection} %>
+	
+	<!-- BEGIN SECTION SPACER -->
+	<div class="RASectionSpacer">
+
+	</div>
+	<!-- END SECTION SPACER -->
+
+<% end %>
+
+<div id="adminfooter">
+	<div class="wrap">
+		<div class="row">
+			<div class="small-3 columns text-right">
+				Full Audit for <strong><%= simple_format(@fa.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			</div>
+			<div class="small-9 columns text-left">
+				<%= link_to edit_full_audit_url(@fa) do %> 
+					<i class="fi-pencil" ></i> Edit Full Audit
+				<% end %>
+				<br>
+				<%= link_to audits_url do %>
+					<i class="fi-list-bullet" ></i> View All Audits List
+				<% end %>
+			</div>
+			
+		</div>
+	</div>
+</div>

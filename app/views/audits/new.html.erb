@@ -24,7 +24,7 @@
 					<%= f.text_area :name, cols: 20, rows: 5 %>
 					<%= f.label :publication_date %>
 					<%= f.date_field :publication_date %>
-					<%= f.submit %>
+					<%= f.submit 'Create New Audit', class: "tiny radius success button" %> <%= link_to 'Cancel', audits_path, class: "tiny radius info button"  %>
 
 				<% end %>
 			</div>
