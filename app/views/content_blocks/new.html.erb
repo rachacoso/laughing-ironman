@@ -2,6 +2,8 @@
   New Block - Five Minute Summary for <%= @section.five_minute_summary.audit.name %>
 <% end %>
 
+
+
 <div class="row">
 	<div class="small-9 small-centered columns">
 
@@ -23,7 +25,7 @@
 			
 			<%= f.text_area :content, rows: "18", class: "resizeable"%>
 
-			<%= f.submit 'Add new block' %> <%= link_to 'Cancel', edit_five_minute_summary_url(@section.five_minute_summary) %>
+			<%= f.submit 'Add new block', class: "tiny radius success button" %> <%= link_to 'Cancel', edit_five_minute_summary_url(@section.five_minute_summary), class: "tiny radius info button"  %>
 
 		<% end %>
 
@@ -62,3 +64,35 @@
 		</div>
 	</div>
 </div>
+
+
+<% content_for :javascript_foot do %>
+	<%= javascript_tag do %>
+		// Attach a submit handler to the form
+
+	$( document ).ready(function() {
+		$( '#keyfindingsHelperForm' ).submit(function( event ) {
+		 	
+		  // Stop form from submitting normally
+		  event.preventDefault();
+		 
+		  // Get some values from elements on the page:
+		  var $form = $( this ),
+				data = $form.serialize(),
+		    url = $form.attr( "action" );
+		 
+		  // Send the data using post
+		  var posting = $.post( url, data );
+
+		  // Put the results in a div
+		  posting.done(function( data ) {
+		    $( "#content_block_content" ).val( $('#content_block_content').val() + data );
+		  });
+		  $('#keyFindingModal').foundation('reveal', 'close');
+		});
+	});
+
+
+	<% end %>
+<% end %>
+

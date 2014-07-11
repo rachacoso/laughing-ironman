@@ -1,0 +1,17 @@
+
+<div class="row KeyFindingsHead" id="KFH<%= @number %>">
+  <div class="small-1 columns"><span class="KFNum"><%= @number %></span></div>
+  <div class="small-11 columns"><p><a href="#" data-reveal-id="KFD<%= @number %>" data-reveal style="color:black !important;"><%= @headline %> <small style="color:white !important;">more</small></a></p></div>
+</div>
+
+  <div id="KFD<%= @number %>" class="reveal-modal" data-reveal>
+    <div class="row KeyFindingsItemHead">
+      <div class="small-1 columns"><span class="KFNum"><%= @number %></span></div>
+      <div class="small-11 columns"><strong><%= @headline %></strong></div>
+    </div>
+    
+    <div class="RAmodal">
+      <%= simple_format(@fulltext) %>
+    </div>
+    <a class="close-reveal-modal">&#8855;</a>
+  </div>

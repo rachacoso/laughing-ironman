@@ -10,7 +10,7 @@
 
 	<%= f.text_area :content, rows: "18", class: "resizeable" %>
 	
-	<%= f.submit 'Update this block' %> <%= link_to 'Cancel', edit_five_minute_summary_url(@block.section.five_minute_summary) %>
+	<%= f.submit 'Update this block', class: "tiny radius success button" %> <%= link_to 'Cancel', edit_five_minute_summary_url(@block.section.five_minute_summary), class: "tiny radius info button" %>
 
 <% end %>
 	

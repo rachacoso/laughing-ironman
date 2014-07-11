@@ -3,10 +3,16 @@
 $( document ).ready(function() {
   //Hide the Title from nav-bar on load
 	$(".subnav-auditName").hide();
-	// $("#pageMap").hide();
+	
+
+
 });
 
-
+// Custom close js for foundation reveal modals
+$(document).foundation();
+$('a.custom-close-reveal-modal').click(function(){
+  $( this ).foundation('reveal', 'close');
+});
 
 
 $('.photoset-grid-lightbox').photosetGrid({

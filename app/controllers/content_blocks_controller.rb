@@ -47,6 +47,11 @@ class ContentBlocksController < ApplicationController
 
 	def keyfindings
 
+		@number = params[:number]
+		@headline = params[:headline]
+		@fulltext = params[:fulltext]
+
+		render layout: false
 		
 	end
 

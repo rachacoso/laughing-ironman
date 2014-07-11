@@ -2,26 +2,20 @@
 
 <h1> Key Findings for the Five Minute Summary </h1>
 
-<%= form_tag(content_block_keyfindings_helper_path, method: "post") do %>
+<%= form_tag(content_block_keyfindings_helper_path, id: "keyfindingsHelperForm", method: "post") do %>
 
   <%= label_tag(:number, "Number") %>
-  <%= text_field_tag(:number) %>
+  <%= text_field_tag(:number, "", autocomplete: "off", cols: "2") %>
   
   <%= label_tag(:headline, "Headline") %>
-  <%= text_field_tag(:headline) %>
+  <%= text_field_tag(:headline, "", autocomplete: "off") %>
 
   <%= label_tag(:fulltext, "Full Text") %>
-  <%= text_area_tag(:fulltext, "", placeholder: "Full Text Goes Here", size: "x10") %>
+  <%= text_area_tag(:fulltext, "", placeholder: "Full Text Goes Here", size: "x10", autocomplete: "off") %>
 
-    <div class="row">
-      <div class="small-3 columns">
-        <%= submit_tag("Submit", class: "small radius success button") %>
-      </div>
-      <div class="small-3 columns end">
-       <a href="#" class="close-reveal-modal my-modal custom-reveal-class">Cancel</a>
-     </div>
-   </div>
+  <%= submit_tag("Submit", class: "tiny radius success button") %> <a class="tiny radius info button custom-close-reveal-modal">Cancel</a>
 <% end %>
 </form>
 
+<div id="result"></div>
 <!-- Key Findings Form END -->

@@ -45,12 +45,11 @@
 							<a href="#" data-reveal-id="myModal_<%= audit.id %>">
 								<i class="fi-x"></i> <small>Delete this Audit</small>
 							</a>
-							<div id="myModal_<%= audit.id %>" class="reveal-modal tiny" data-reveal>
-							  <h6>Are you sure you want to delete<br>
-							  	<%= simple_format(audit.name, {}, wrapper_tag: "div") %></h6>
+							<div id="myModal_<%= audit.id %>" class="reveal-modal small" data-reveal>
+							  <h6>Are you sure you want to delete:</h6>
+							  	<h4><%= simple_format(audit.name, {}, wrapper_tag: "div") %></h4>
 
-							  <%= button_to "Yes, Delete", audit_path(audit), :method => 'delete' %>
-							  
+							  <%= button_to "Yes, Delete", audit_path(audit), :method => 'delete', class: "tiny radius alert button" %> <a class="tiny radius info button custom-close-reveal-modal">No, I've changed my mind!!!</a>
 							  <a class="close-reveal-modal">&#215;</a>
 							</div>
 						</td>
