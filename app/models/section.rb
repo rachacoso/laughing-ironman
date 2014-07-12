@@ -6,6 +6,8 @@ class Section
 	field :display_name, type: String
 	field :block_order, type: Array
 
+  validates :section_type, :display_name, presence: true
+
 	belongs_to :five_minute_summary
   belongs_to :full_audit
   has_many :content_blocks, :dependent => :destroy
@@ -13,9 +15,6 @@ class Section
 
 
   # create a starter content block for each new section created
-  after_create :setcontent 
-
-  private
   def setcontent
   	newblock = self.content_blocks.create(content: 'Content goes here')
   	self.block_order = Array.new

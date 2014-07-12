@@ -19,9 +19,11 @@ class Audit
 
   		self.five_minute_summary.section_order = Array.new
   		sections.each do |st, dn|
-	  		newsummary = Section.new(section_type: st, display_name: dn)
-	   		self.five_minute_summary.sections << newsummary
-	   		self.five_minute_summary.section_order << newsummary.id
+	  		newsection = Section.new(section_type: st, display_name: dn)
+        newsection.save!
+        newsection.setcontent
+	   		self.five_minute_summary.sections << newsection
+	   		self.five_minute_summary.section_order << newsection.id
 	   	end 
 	   	self.five_minute_summary.save!
 
@@ -39,9 +41,11 @@ class Audit
 
     self.full_audit.section_order = Array.new
     sections.each do |dn|
-      newsummary = Section.new(section_type: 'full_audit_section', display_name: dn)
-      self.full_audit.sections << newsummary
-      self.full_audit.section_order << newsummary.id
+      newsection = Section.new(section_type: 'full_audit_section', display_name: dn)
+      newsection.save!
+      newsection.setcontent
+      self.full_audit.sections << newsection
+      self.full_audit.section_order << newsection.id
     end 
     self.full_audit.save!
 

@@ -3,12 +3,37 @@ class SectionsController < ApplicationController
 	def new
 
 
+		@fa = FullAudit.find(params[:full_audit_id])
+		@newsection = Section.new
+		@position = params[:position]
+
 	end
 
 
+	def create
 
+		fa = FullAudit.find(params[:full_audit_id])
+		newsection = Section.new(section_type: 'full_audit_section', display_name: params[:section][:display_name])
 
+		if newsection.valid?
+			
+			newsection.save!
+			newsection.setcontent
+			fa.sections << newsection
+			fa.section_order.insert(params[:position].to_i, newsection.id)
+			fa.save!
+			redirect_to edit_full_audit_path(fa)
 
+		else
+		  @errors = newsection.errors
+    	flash[:notice] = "Sorry there was an error. Your section was not created."
+			@fa = FullAudit.find(params[:full_audit_id])
+			@newsection = Section.new
+			@position = params[:position]
+      render action: "new"
+		end
+
+	end
 
 
 	def edit
@@ -20,32 +45,17 @@ class SectionsController < ApplicationController
 
 	def update
 		section = Section.find(params[:id])
-		section.display_name = params[:section][:display_name]
-		section.save!
-
+		section.update!(section_params)
 		redirect_to edit_full_audit_path(section.full_audit)
 
 	end
 
-	# def update
-	# 	audit = Audit.find(params[:id])		
-	# 	audit.five_minute_summary.update!(fms_params)
-
- #    redirect_to edit_five_minute_summary_url(audit)
-
-
-	# end
-
-	# private
- #  def fms_params
- #    params.require(:five_minute_summary).permit(
- #    	sections_attributes: [ 
- #    		content_blocks_attributes: [
- #    			:content
- #  			] 
-	# 		]
-	# 	)
- #  end
+	private
+  def section_params
+    params.require(:section).permit(
+    	:display_name
+		)
+  end
 
 
 end

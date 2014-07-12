@@ -1,0 +1,54 @@
+<% content_for :title do %>
+  New Section - Full Audit for <%= @auditname %>
+<% end %>
+
+<div class="row">
+	<div class="small-12 columns">
+
+		<% if flash[:notice] %>
+			<p><%= flash[:notice] %></p>
+		<% end %>
+		<% if @errors %>
+			<p>
+			<% @errors.each do |k,v| %>
+				<%= k %> <%= v %><br>
+			<% end %>
+			</p>
+		<% end %>
+		
+		<h4>Add New Section</h4>
+
+		<%= form_for @newsection, url: new_section_url(@fa, @position) do |f| %>
+			
+			<%= f.text_field :display_name, label: 'Section Title' %>
+			<%= f.submit 'New Section', class: "tiny radius success button" %> <%= link_to 'Cancel', edit_full_audit_url(@fa), class: "tiny radius info button"  %>
+
+		<% end %>
+
+	</div>
+</div>
+
+
+<!-- BEGIN SECTION SPACER -->
+<div class="RASectionSpacer">
+
+</div>
+<!-- END SECTION SPACER -->
+<div id="adminfooter">
+	<div class="wrap">
+		<div class="row">
+			<div class="small-3 columns text-right">
+				Edit Full Audit for <strong><%= simple_format(@fa.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			</div>
+			<div class="small-9 columns text-left">
+				<%= link_to edit_full_audit_url(@fa) do %> 
+					<i class="fi-eye" ></i> Back to Edit Full Audit
+				<% end %>
+				<br>
+				<%= link_to audits_url do %>
+					<i class="fi-list-bullet" ></i> View All Audits List
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
