@@ -697,4 +697,28 @@ $( document ).ready(function() {
 	});
 });
 
+// Content Block Helper JQuery
+// Simple Format Helper
+$( document ).ready(function() {
+	$( '#simpleformatHelperForm' ).submit(function( event ) {
+	 	
+	  // Stop form from submitting normally
+	  event.preventDefault();
+	 
+	  // Get some values from elements on the page:
+	  var $form = $( this ),
+			data = $form.serialize(),
+	    url = $form.attr( "action" );
+	 
+	  // Send the data using post
+	  var posting = $.post( url, data );
+
+	  // Put the results in a div
+	  posting.done(function( data ) {
+	    $( "#content_block_content" ).val( $('#content_block_content').val() + data + '\n' );
+	  });
+	  $('#simpleformatModal').foundation('reveal', 'close');
+	});
+});
+
 

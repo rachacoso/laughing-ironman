@@ -16,7 +16,7 @@ class Section
 
   # create a starter content block for each new section created
   def setcontent
-  	newblock = self.content_blocks.create(content: 'Content goes here')
+  	newblock = self.content_blocks.create(content: '<p>Content goes here</p>')
   	self.block_order = Array.new
   	self.block_order << newblock.id
   end

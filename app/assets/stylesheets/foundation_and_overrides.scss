@@ -2034,6 +2034,11 @@ textarea {
   height: 5em;
 }
 
+.AdminSectionSpacer2{
+  background: transparent;
+  height: 2em;
+}
+
 .my-modal{
 	position: relative !important;
 	// font-weight: normal !important;
@@ -2046,6 +2051,17 @@ textarea {
   );
 }
 
+.adminlinkactive {
+	color: black;
+	font-weight: bold;
+}
+
+.adminsection {
+	color: green;
+	font-weight: bold;
+}
+
+
 // override top bar default for Full Audit link color
 
 .top-bar-section li.active:not(.has-form) a:not(.button) {
@@ -2054,4 +2070,6 @@ textarea {
   color: white;
   background: #5c5c5c;
 }
+
+
 

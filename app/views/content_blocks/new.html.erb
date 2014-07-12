@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  New Block - Five Minute Summary for <%= @section.five_minute_summary.audit.name %>
+  New Block - Five Minute Summary for <%= @auditname %>
 <% end %>
 
 
@@ -25,7 +25,7 @@
 			
 			<%= f.text_area :content, rows: "18", class: "resizeable"%>
 
-			<%= f.submit 'Add new block', class: "tiny radius success button" %> <%= link_to 'Cancel', edit_five_minute_summary_url(@section.five_minute_summary), class: "tiny radius info button"  %>
+			<%= f.submit 'Add new block', class: "tiny radius success button" %> <%= link_to 'Cancel', :back, class: "tiny radius info button"  %>
 
 		<% end %>
 
@@ -34,11 +34,15 @@
 			<div class="backpanel">
 				<h6> Content Block Helpers </h6>
 				
-				<i class="fi-wrench"></i> <%= link_to 'Key Finding Helper', '#', data: { :"reveal-id" => "keyFindingModal"} %>
+				<i class="fi-wrench"></i> <%= link_to 'Key Finding Helper', '#', data: { :"reveal-id" => "keyFindingModal"} %><br>
+				<i class="fi-wrench"></i> <%= link_to 'Simple Format Helper', '#', data: { :"reveal-id" => "simpleformatModal"} %>
 				
 			</div>
 			<div id="keyFindingModal" class="reveal-modal" data-reveal>
-				<%= render partial: 'keyfinding', locals: {thissection: '#'} %>
+				<%= render partial: 'keyfinding_helper_form', locals: {thissection: '#'} %>
+			</div>
+			<div id="simpleformatModal" class="reveal-modal" data-reveal>
+				<%= render partial: 'simpleformat_helper_form', locals: {thissection: '#'} %>
 			</div>
 		</div>
 	</div>
@@ -55,10 +59,10 @@
 	<div class="wrap">
 		<div class="row">
 			<div class="small-3 columns text-right">
-				New Content Block <strong><%= simple_format(@section.five_minute_summary.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+				New Content Block <strong><%= simple_format(@auditname, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
 			</div>
 			<div class="small-9 columns text-left">
-				<%= link_to 'Back to Edit', edit_five_minute_summary_url(@section.five_minute_summary) %>
+				<%= link_to 'Back to Edit', :back %>
 
 			</div>
 		</div>

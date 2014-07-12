@@ -35,6 +35,14 @@ class SectionsController < ApplicationController
 
 	end
 
+	def destroy
+		section_to_destroy = Section.find(params[:id])
+		parent_full_audit = section_to_destroy.full_audit
+		parent_full_audit.section_order.delete(section_to_destroy.id)
+		parent_full_audit.sections.delete(section_to_destroy)
+		parent_full_audit.save
+		redirect_to edit_full_audit_path(parent_full_audit)
+	end
 
 	def edit
 

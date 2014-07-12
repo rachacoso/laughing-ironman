@@ -11,6 +11,7 @@ resources :content_blocks, only: [:edit, :update, :destroy]
 get '/content_blocks/new/:sectionid/:position' => 'content_blocks#new', as: 'new_content_block'
 post '/content_blocks/new/:sectionid/:position' => 'content_blocks#create'
 post '/content_blocks/keyfindings' => 'content_blocks#keyfindings', as: 'content_block_keyfindings_helper'
+post '/content_blocks/simpleformat' => 'content_blocks#simpleformat', as: 'content_block_simpleformat_helper'
 
 resources :full_audits, only: [:show, :edit, :update]
 resources :sections, only: [:edit, :update, :destroy]

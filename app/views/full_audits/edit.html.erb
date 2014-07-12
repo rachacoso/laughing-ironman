@@ -31,29 +31,31 @@
 		<%# display sections %>
 		<% @fa.section_order.each_with_index do |sid, index| # iterate through sections in order%>
 			<% thissection = @fa.sections.find(sid) %>
-			<h3><%= thissection.display_name %></h3>
-					<%= link_to new_section_url(@fa.id, index ) do %>
-						<i class="fi-arrow-up"></i> <small>Add a section before</small>
-					<% end %>
-					| 
-					<%= link_to new_section_url(@fa.id, index + 1 ) do %>
-						<i class="fi-arrow-down"></i> <small>Add a section after</small>
-					<% end %>					
-					| 			
-					 
-					<%= link_to edit_section_url(thissection) do %>
-						<i class="fi-pencil"></i> <small>Edit section title</small>
-					<% end %>
-					| 
-					<a href="#" data-reveal-id="mySectionModalDelete_<%= sid %>">
-							<i class="fi-x"></i> <small>Delete this section</small>
-					</a>
 
+				<h3><%= thissection.display_name %></h3>
+				<%= link_to new_section_url(@fa.id, index ), class: "adminsection" do %>
+					<i class="fi-arrow-up"></i> <small>Add a section before</small>
+				<% end %>
+				| 
+				<%= link_to new_section_url(@fa.id, index + 1 ), class: "adminsection" do %>
+					<i class="fi-arrow-down"></i> <small>Add a section after</small>
+				<% end %>					
+				| 			
+				 
+				<%= link_to edit_section_url(thissection), class: "adminsection" do %>
+					<i class="fi-pencil"></i> <small>Edit section title</small>
+				<% end %>
+				| 
+				<a href="#" data-reveal-id="mySectionModalDelete_<%= sid %>" class="adminsection">
+						<i class="fi-x"></i> <small>Delete this section</small>
+				</a>
+
+				<div class="AdminSectionSpacer2"></div>
 
 				<div id="mySectionModalDelete_<%= sid %>" class="reveal-modal" data-reveal>
 				  <h6><strong>Delete this Section?</strong></h6>
 				  <h3><%= thissection.display_name %></h3>
-				  <p>All content blocks in this section will also be deleted.</p>
+				  <p><strong style="color: red;">All content blocks in this section will also be deleted.</strong></p>
 				  <%= button_to "Yes, Delete this section", section_path(thissection), :method => 'delete', class: "tiny radius alert button" %> <a class="tiny radius info button custom-close-reveal-modal">No, I've changed my mind!</a>
 				  
 				  <a class="close-reveal-modal">&#215;</a>
