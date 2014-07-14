@@ -25,30 +25,13 @@
 			
 			<%= f.text_area :content, rows: "18", class: "resizeable"%>
 
-			<%= f.submit 'Add new block', class: "tiny radius success button" %> <%= link_to 'Cancel', :back, class: "tiny radius info button"  %>
+			<%= f.submit 'Add new block', class: "tiny radius success button" %> <%= link_to 'Cancel', @linkto, class: "tiny radius info button"  %>
 
 		<% end %>
 
-	<div class="row">
-		<div class="small-5 columns">
-			<div class="backpanel">
-				<h6> Content Block Helpers </h6>
-				
-				<i class="fi-wrench"></i> <%= link_to 'Key Finding Helper', '#', data: { :"reveal-id" => "keyFindingModal"} %><br>
-				<i class="fi-wrench"></i> <%= link_to 'Simple Format Helper', '#', data: { :"reveal-id" => "simpleformatModal"} %>
-				
-			</div>
-			<div id="keyFindingModal" class="reveal-modal" data-reveal>
-				<%= render partial: 'keyfinding_helper_form', locals: {thissection: '#'} %>
-			</div>
-			<div id="simpleformatModal" class="reveal-modal" data-reveal>
-				<%= render partial: 'simpleformat_helper_form', locals: {thissection: '#'} %>
-			</div>
-		</div>
-	</div>
+	<%= render partial: 'helpers' %>
 
-	</div>
-</div>
+
 
 <!-- BEGIN SECTION SPACER -->
 <div class="RASectionSpacer">
@@ -58,11 +41,16 @@
 <div id="adminfooter">
 	<div class="wrap">
 		<div class="row">
+			<div class="small-1 columns text-right">
+				&nbsp;
+			</div>					
 			<div class="small-3 columns text-right">
-				New Content Block <strong><%= simple_format(@auditname, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+				<%= @audit_typename %> | New Content Block <strong><%= simple_format(@auditname, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
 			</div>
-			<div class="small-9 columns text-left">
-				<%= link_to 'Back to Edit', :back %>
+			<div class="small-8 columns text-left">
+				<%= link_to @linkto do %>
+					<i class="fi-arrow-left"></i> Back to Edit <%= @audit_typename %>
+				<% end %>
 
 			</div>
 		</div>

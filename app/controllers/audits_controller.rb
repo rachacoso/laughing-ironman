@@ -1,4 +1,7 @@
 class AuditsController < ApplicationController
+
+  layout "admin"
+
   def new
   	@audit = Audit.new
   end
@@ -39,7 +42,7 @@ class AuditsController < ApplicationController
   def destroy
     audit_to_destroy = Audit.find(params[:id])
     audit_to_destroy.destroy
-    redirect_to audits_path
+    redirect_to audits_path, notice:  "You have successfully deleted the audit."
 
   end
 

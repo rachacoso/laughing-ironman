@@ -46,19 +46,48 @@
 
 <% end %>
 
+<% content_for :admin_footer do %>
+  
+	<div class="small-2 columns text-right admin-nav-active">
+	  <%= link_to audits_url do %>
+      View All<br><strong>Audits</strong> 
+    <% end %>
+	</div>
+	<div class="small-1 columns text-right end">
+		<%= link_to new_audit_url do %>
+			Create<br><strong>Audit</strong>
+		<% end %>
+	</div>
+
+<% end %>
+
 <div id="adminfooter">
 	<div class="wrap">
 		<div class="row">
-			<div class="small-3 columns text-right">
-				Five Minute Summary for <strong><%= simple_format(@fms.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			<div class="small-1 columns text-right">
+		    <%= link_to audits_url do %>
+		      View All<br><strong>Audits</strong> 
+		    <% end %>
 			</div>
-			<div class="small-9 columns text-left">
+			<div class="small-3 columns text-left">
+				<strong><%= simple_format(@fms.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			</div>
+			<div class="small-2 columns text-left admin-nav-active">
+				View<br><strong>Five Minute Summary</strong>
+			</div>
+			<div class="small-2 columns text-left">
 				<%= link_to edit_five_minute_summary_url(@fms) do %> 
-					<i class="fi-pencil" ></i> Edit Five Minute Summary
+					Edit<br><strong>Five Minute Summary</strong>
 				<% end %>
-				<br>
-				<%= link_to audits_url do %>
-					<i class="fi-list-bullet" ></i> View All Audits List
+			</div>
+			<div class="small-2 columns text-left">
+				<%= link_to full_audit_url(@fms.audit.full_audit) do %>
+					View<br><strong>Full Audit</strong>
+				<% end %>
+			</div>
+			<div class="small-2 columns text-left">
+				<%= link_to edit_full_audit_url(@fms.audit.full_audit) do %> 
+					Edit<br><strong>Full Audit</strong>
 				<% end %>
 			</div>
 			

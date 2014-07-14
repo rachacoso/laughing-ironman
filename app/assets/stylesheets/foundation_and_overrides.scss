@@ -2013,6 +2013,7 @@ table ul {
 	bottom:0;
 	z-index:999999;
 	border-top:1px solid black;
+	font-size: 0.75em;
 
 }
 
@@ -2039,6 +2040,18 @@ textarea {
   height: 2em;
 }
 
+.AdminSectionSpacer1{
+  background: transparent;
+  height: 1em;
+}
+
+.listspacer {
+	height: 1em;
+	background-color: #efefef;
+	margin: 0.5em 0em;
+}
+
+
 .my-modal{
 	position: relative !important;
 	// font-weight: normal !important;
@@ -2061,6 +2074,9 @@ textarea {
 	font-weight: bold;
 }
 
+.admin-nav-active {
+	border-bottom: 0.25em solid black;
+}
 
 // override top bar default for Full Audit link color
 

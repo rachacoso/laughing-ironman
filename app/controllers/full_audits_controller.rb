@@ -17,11 +17,14 @@ def update
 	fa = FullAudit.find(params[:id])
 
 	if fa.background_photo
+		puts params[:full_audit][:background_photo]
 		fa.background_photo.photo = params[:full_audit][:background_photo]
+		fa.background_photo.save!
 	else
 		fa.create_background_photo(photo: params[:full_audit][:background_photo])
+		fa.save!
 	end
-	fa.save!
+	
 
 	redirect_to edit_full_audit_path(fa)
 

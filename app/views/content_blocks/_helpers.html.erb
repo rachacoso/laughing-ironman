@@ -1,0 +1,34 @@
+	<div class="row">
+		<div class="small-5 columns">
+			<div class="backpanel">
+				<h6> Content Block Helpers </h6>
+				
+
+				<i class="fi-wrench"></i> <%= link_to 'Simple Format Helper', '#', data: { :"reveal-id" => "simpleformatModal"} %><br/>
+				<div id="simpleformatModal" class="reveal-modal" data-reveal>
+					<%= render partial: 'simpleformat_helper_form'%>
+				</div>
+				<i class="fi-wrench"></i> <%= link_to 'Un-ordered List Helper', '#', data: { :"reveal-id" => "unorderedlistModal"} %><br/>
+				<div id="unorderedlistModal" class="reveal-modal" data-reveal>
+					<%= render partial: 'unorderedlist_helper_form'%>
+				</div>
+				<% if @audit_subtype == 'five_minute_summary' %>
+				<i class="fi-wrench"></i> <%= link_to 'Key Finding Helper', '#', data: { :"reveal-id" => "keyFindingModal"} %><br/>
+					<div id="keyFindingModal" class="reveal-modal" data-reveal>
+						<%= render partial: 'keyfinding_helper_form'%>
+					</div>				
+				<% end %>
+				<% if @audit_subtype == 'full_audit' %>
+				<i class="fi-wrench"></i> <%= link_to 'Page Number Helper', '#', data: { :"reveal-id" => "pagenumberModal"} %><br/>
+					<div id="pagenumberModal" class="reveal-modal" data-reveal>
+						<%= render partial: 'pagenumber_helper_form'%>
+					</div>				
+				<% end %>
+
+			</div>
+	
+		</div>
+	</div>
+
+	</div>
+</div>

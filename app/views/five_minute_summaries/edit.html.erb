@@ -6,6 +6,7 @@
 <div class="row">
 	<div class="small-12 columns">
 
+		<h3>Title Panel</h3>
     <div class="backpanel">
     <div class="headWrapper topHead">
       <div class="row" id="WPtop">
@@ -61,8 +62,10 @@
 
 				</div>
 				<div id="myModal_<%= bid %>" class="reveal-modal" data-reveal>
-				  <h6><strong>Delete this Content?</strong></h6>
+					<h2>Delete <strong>Content Block</strong></h2>
+					<div class="AdminSectionSpacer1"></div>
 				  <p class="lead"><%= thisblock.content.html_safe %></p>
+				  <h6><strong>Are you sure you want to Delete This Content?</strong></h6>
 				  <%= button_to "Yes, Delete this content", content_block_path(thisblock), :method => 'delete', class: "tiny radius alert button" %> <a class="tiny radius info button custom-close-reveal-modal">No, I've changed my mind!</a>
 				  
 				  <a class="close-reveal-modal">&#215;</a>
@@ -116,18 +119,35 @@
 <div id="adminfooter">
 	<div class="wrap">
 		<div class="row">
-			<div class="small-3 columns text-right">
-				Edit Five Minute Summary for <strong><%= simple_format(@fms.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			<div class="small-1 columns text-right">
+		    <%= link_to audits_url do %>
+		      View All<br><strong>Audits</strong> 
+		    <% end %>
 			</div>
-			<div class="small-9 columns text-left">
-				<%= link_to five_minute_summary_url(@fms) do %> 
-					<i class="fi-eye" ></i> View Five Minute Summary
-				<% end %>
-				<br>
-				<%= link_to audits_url do %>
-					<i class="fi-list-bullet" ></i> View All Audits List
+			<div class="small-3 columns text-left">
+				<strong><%= simple_format(@fms.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			</div>
+			<div class="small-2 columns text-left">
+				<%= link_to five_minute_summary_url(@fms) do %>
+					View<br><strong>Five Minute Summary</strong>
 				<% end %>
 			</div>
+			<div class="small-2 columns text-left admin-nav-active">
+					Edit<br><strong>Five Minute Summary</strong>
+			</div>
+			<div class="small-2 columns text-left">
+				<%= link_to full_audit_url(@fms.audit.full_audit) do %>
+					View<br><strong>Full Audit</strong>
+				<% end %>
+			</div>
+			<div class="small-2 columns text-left">
+				<%= link_to edit_full_audit_url(@fms.audit.full_audit) do %> 
+					Edit<br><strong>Full Audit</strong>
+				<% end %>
+			</div>
+			
 		</div>
 	</div>
 </div>
+
+

@@ -40,24 +40,20 @@
   </div>
 </div>
 
+<% content_for :admin_footer do %>
 
-<!-- BEGIN SECTION SPACER -->
-<div class="RASectionSpacer">
+  <div class="small-1 columns text-right">
+    <%= link_to audits_url do %>
+      View All<br><strong>Audits</strong> 
+    <% end %>
 
-</div>
-<!-- END SECTION SPACER -->
-<div id="adminfooter">
-  <div class="wrap">
-    <div class="row">
-      <div class="small-3 columns text-right">
-        Edit Audit Name /<br> Publication Date <strong><%= simple_format(@audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
-      </div>
-      <div class="small-9 columns text-left">
-            <%= link_to audits_url do %>
-              <i class="fi-list-bullet" ></i> Back to All Audits List
-            <% end %>
-
-      </div>
-    </div>
   </div>
-</div>
+  <div class="small-3 columns text-left">
+    <strong><%= simple_format(@audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+  </div>
+  <div class="small-2 columns text-left end admin-nav-active">
+    Edit<br><strong>Audit Name /<br> Publication Date</strong>
+  </div>
+
+<% end %>
+

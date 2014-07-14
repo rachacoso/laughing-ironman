@@ -1,0 +1,19 @@
+<!-- Unordered List Form BEGIN -->
+
+
+<h3> Unordered List </h3>
+<div class="row">
+	<div class="small-12 columns">
+
+		<%= form_tag(content_block_helper_path('unorderedlist'), id: "unorderedlistHelperForm", method: "post") do %>
+
+		  <%= label_tag(:fulltext, "Unordered List Items") %>
+		  <%= text_area_tag(:fulltext, "", placeholder: "Unordered list items <br>Each separated".html_safe, size: "x10", autocomplete: "off") %>
+
+		  <%= submit_tag("Submit", class: "tiny radius success button") %> <a class="tiny radius info button custom-close-reveal-modal">Cancel</a>
+		<% end %>
+	</div>
+</div>
+
+<div id="result"></div>
+<!-- Unordered List Form END -->

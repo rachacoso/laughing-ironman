@@ -20,6 +20,22 @@
     </div>
 
     <%= javascript_include_tag "application" %>
-    <%= yield(:javascript_foot) %>
+    
+
+    <!-- BEGIN SECTION SPACER -->
+    <div class="RASectionSpacer">
+
+    </div>
+    <!-- END SECTION SPACER -->
+    <div id="adminfooter">
+      <div class="wrap">
+        <div class="row">
+
+          <%= yield(:admin_footer) %>
+
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

@@ -10,8 +10,13 @@ resources :content_blocks, only: [:edit, :update, :destroy]
 
 get '/content_blocks/new/:sectionid/:position' => 'content_blocks#new', as: 'new_content_block'
 post '/content_blocks/new/:sectionid/:position' => 'content_blocks#create'
-post '/content_blocks/keyfindings' => 'content_blocks#keyfindings', as: 'content_block_keyfindings_helper'
-post '/content_blocks/simpleformat' => 'content_blocks#simpleformat', as: 'content_block_simpleformat_helper'
+
+post '/content_blocks/cbhelper/:helper_type' => 'content_blocks#cbhelper', as: 'content_block_helper'
+
+# post '/content_blocks/keyfindings' => 'content_blocks#keyfindings', as: 'content_block_keyfindings_helper'
+# post '/content_blocks/simpleformat' => 'content_blocks#simpleformat', as: 'content_block_simpleformat_helper'
+# post '/content_blocks/pagenumber' => 'content_blocks#pagenumber', as: 'content_block_pagenumber_helper'
+# post '/content_blocks/unorderedlist' => 'content_blocks#unorderedlist', as: 'content_block_unorderedlist_helper'
 
 resources :full_audits, only: [:show, :edit, :update]
 resources :sections, only: [:edit, :update, :destroy]

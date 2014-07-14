@@ -2,7 +2,7 @@
 
 <h1> Simple Format </h1>
 
-<%= form_tag(content_block_simpleformat_helper_path, id: "simpleformatHelperForm", method: "post") do %>
+<%= form_tag(content_block_helper_path('simpleformat'), id: "simpleformatHelperForm", method: "post") do %>
 
   <%= label_tag(:fulltext, "Full Text") %>
   <%= text_area_tag(:fulltext, "", placeholder: "Full Text Goes Here", size: "x10", autocomplete: "off") %>
@@ -12,4 +12,4 @@
 </form>
 
 <div id="result"></div>
-<!-- Key Findings Form END -->
+<!-- Simple Format Form END -->

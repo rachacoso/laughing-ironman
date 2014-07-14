@@ -1,0 +1,19 @@
+<!-- Page Number Form BEGIN -->
+
+
+<h3> Page Number (for Full Audit) </h3>
+<div class="row">
+	<div class="small-1 columns">
+
+		<%= form_tag(content_block_helper_path('pagenumber'), id: "pagenumberHelperForm", method: "post") do %>
+
+		  <%= label_tag(:number, "Page") %>
+		  <%= text_field_tag(:number, "", autocomplete: "off", cols: "2") %>
+
+		  <%= submit_tag("Submit", class: "tiny radius success button") %> <a class="tiny radius info button custom-close-reveal-modal">Cancel</a>
+		<% end %>
+	</div>
+</div>
+
+<div id="result"></div>
+<!-- Page Number Form END -->

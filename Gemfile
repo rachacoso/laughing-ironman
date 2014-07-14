@@ -45,3 +45,6 @@ gem 'foundation_rails_helper'
 
 gem 'foundation-icons-sass-rails'
 
+# for pretty URLS
+gem 'friendly_id', '~> 5.0.0'
+

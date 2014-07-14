@@ -53,9 +53,14 @@
 				<div class="AdminSectionSpacer2"></div>
 
 				<div id="mySectionModalDelete_<%= sid %>" class="reveal-modal" data-reveal>
-				  <h6><strong>Delete this Section?</strong></h6>
-				  <h3><%= thissection.display_name %></h3>
-				  <p><strong style="color: red;">All content blocks in this section will also be deleted.</strong></p>
+					<h2>Delete <strong>Section</strong></h2>
+			  	<div class="AdminSectionSpacer1"></div>
+				  <h2><%= thissection.display_name %></h2>
+				  <div class="AdminSectionSpacer1"></div>
+				  <h6>
+				  	<strong>Are you sure you want to Delete this Section?</strong><br>
+				  	<strong style="color: red;">All content blocks contained in this section will also be deleted.</strong>
+				  </h6>
 				  <%= button_to "Yes, Delete this section", section_path(thissection), :method => 'delete', class: "tiny radius alert button" %> <a class="tiny radius info button custom-close-reveal-modal">No, I've changed my mind!</a>
 				  
 				  <a class="close-reveal-modal">&#215;</a>
@@ -68,9 +73,11 @@
 				<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
 				<div class="backpanel">
 
-
-					<p><%= thisblock.content.html_safe %></p>
-					
+					<% if /<a name="p/.match(thisblock.content) %>
+						<p><%= thisblock.content %></p>
+					<% else %>
+						<p><%= thisblock.content.html_safe %></p>
+					<% end %>
 					<%= link_to new_content_block_url(thissection.id, index ) do %>
 						<i class="fi-arrow-up"></i> <small>Add a block before</small>
 					<% end %>
@@ -90,8 +97,14 @@
 
 				</div>
 				<div id="myModal_<%= bid %>" class="reveal-modal" data-reveal>
-				  <h6><strong>Delete this Content?</strong></h6>
-				  <p class="lead"><%= thisblock.content.html_safe %></p>
+					<h2>Delete <strong>Content Block</strong></h2>
+					<div class="AdminSectionSpacer1"></div>
+					<% if /<a name="p/.match(thisblock.content) %>
+						<p><%= thisblock.content %></p>
+					<% else %>
+						<p><%= thisblock.content.html_safe %></p>
+					<% end %>
+				  <h6><strong>Are you sure you want to Delete this Content?</strong></h6>
 				  <%= button_to "Yes, Delete this content", content_block_path(thisblock), :method => 'delete', class: "tiny radius alert button" %> <a class="tiny radius info button custom-close-reveal-modal">No, I've changed my mind!</a>
 				  
 				  <a class="close-reveal-modal">&#215;</a>
@@ -130,18 +143,33 @@
 <div id="adminfooter">
 	<div class="wrap">
 		<div class="row">
-			<div class="small-3 columns text-right">
-				Edit Full Audit for <strong><%= simple_format(@fa.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			<div class="small-1 columns text-right">
+		    <%= link_to audits_url do %>
+		      View All<br><strong>Audits</strong> 
+		    <% end %>
 			</div>
-			<div class="small-9 columns text-left">
-				<%= link_to full_audit_url(@fa) do %> 
-					<i class="fi-eye" ></i> View Full Audit
-				<% end %>
-				<br>
-				<%= link_to audits_url do %>
-					<i class="fi-list-bullet" ></i> View All Audits List
+			<div class="small-3 columns text-left">
+				<strong><%= simple_format(@fa.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+			</div>
+			<div class="small-2 columns text-left">
+				<%= link_to five_minute_summary_url(@fa.audit.five_minute_summary) do %>
+					View<br><strong>Five Minute Summary</strong>
 				<% end %>
 			</div>
+			<div class="small-2 columns text-left">
+				<%= link_to edit_five_minute_summary_url(@fa.audit.five_minute_summary) do %>
+					Edit<br><strong>Five Minute Summary</strong>
+				<% end %>
+			</div>
+			<div class="small-2 columns text-left">
+				<%= link_to full_audit_url(@fa) do %>
+					View<br><strong>Full Audit</strong>
+				<% end %>
+			</div>
+			<div class="small-2 columns text-left admin-nav-active">
+					Edit<br><strong>Full Audit</strong>
+			</div>
+			
 		</div>
 	</div>
 </div>
