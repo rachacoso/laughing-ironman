@@ -1,0 +1,36 @@
+<% content_for :title do %>
+  <%= @fa.audit.name  %>
+<% end %>
+<% content_for :bodytitle do %>
+  <%= simple_format(@fa.audit.name, {}, wrapper_tag: "div")  %>
+<% end %>
+<% content_for :publication_date do %>
+  <%= @fa.audit.publication_date.strftime("%B %d, %Y") %>
+<% end %>
+<% content_for :five_minute_summary_link do %><%= public_five_minute_summary_path(@fa.audit.five_minute_summary).html_safe %><% end %>
+
+<% content_for :javascript_head do %>
+	<%= javascript_tag do %>
+		<% if @fa.background_photo %>
+		  window.bgOne = '<%= j @fa.background_photo.photo(:large) %>';
+		<% end %>  
+	<% end %>
+<% end %>
+
+
+
+<%# display sections %>
+<% @fa.section_order.each do |sid| # iterate through sections in order%>
+
+	<% thissection = @fa.sections.find(sid) %>
+	
+
+		<%= render partial: "/shared/#{thissection.section_type.downcase}", locals: {thissection: thissection} %>
+	
+	<!-- BEGIN SECTION SPACER -->
+	<div class="RASectionSpacer">
+
+	</div>
+	<!-- END SECTION SPACER -->
+
+<% end %>

@@ -13,7 +13,7 @@
 				
 					<% unless thissection.content_blocks.empty? %>
 
-						<% thissection.block_order.each_with_index do |bid, index| %>
+						<% thissection.block_order.each do |bid| %>
 							<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
 							
 								<%= thisblock.content.html_safe %>

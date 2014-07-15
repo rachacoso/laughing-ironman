@@ -1,0 +1,47 @@
+<% content_for :title do %>
+  <%= @fms.audit.name  %>
+<% end %>
+<% content_for :bodytitle do %>
+  <%= simple_format(@fms.audit.name, {}, wrapper_tag: "div")  %>
+<% end %>
+<% content_for :publication_date do %>
+  <%= @fms.audit.publication_date.strftime("%B %d, %Y") %>
+<% end %>
+<% content_for :full_audit_link do %><%= public_full_audit_path(@fms.audit.full_audit).html_safe %><% end %>
+
+<% content_for :javascript_head do %>
+	<%= javascript_tag do %>
+		<% if @fms.first_background_photo %>
+		  window.bgOne = '<%= j @fms.first_background_photo.photo(:large) %>';
+		<% end %>  
+		<% if @fms.second_background_photo %>
+		  window.bgTwo = '<%= j @fms.second_background_photo.photo(:large) %>';
+		<% end %>  
+		<% if @fms.third_background_photo %>
+		  window.bgThree = '<%= j @fms.third_background_photo.photo(:large) %>';
+		<% end %>  
+		<% if @fms.fourth_background_photo %>
+		  window.bgFour = '<%= j @fms.fourth_background_photo.photo(:large) %>';
+		<% end %>  
+		<% if @fms.fifth_background_photo %>
+		  window.bgFive = '<%= j @fms.fifth_background_photo.photo(:large) %>';
+	  <% end %>
+	<% end %>
+<% end %>
+
+
+<%# display sections %>
+<% @fms.section_order.each do |sid| # iterate through sections in order%>
+
+	<% thissection = @fms.sections.find(sid) %>
+	
+
+		<%= render partial: "/shared/#{thissection.section_type.downcase}", locals: {thissection: thissection} %>
+	
+	<!-- BEGIN SECTION SPACER -->
+	<div class="RASectionSpacer">
+
+	</div>
+	<!-- END SECTION SPACER -->
+
+<% end %>

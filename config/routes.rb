@@ -9,6 +9,8 @@ resources :five_minute_summaries, only: [:show, :edit, :update]
 resources :content_blocks, only: [:edit, :update, :destroy]
 resources :background_photos, only: [:show, :destroy]
 
+get '/public/audits/five_minute_summary/:id' => 'public_views#fms', as: 'public_five_minute_summary'
+get '/public/audits/full_audit/:id' => 'public_views#fa', as: 'public_full_audit'
 get '/content_blocks/new/:sectionid/:position' => 'content_blocks#new', as: 'new_content_block'
 post '/content_blocks/new/:sectionid/:position' => 'content_blocks#create'
 
