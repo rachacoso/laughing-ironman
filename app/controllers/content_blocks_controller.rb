@@ -105,9 +105,10 @@ class ContentBlocksController < ApplicationController
 		@number = params[:number]
 		@headline = params[:headline]
 		@fulltext = params[:fulltext]
+		@helper_type = params[:helper_type]
 
-		render template: "content_blocks/#{params[:helper_type]}.html.erb", layout: false
-		# render layout: false
+		# render template: "content_blocks/#{params[:helper_type]}.html.erb", layout: false
+		render layout: false
 
 	end
 

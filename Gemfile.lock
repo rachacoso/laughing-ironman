@@ -53,8 +53,6 @@ GEM
     foundation_rails_helper (0.4)
       actionpack (>= 3.0)
       railties (>= 3.0)
-    friendly_id (5.0.4)
-      activerecord (>= 4.0.0)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (2.1.1)
@@ -150,7 +148,6 @@ DEPENDENCIES
   foundation-icons-sass-rails
   foundation-rails
   foundation_rails_helper
-  friendly_id (~> 5.0.0)
   jbuilder (~> 2.0)
   jquery-rails
   mongoid (~> 4.0.0)

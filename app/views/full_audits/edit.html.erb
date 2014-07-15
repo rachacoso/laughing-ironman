@@ -124,8 +124,8 @@
 			<%= form_for @fa, url: full_audit_path do |f| %>
 				
 				<div class="backpanel">
-				<%= @fa.background_photo ? (image_tag @fa.background_photo.photo(:small)) : 'No Photo' %>
-				<%= f.file_field :background_photo %>
+				<%= @fa.background_photo ? (render partial:'shared/bgimage', locals: { bgimage: @fa.background_photo }) : 'No Photo' %>
+				<%= f.file_field :background_photo, label: "&nbsp;".html_safe  %>
 				</div>
 
 				<%= f.submit 'Upload Background Image' %>

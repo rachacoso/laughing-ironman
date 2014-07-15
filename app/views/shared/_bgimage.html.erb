@@ -1,0 +1,15 @@
+<%=	link_to_image(
+	bgimage.photo(:small), 
+	"#", 
+	{ :data => { :'reveal-id' => "bg_#{bgimage.id.to_s}" } }
+) %>
+<h4><small>(Click on Photo to view/delete photo)</small></h4>
+<div id="bg_<%= bgimage.id %>" class="reveal-modal" data-reveal>
+	<p><%= image_tag bgimage.photo(:large), :width => 600 %></p>
+  <a class="close-reveal-modal">&#215;</a>
+  <span class="backpanel">
+	  <%= link_to 'Delete this Background Photo', background_photo_path(bgimage), :method => 'delete', data: { :confirm => 'Are you sure?'} %>
+	</span>
+
+  &nbsp;<a class="tiny radius info button custom-close-reveal-modal">Cancel</a>
+</div>

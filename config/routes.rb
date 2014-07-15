@@ -7,6 +7,7 @@ resources :audits, only: [:new, :create, :index, :destroy, :update, :edit]
 resources :five_minute_summaries, only: [:show, :edit, :update]
 # resources :section, only: [:show, :edit, :update, :destroy]
 resources :content_blocks, only: [:edit, :update, :destroy]
+resources :background_photos, only: [:show, :destroy]
 
 get '/content_blocks/new/:sectionid/:position' => 'content_blocks#new', as: 'new_content_block'
 post '/content_blocks/new/:sectionid/:position' => 'content_blocks#create'

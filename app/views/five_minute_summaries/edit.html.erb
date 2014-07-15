@@ -85,24 +85,29 @@
 			<%= form_for @fms, url: five_minute_summary_path do |f| %>
 				
 				<div class="backpanel">
-				<%= @fms.first_background_photo ? (image_tag @fms.first_background_photo.photo(:small)) : 'No Photo' %>
-				<%= f.file_field :first_background_photo %>
+					<h4>First Background Photo</h4>
+					<%= @fms.first_background_photo ? (render partial:'shared/bgimage', locals: { bgimage: @fms.first_background_photo }) : 'No Photo' %>
+					<%= f.file_field :first_background_photo, label: "&nbsp;".html_safe %>
 				</div>
 				<div class="backpanel">
-				<%= @fms.second_background_photo ? (image_tag @fms.second_background_photo.photo(:small)) : 'No Photo' %>
-				<%= f.file_field :second_background_photo %>
+					<h4>Second Background Photo</h4>
+					<%= @fms.second_background_photo ? (render partial:'shared/bgimage', locals: { bgimage: @fms.second_background_photo }) : 'No Photo' %>
+					<%= f.file_field :second_background_photo, label: "&nbsp;".html_safe %>
 				</div>
 				<div class="backpanel">
-				<%= @fms.third_background_photo ? (image_tag @fms.third_background_photo.photo(:small)) : 'No Photo' %>
-				<%= f.file_field :third_background_photo %>
+					<h4>Third Background Photo</h4>
+					<%= @fms.third_background_photo ? (render partial:'shared/bgimage', locals: { bgimage: @fms.third_background_photo }) : 'No Photo' %>
+					<%= f.file_field :third_background_photo, label: "&nbsp;".html_safe %>
 				</div>
 				<div class="backpanel">
-				<%= @fms.fourth_background_photo ? (image_tag @fms.fourth_background_photo.photo(:small)) : 'No Photo' %>
-				<%= f.file_field :fourth_background_photo %>
+					<h4>Fourth Background Photo</h4>
+					<%= @fms.fourth_background_photo ? (render partial:'shared/bgimage', locals: { bgimage: @fms.fourth_background_photo }) : 'No Photo' %>
+					<%= f.file_field :fourth_background_photo, label: "&nbsp;".html_safe %>
 				</div>
 				<div class="backpanel">
-				<%= @fms.fifth_background_photo ? (image_tag @fms.fifth_background_photo.photo(:small)) : 'No Photo' %>
-				<%= f.file_field :fifth_background_photo %>
+					<h4>Fifth Background Photo</h4>
+					<%= @fms.fifth_background_photo ? (render partial:'shared/bgimage', locals: { bgimage: @fms.fifth_background_photo }) : 'No Photo' %>
+					<%= f.file_field :fifth_background_photo, label: "&nbsp;".html_safe %>
 				</div>
 				<%= f.submit 'Upload Background Images' %>
 
