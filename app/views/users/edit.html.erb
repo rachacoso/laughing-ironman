@@ -43,25 +43,44 @@
 
 
 <% content_for :admin_footer do %>
+
+<!-- BEGIN SECTION SPACER -->
+<div class="RASectionSpacer">
+
+</div>
+<!-- END SECTION SPACER -->
+<div id="adminfooter">
+  <div class="wrap">
+    <div class="row">
   
-  <div class="small-4 columns leftadminmenu">
-    <div class="small-12 columns">
-      <%# dummy div for adminmenu formatting css quirk %>
-    </div>
-    <div class="small-4 columns text-right">
-      <%= link_to users_url do %>
-        All<br><strong>Users</strong> 
-      <% end %>
-    </div>
-    <div class="small-8 columns text-left">
-      <%# dummy div for adminmenu formatting css quirk %>
+		  <div class="small-4 columns leftadminmenu">
+		    <div class="small-12 columns">
+		      <%# dummy div for adminmenu formatting css quirk %>
+		    </div>
+		    <div class="small-4 columns text-right">
+		      <%= link_to users_url do %>
+		        All<br><strong>Users</strong> 
+		      <% end %>
+		    </div>
+		    <div class="small-8 columns text-left">
+		      <%# dummy div for adminmenu formatting css quirk %>
+		    </div>
+		  </div>
+		  
+		  <div class="small-2 columns rightadminmenu">
+		    <div class="small-12 columns text-left end admin-nav-active">
+		      Edit<br><strong>User</strong>
+		    </div>
+		  </div>
+
+      <div class="small-3 columns text-right rightadminmenu">
+        Los Angeles Controller <strong>Audits</strong><br>
+        Welcome, <strong><%= @current_user.email %></strong><br>
+        <%= link_to 'Logout', logout_url %>
+      </div>
+
     </div>
   </div>
-  
-  <div class="small-2 columns rightadminmenu">
-    <div class="small-12 columns text-left end admin-nav-active">
-      Edit<br><strong>User</strong>
-    </div>
-  </div>
+</div>		  
 
 <% end %>

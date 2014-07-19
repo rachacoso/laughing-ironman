@@ -1,6 +1,6 @@
 class FiveMinuteSummariesController < ApplicationController
 
-	layout "five_minute_summary", only: [:show]
+	layout :choose_layout
 
 	def show
 		@fms = FiveMinuteSummary.find(params[:id])
@@ -34,5 +34,19 @@ class FiveMinuteSummariesController < ApplicationController
 
 		redirect_to edit_five_minute_summary_path(fms)
 	end
+
+	private
+
+	def choose_layout
+		case action_name
+		when 'show'
+			'five_minute_summary'
+		when 'edit'
+			'admin'
+		else
+			'application'
+		end
+	end
+
 
 end

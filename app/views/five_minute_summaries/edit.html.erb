@@ -127,6 +127,9 @@
 
 </div>
 <!-- END SECTION SPACER -->
+
+
+<% content_for :admin_footer do %>
 <div id="adminfooter">
 	<div class="wrap">
 		<div class="row">
@@ -134,7 +137,7 @@
 			<div class="small-4 columns leftadminmenu">
 				<div class="small-3 columns text-right">
 					<%= link_to audits_url do %>
-						View All<br><strong>Audits</strong> 
+						<small>Back to All<br><strong>Audits</strong> </small> 
 					<% end %>
 				</div>
 				<div class="small-9 columns text-left">
@@ -173,5 +176,5 @@
 		</div>
 	</div>
 </div>
-
+<% end %>
 

@@ -21,7 +21,7 @@
 		<%= form_for @newsection, url: new_section_url(@fa, @position) do |f| %>
 			
 			<%= f.text_field :display_name, label: 'Section Title' %>
-			<%= f.submit 'New Section', class: "tiny radius success button" %> <%= link_to 'Cancel', edit_full_audit_url(@fa), class: "tiny radius info button"  %>
+			<%= f.submit 'Add New Section', class: "tiny radius success button" %> <%= link_to 'Cancel (Discard changes)', edit_full_audit_url(@fa), class: "tiny radius info button"  %>
 
 		<% end %>
 
@@ -34,21 +34,45 @@
 
 </div>
 <!-- END SECTION SPACER -->
+
+<% content_for :admin_footer do %>
 <div id="adminfooter">
 	<div class="wrap">
 		<div class="row">
-			<div class="small-3 columns text-right">
-				Edit Full Audit for <strong><%= simple_format(@fa.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
+
+
+			<div class="small-4 columns leftadminmenu">
+				<div class="small-3 columns text-right">
+					<%= link_to edit_full_audit_url(@fa) do %>
+						Back to<br><strong>Edit Full Audit</strong><br> <small>(Discard changes)</small>
+					<% end %>
+				</div>
+				<div class="small-9 columns text-left">
+					Full Audit | New Section <strong><%= simple_format(@fa.audit.name, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong>
+				</div>
 			</div>
-			<div class="small-9 columns text-left">
-				<%= link_to edit_full_audit_url(@fa) do %> 
-					<i class="fi-eye" ></i> Back to Edit Full Audit
-				<% end %>
-				<br>
-				<%= link_to audits_url do %>
-					<i class="fi-list-bullet" ></i> View All Audits List
-				<% end %>
+
+			<div class="small-8 columns rightadminmenu">
+				<div class="small-2 columns text-left inactive">
+					View<br><strong>Five Minute Summary</strong>
+				</div>
+				<div class="small-2 columns text-left inactive">
+					Edit<br><strong>Five Minute Summary</strong>
+				</div>
+				<div class="small-2 columns text-left inactive">
+					View<br><strong>Full Audit</strong>
+				</div>
+				<div class="small-2 columns text-left inactive">
+					Edit<br><strong>Full Audit</strong>
+				</div>
+				<div class="small-4 columns text-right">
+					Los Angeles Controller <strong>Audits</strong><br>
+					Welcome, <strong><%= @current_user.email %></strong><br>
+					<%= link_to 'Logout', logout_url %>
+				</div>		
 			</div>
+
 		</div>
 	</div>
 </div>
+<% end %>

@@ -2039,6 +2039,9 @@ table ul {
 			div {
 				border-bottom: 0.25em solid white;
 			}
+			.inactive {
+				color: #9f9f9f;
+			}
 		}
 	
 	}
@@ -2106,7 +2109,9 @@ textarea {
   );
 }
 
-
+// div {
+// 	border: 1px solid red;
+// }
 
 // override top bar default for Full Audit link color
 

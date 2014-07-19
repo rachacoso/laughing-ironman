@@ -47,19 +47,6 @@
 <% end %>
 
 <% content_for :admin_footer do %>
-  
-	<div class="small-2 columns text-right admin-nav-active">
-	  <%= link_to audits_url do %>
-      View All<br><strong>Audits</strong> 
-    <% end %>
-	</div>
-	<div class="small-1 columns text-right end">
-		<%= link_to new_audit_url do %>
-			Create<br><strong>Audit</strong>
-		<% end %>
-	</div>
-
-<% end %>
 
 <div id="adminfooter">
 	<div class="wrap">
@@ -68,7 +55,7 @@
 			<div class="small-4 columns leftadminmenu">
 				<div class="small-3 columns text-right">
 			    <%= link_to audits_url do %>
-			      View All<br><strong>Audits</strong> 
+			      <small>Back to All<br><strong>Audits</strong> </small>
 			    <% end %>
 				</div>
 				<div class="small-9 columns text-left">
@@ -107,3 +94,4 @@
 	</div>
 </div>
 
+<% end %>

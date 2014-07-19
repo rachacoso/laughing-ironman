@@ -25,7 +25,7 @@
 			
 			<%= f.text_area :content, rows: "18", class: "resizeable"%>
 
-			<%= f.submit 'Add new block', class: "tiny radius success button" %> <%= link_to 'Cancel', @linkto, class: "tiny radius info button"  %>
+			<%= f.submit 'Add new block', class: "tiny radius success button" %> <%= link_to 'Cancel (Discard changes)', @linkto, class: "tiny radius info button"  %>
 
 		<% end %>
 
@@ -38,24 +38,48 @@
 
 </div>
 <!-- END SECTION SPACER -->
+
+<% content_for :admin_footer do %>
 <div id="adminfooter">
 	<div class="wrap">
 		<div class="row">
-			<div class="small-1 columns text-right">
-				&nbsp;
-			</div>					
-			<div class="small-3 columns text-right">
-				<%= @audit_typename %> | New Content Block <strong><%= simple_format(@auditname, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong> 
-			</div>
-			<div class="small-8 columns text-left">
-				<%= link_to @linkto do %>
-					<i class="fi-arrow-left"></i> Back to Edit <%= @audit_typename %>
-				<% end %>
 
+
+			<div class="small-4 columns leftadminmenu">
+				<div class="small-3 columns text-right">
+					<%= link_to @linkto do %>
+						<small>Back to<br><strong>Edit <%= @audit_typename %></strong><br> (Discard changes)</small>
+					<% end %>
+				</div>
+				<div class="small-9 columns text-left">
+					<%= @audit_typename %> | New Content Block <strong><%= simple_format(@auditname, {}, wrapper_tag: "div").gsub(/\n/, '').html_safe %></strong>
+				</div>
 			</div>
+
+			<div class="small-8 columns rightadminmenu">
+				<div class="small-2 columns text-left inactive">
+					View<br><strong>Five Minute Summary</strong>
+				</div>
+				<div class="small-2 columns text-left inactive">
+					Edit<br><strong>Five Minute Summary</strong>
+				</div>
+				<div class="small-2 columns text-left inactive">
+					View<br><strong>Full Audit</strong>
+				</div>
+				<div class="small-2 columns text-left inactive">
+					Edit<br><strong>Full Audit</strong>
+				</div>
+				<div class="small-4 columns text-right">
+					Los Angeles Controller <strong>Audits</strong><br>
+					Welcome, <strong><%= @current_user.email %></strong><br>
+					<%= link_to 'Logout', logout_url %>
+				</div>		
+			</div>
+
 		</div>
 	</div>
 </div>
+<% end %>
 
 
 

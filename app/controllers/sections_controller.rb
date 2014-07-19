@@ -1,5 +1,6 @@
 class SectionsController < ApplicationController
-
+	layout "admin"
+	
 	def new
 
 

@@ -1,5 +1,6 @@
 class ContentBlocksController < ApplicationController
-
+	layout "admin"
+	
 	def edit
 		@block = ContentBlock.find(params[:id])
 		@audit_subtype = @block.section.five_minute_summary ? 'five_minute_summary' : 'full_audit'
