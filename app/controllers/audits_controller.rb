@@ -17,7 +17,7 @@ class AuditsController < ApplicationController
       redirect_to audits_path, notice:  "You have successfully created a new audit."
     else
     	@errors = new_audit.errors
-    	flash[:notice] = "Sorry there was an error. Your audit was not created."
+    	flash.now[:notice] = "Sorry there was an error. Your audit was not created."
     	@audit = Audit.new
       render action: "new"
     end

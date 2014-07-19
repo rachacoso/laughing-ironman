@@ -26,7 +26,7 @@ class SectionsController < ApplicationController
 
 		else
 		  @errors = newsection.errors
-    	flash[:notice] = "Sorry there was an error. Your section was not created."
+    	flash.now[:notice] = "Sorry there was an error. Your section was not created."
 			@fa = FullAudit.find(params[:full_audit_id])
 			@newsection = Section.new
 			@position = params[:position]

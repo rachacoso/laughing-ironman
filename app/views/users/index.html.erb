@@ -1,12 +1,12 @@
 <% content_for :title do %>
-  Audits List
+  Users List
 <% end %>
 
 
 
 <div class="row">
 	<div class="small-10 small-centered columns">
-		<h2>Los Angeles City Controller<br><strong>Audits</strong></h2>
+		<h2>All<br><strong>Users</strong></h2>
 		<div class="AdminSectionSpacer"></div>
 
 		<% if flash[:notice] %>
@@ -17,7 +17,7 @@
 				</div>
 		<% end %>
 
-		<%= render partial: "audit", collection: @audits, spacer_template: "shared/indexspacer" %>
+		<%= render partial: @users, spacer_template: "shared/indexspacer" %>
 
 	</div>
 </div>
@@ -27,11 +27,13 @@
   
 	<div class="small-5 columns">
 		<div class="small-5 columns leftadminmenu">
-			<div class="small-12 columns text-center leftadminhead activehead">
+			<div class="small-12 columns text-center leftadminhead">
 				<strong>Audits</strong>
 			</div>
-			<div class="small-6 columns text-right admin-nav-active">
-				All<br><strong>Audits</strong> 
+			<div class="small-6 columns text-right">
+				<%= link_to audits_url do %>
+					All<br><strong>Audits</strong> 
+				<% end %>
 			</div>
 			<div class="small-6 columns text-left">
 				<%= link_to new_audit_url do %>
@@ -41,13 +43,13 @@
 		</div>
 
 		<div class="small-5 columns leftadminmenu">
-			<div class="small-12 columns text-center leftadminhead">
+			<div class="small-12 columns text-center leftadminhead activehead">
 				<strong>Users</strong>
 			</div>
-			<div class="small-6 columns text-right">
-				<%= link_to users_url do %>
+			<div class="small-6 columns text-right admin-nav-active">
+
 					All<br><strong>Users</strong>
-				<% end %>
+
 			</div>
 			<div class="small-6 columns text-left">
 				<%= link_to new_user_url do %>
@@ -57,9 +59,7 @@
 		</div>
 	</div>
 
-
 	<div class="small-4 columns text-right">
 	</div>
 
 <% end %>
-

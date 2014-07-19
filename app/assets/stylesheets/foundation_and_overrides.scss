@@ -1133,13 +1133,13 @@ $table-head-bg: darken(#F8E0B0, 20%);
 
 // $include-html-tabs-classes: $include-html-classes;
 
-// $tabs-navigation-padding: rem-calc(16);
-// $tabs-navigation-bg-color: #efefef  ;
-// $tabs-navigation-active-bg-color: #fff;
-// $tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%);
-// $tabs-navigation-font-color: #222;
-// $tabs-navigation-active-font-color: $tabs-navigation-font-color;
-// $tabs-navigation-font-size: rem-calc(16);
+$tabs-navigation-padding: rem-calc(1);
+$tabs-navigation-bg-color: #fff  ;
+$tabs-navigation-active-bg-color: #efefef;
+$tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -60%);
+$tabs-navigation-font-color: #222;
+$tabs-navigation-active-font-color: $tabs-navigation-font-color;
+$tabs-navigation-font-size: rem-calc(12);
 // $tabs-navigation-font-family: $body-font-family;
 
 // $tabs-content-margin-bottom: rem-calc(24);
@@ -1996,13 +1996,6 @@ table ul {
 
 // ADMIN STYLES
 
-.wrap {
-	position:relative;
-	margin:0 auto;
-             /*replace 900px with your width*/
-	width:100%;
-	padding: 1em;
-}
 
 #adminfooter {
 
@@ -2015,6 +2008,55 @@ table ul {
 	border-top:1px solid black;
 	font-size: 0.75em;
 
+	.wrap {
+	position:relative;
+	margin:0 auto;
+	/*replace 900px with your width*/
+	width:100%;
+	padding: 0.5em 0em 0em 0em;
+		.leftadminmenu {
+			background: #efefef; 
+			padding: 1em;
+			
+			.leftadminhead{
+				padding-bottom: 0.2em;
+				border-bottom: 1px dotted black;
+				color:#9f9f9f;
+				&.activehead {
+					color:#000;
+				}
+			}
+			div:not(:first-of-type){
+				padding-top: 0.3em;
+			}
+
+
+
+
+		}
+		.rightadminmenu { 
+			padding: 1em;
+			div {
+				border-bottom: 0.25em solid white;
+			}
+		}
+	
+	}
+
+}
+
+.adminlinkactive {
+	color: black;
+	font-weight: bold;
+}
+
+.adminsection {
+	color: green;
+	font-weight: bold;
+}
+
+.admin-nav-active {
+	border-bottom: 0.25em solid black !important;
 }
 
 .adminpages {
@@ -2064,19 +2106,7 @@ textarea {
   );
 }
 
-.adminlinkactive {
-	color: black;
-	font-weight: bold;
-}
 
-.adminsection {
-	color: green;
-	font-weight: bold;
-}
-
-.admin-nav-active {
-	border-bottom: 0.25em solid black;
-}
 
 // override top bar default for Full Audit link color
 
@@ -2086,6 +2116,4 @@ textarea {
   color: white;
   background: #5c5c5c;
 }
-
-
 

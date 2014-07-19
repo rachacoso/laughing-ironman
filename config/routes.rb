@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+root 'home#front'
 
+get '/login' => 'session#new', as: 'login'
+post '/login' => 'session#create'
+get '/logout' => 'session#destroy', as: 'logout'
 
 resources :audits, only: [:new, :create, :index, :destroy, :update, :edit]
 
@@ -8,6 +12,8 @@ resources :five_minute_summaries, only: [:show, :edit, :update]
 # resources :section, only: [:show, :edit, :update, :destroy]
 resources :content_blocks, only: [:edit, :update, :destroy]
 resources :background_photos, only: [:show, :destroy]
+
+resources :users, only: [:new, :create, :edit, :update, :destroy, :index]
 
 get '/public/audits/five_minute_summary/:id' => 'public_views#fms', as: 'public_five_minute_summary'
 get '/public/audits/full_audit/:id' => 'public_views#fa', as: 'public_full_audit'

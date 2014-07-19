@@ -12,12 +12,18 @@
 		<% end %><br/>
 
 		<%= link_to five_minute_summary_url(audit.five_minute_summary) do %>
-			<i class="fi-eye"></i> <small>View Audit</small>
+			<i class="fi-eye"></i> <small>View/Edit Audit</small>
 		<% end %><br/>
 
+		<%= link_to public_five_minute_summary_url(audit.five_minute_summary) do %>
+			<i class="fi-eye"></i> <small>View Public Version of Audit</small>
+		<% end %><br/>
+		
 		<a href="#" data-reveal-id="myModal_<%= audit.id %>">
 			<i class="fi-x"></i> <small>Delete this Audit</small>
 		</a>
+
+
 	</div>
 
 </div>

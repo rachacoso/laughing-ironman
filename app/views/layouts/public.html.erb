@@ -22,26 +22,7 @@
     <%= javascript_include_tag "application" %>
     
 
-    <!-- BEGIN SECTION SPACER -->
-    <div class="RASectionSpacer">
 
-    </div>
-    <!-- END SECTION SPACER -->
-    <div id="adminfooter">
-      <div class="wrap">
-        <div class="row">
-
-          <%= yield(:admin_footer) %>
-
-          <div class="small-3 columns text-right rightadminmenu">
-              Los Angeles Controller <strong>Audits</strong><br>
-              Welcome, <strong><%= @current_user.email %></strong><br>
-              <%= link_to 'Logout', logout_url %>
-          </div>
-
-        </div>
-      </div>
-    </div>
 
   </body>
 </html>

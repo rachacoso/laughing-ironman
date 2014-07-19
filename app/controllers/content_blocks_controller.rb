@@ -71,7 +71,7 @@ class ContentBlocksController < ApplicationController
 			
 		else 
 		  @errors = new_block.errors
-    	flash[:notice] = "Sorry there was an error. Your block was not created."
+    	flash.now[:notice] = "Sorry there was an error. Your block was not created."
 			@section = section
 			@newblock = ContentBlock.new
 			@position = params[:position]
