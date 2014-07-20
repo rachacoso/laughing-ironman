@@ -1,5 +1,7 @@
 class PublicViewsController < ApplicationController
 
+  skip_before_action :require_login, only: [:fms, :fa]
+
 	layout :get_layout
 
 	def fms

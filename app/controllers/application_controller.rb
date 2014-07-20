@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :get_current_user
+  before_action :require_login
+ 
 
   def set_bg_photo(fms, this_bgp, set_bgp)
 		if fms.send(this_bgp)
@@ -27,6 +29,12 @@ class ApplicationController < ActionController::Base
       end
   	end
   end
-
+ 
+  def require_login
+    unless @current_user
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to login_url # halts request cycle
+    end
+  end
 
 end
