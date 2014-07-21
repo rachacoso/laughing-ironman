@@ -40,6 +40,7 @@
 
 <% content_for :admin_footer do %>
 
+
 <!-- BEGIN SECTION SPACER -->
 <div class="RASectionSpacer">
 
@@ -49,24 +50,27 @@
   <div class="wrap">
     <div class="row">
 
-			<div class="small-5 columns">
-				<div class="small-5 columns leftadminmenu">
+			<div class="small-9 columns">
+
+				<div class="small-4 columns leftadminmenu">
 					<div class="small-12 columns text-center leftadminhead activehead">
 						<strong>Audits</strong>
 					</div>
 					<div class="small-6 columns text-right">
 						<%= link_to audits_url do %>
-							All<br><strong>Audits</strong> 
+							All<br><strong>Audits</strong>
 						<% end %>
 					</div>
 					<div class="small-6 columns text-left admin-nav-active">
-
+						
 							Create<br><strong>Audit</strong>
-
+						
 					</div>
 				</div>
-
-				<div class="small-5 columns leftadminmenu">
+				
+				<div class="small-1 column">&nbsp;</div>
+				
+				<div class="small-3 columns leftadminmenu">
 					<div class="small-12 columns text-center leftadminhead">
 						<strong>Users</strong>
 					</div>
@@ -79,12 +83,25 @@
 						<%= link_to new_user_url do %>
 							Create<br><strong>User</strong>
 						<% end %>
-
 					</div>
 				</div>
-			</div>
+				
+				<div class="small-1 column">&nbsp;</div>
 
-			<div class="small-4 columns text-right">
+				<div class="small-3 columns leftadminmenu end">
+
+						<div class="small-12 columns text-center leftadminhead">
+							<strong>Shared Media Library</strong>
+						</div>
+						
+						<div class="small-12 columns text-center end">
+							<%= link_to shared_media_library_url do %>
+								View<br><strong>Library</strong>
+							<% end %>
+						</div>
+						
+				</div>
+
 			</div>
 
       <div class="small-3 columns text-right rightadminmenu">
@@ -96,6 +113,7 @@
     </div>
   </div>
 </div>
+
 <% end %>
 
 

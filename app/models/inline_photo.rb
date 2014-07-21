@@ -5,8 +5,9 @@ class InlinePhoto
 	field :position, type: Integer
   has_mongoid_attached_file :photo, 
 	  :styles => {
-	    :small    => ['100x100#',   :jpg],
-	    :large    => ['500x500>',   :jpg]
+	    :small    => ['100x100#'],
+	    :medium		=> ['400'],
+	    :large    => ['800>']
 	  }
 	validates_attachment_content_type :photo, :content_type=>['image/jpeg', 'image/png', 'image/gif']
 	

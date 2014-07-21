@@ -8,6 +8,7 @@ class Audit
 
   has_one :five_minute_summary, :dependent => :destroy
   has_one :full_audit, :dependent => :destroy
+  has_many :inline_photos, :dependent => :destroy
 
   def generate_new_fms
 

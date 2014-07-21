@@ -15,6 +15,11 @@ resources :background_photos, only: [:show, :destroy]
 
 resources :users, only: [:new, :create, :edit, :update, :destroy, :index]
 
+get '/shared_media_library' => 'shared_media_library#index', as: 'shared_media_library'
+get '/shared_media_library/:id' => 'shared_media_library#show', as: 'shared_media_library_item'
+post '/shared_media_library/add' => 'shared_media_library#create'
+delete '/shared_media_library/:id' => 'shared_media_library#destroy'
+
 get '/public/audits/five_minute_summary/:id' => 'public_views#fms', as: 'public_five_minute_summary'
 get '/public/audits/full_audit/:id' => 'public_views#fa', as: 'public_full_audit'
 get '/content_blocks/new/:sectionid/:position' => 'content_blocks#new', as: 'new_content_block'
