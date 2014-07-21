@@ -1,0 +1,114 @@
+
+<div class="row">
+	<div class="small-12 columns">
+		
+		<div class="row">
+			<div class="small-1 columns">
+				Media<br><strong>Library</strong> for 
+			</div>
+			<div class="small-11 columns end">
+				<strong><%= simple_format(@audit.name, {}, wrapper_tag: "span").gsub(/\n/, '').html_safe %></strong>
+			</div>
+		</div>
+		
+
+		<div class="backpanel">
+			
+			<h5>Add <strong>Media</strong><br>
+			<small>(png, gif or jpeg only)</small><br>
+		<% if flash[:error] %>
+				<div data-alert class="alert-box alert">
+			  	<%= flash[:error] %>
+				  <a href="#" class="close">&times;</a>
+				</div>
+		<% end %>
+
+		<%= form_for @newphoto, url: media_library_url(@audit) do |f| %>
+
+			<%= f.file_field :photo, label: "&nbsp;".html_safe, accept: 'image/png,image/gif,image/jpeg' %>
+			<%= f.submit 'Add media', class: "tiny radius success button" %>
+
+		<% end %>
+
+		</div>
+
+
+
+		<% if @allphotos %>
+			<ul class="small-block-grid-2 medium-block-grid-4 large-block-grid-6">
+				<% @allphotos.each do |p| %>
+						<li><%= link_to media_library_item_url(p.audit, p), :data => {:'reveal-id' => "inlinePhoto", :'reveal-ajax' => "true" } do %>
+							<%= image_tag p.photo.url(:small) %><br>
+							<small><%= p.photo_file_name %></small>
+							<% end %></li>
+				<% end %>
+			</ul>
+		<% end %>
+
+
+
+<div id="inlinePhoto" class="reveal-modal" data-reveal>
+  
+</div>
+
+	</div>
+</div>
+
+
+<% content_for :admin_footer do %>
+  
+<div id="adminfooter">
+	<div class="wrap">
+		<div class="row">
+
+			<div class="small-3 columns leftadminmenu">
+				<div class="small-3 columns text-right">
+			    <%= link_to audits_url do %>
+			      <small>Back to All<br><strong>Audits</strong> </small>
+			    <% end %>
+				</div>
+				<div class="small-9 columns text-left">
+					<strong><%= simple_format(@audit.name, {}, wrapper_tag: "span").gsub(/\n/, '').html_safe %></strong> 
+				</div>
+			</div>
+
+			<div class="small-9 columns rightadminmenu">
+				<div class="small-2 columns text-left">
+				<%= link_to five_minute_summary_url(@audit.five_minute_summary) do %> 	
+					View<br><strong>Five Minute Summary</strong>
+				<% end %>
+				</div>
+				<div class="small-2 columns text-left">
+					<%= link_to edit_five_minute_summary_url(@audit.five_minute_summary) do %> 
+						Edit<br><strong>Five Minute Summary</strong>
+					<% end %>
+				</div>
+				<div class="small-2 columns text-left">
+					<%= link_to full_audit_url(@audit.full_audit) do %>
+						View<br><strong>Full Audit</strong>
+					<% end %>
+				</div>
+				<div class="small-2 columns text-left">
+					<%= link_to edit_full_audit_url(@audit.full_audit) do %> 
+						Edit<br><strong>Full Audit</strong>
+					<% end %>
+				</div>
+				<div class="small-1 columns text-left admin-nav-active">
+					 
+						Media<br><strong>Library</strong>
+					
+				</div>
+	      <div class="small-3 columns text-right">
+	        Los Angeles Controller <strong>Audits</strong><br>
+	        Welcome, <strong><%= @current_user.email %></strong><br>
+	        <%= link_to 'Logout', logout_url %>
+	      </div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+<% end %>
+

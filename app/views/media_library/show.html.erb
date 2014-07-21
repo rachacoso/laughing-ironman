@@ -1,0 +1,8 @@
+
+
+<p><%= image_tag @photo.photo.url(:medium) %><br>
+<small><%= @photo.photo_file_name %></small>
+</p>
+<%= button_to "Delete This Photo", shared_media_library_item_url(@photo), :method => 'delete', data: { :confirm => 'Are you sure you want to delete this photo?'} , class: "tiny radius alert button" %>
+
+<a class="close-reveal-modal">&#215;</a>

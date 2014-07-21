@@ -14,7 +14,7 @@
 				</div>
 		<% end %>
 
-		<%= form_for @newphoto, url: shared_media_library_add_url do |f| %>
+		<%= form_for @newphoto, url: shared_media_library_url do |f| %>
 
 			<%= f.file_field :photo, label: "&nbsp;".html_safe, accept: 'image/png,image/gif,image/jpeg' %>
 

@@ -17,8 +17,13 @@ resources :users, only: [:new, :create, :edit, :update, :destroy, :index]
 
 get '/shared_media_library' => 'shared_media_library#index', as: 'shared_media_library'
 get '/shared_media_library/:id' => 'shared_media_library#show', as: 'shared_media_library_item'
-post '/shared_media_library/add' => 'shared_media_library#create'
+post '/shared_media_library' => 'shared_media_library#create'
 delete '/shared_media_library/:id' => 'shared_media_library#destroy'
+
+get '/:audit_id/media_library' => 'media_library#index', as: 'media_library'
+get '/:audit_id/media_library/:id' => 'media_library#show', as: 'media_library_item'
+post '/:audit_id/media_library' => 'media_library#create'
+delete '/:audit_id/media_library/:id' => 'media_library#destroy'
 
 get '/public/audits/five_minute_summary/:id' => 'public_views#fms', as: 'public_five_minute_summary'
 get '/public/audits/full_audit/:id' => 'public_views#fa', as: 'public_full_audit'
