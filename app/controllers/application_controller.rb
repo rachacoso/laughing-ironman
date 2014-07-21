@@ -21,7 +21,12 @@ class ApplicationController < ActionController::Base
 	private
   def get_current_user
   	if session[:user_id]
-      if User.find(session[:user_id])
+      if session[:expires_at] < Time.current
+       session.destroy
+       @current_user = nil
+       flash[:error] = "Your session has timed out.  Please log in again to continue."
+       redirect_to login_url # halts request cycle
+      elsif User.find(session[:user_id])
     		@current_user = User.find(session[:user_id])
       else
        session.destroy
