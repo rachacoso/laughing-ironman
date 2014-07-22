@@ -26,7 +26,7 @@
 //= require jquery.backstretch
 //= require waypoints.min
 //= require jquery.photoset-grid
-//= require jquery.colorbox
+// = require jquery.colorbox
 
 // LACO CUSTOM JS
 //= require lacoaudits

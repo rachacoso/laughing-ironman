@@ -1,0 +1,14 @@
+<li>
+	<%= link_to '#', :data => {:'reveal-id' => "inlinePhoto#{media_library_item.id}"} do %>
+	<%= image_tag media_library_item.photo.url(:small) %><br>
+	<small><%= media_library_item.photo_file_name %></small>
+	<% end %>
+</li>
+<div id="inlinePhoto<%= media_library_item.id %>" class="reveal-modal" data-reveal>
+  <p><%= image_tag media_library_item.photo.url(:medium) %><br>
+	<small><%= media_library_item.photo_file_name %></small>
+	</p>
+	<%= button_to "Delete This Photo", shared_media_library_item_url(media_library_item), :method => 'delete', data: { :confirm => 'Are you sure you want to delete this photo?'} , class: "tiny radius alert button" %>
+
+	<a class="close-reveal-modal">&#215;</a>
+</div>

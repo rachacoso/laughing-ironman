@@ -28,20 +28,9 @@
 
 		<% if @allphotos %>
 			<ul class="small-block-grid-2 medium-block-grid-4 large-block-grid-6">
-				<% @allphotos.each do |p| %>
-						<li><%= link_to shared_media_library_item_url(p), :data => {:'reveal-id' => "inlinePhoto", :'reveal-ajax' => "true" } do %>
-							<%= image_tag p.photo.url(:small) %><br>
-							<small><%= p.photo_file_name %></small>
-							<% end %></li>
-				<% end %>
+				<%= render partial: 'shared/media_library_item', collection: @allphotos %>
 			</ul>
 		<% end %>
-
-
-
-<div id="inlinePhoto" class="reveal-modal" data-reveal>
-  
-</div>
 
 	</div>
 </div>
