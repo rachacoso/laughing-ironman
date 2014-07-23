@@ -681,6 +681,7 @@ $( document ).ready(function() {
 		'#simpleformatHelperForm, ' + 
 		'#pagenumberHelperForm, ' +
 		'#unorderedlistHelperForm, ' +
+		'#chartHelperForm, ' +
 		'#imageblockHelperForm'
 		;
 
@@ -705,20 +706,21 @@ $( document ).ready(function() {
 	});
 
 
+	// image preview for the imageblock/chart helper form
 	$( "#image_a" ).change(function( ) {
 		$( "#imageAPreview" ).attr( "src", imageblockPreviewSource[$('#image_a').val()] );
 	});
-
 	$( "#image_b" ).change(function( ) {
 		$( "#imageBPreview" ).attr( "src", imageblockPreviewSource[$('#image_b').val()] );
 	});
-
 	$( "#image_c" ).change(function( ) {
 		$( "#imageCPreview" ).attr( "src", imageblockPreviewSource[$('#image_c').val()] );
 	});	
-
-
-  $('#imagelayout_2').click(function () {
+	$( "#chart" ).change(function( ) {
+		$( "#chartPreview" ).attr( "src", chartPreviewSource[$('#chart').val()] );
+	});		
+  // UI controls for imageblock helper form (hide unused select control)
+	$('#imagelayout_2').click(function () {
      $('#imageC').hide();
   });
   $('#imagelayout_21').click(function () {

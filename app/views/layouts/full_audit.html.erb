@@ -7,9 +7,11 @@
   <link rel="shortcut icon" href="/img/lacoseal.ico" />
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "https://www.google.com/jsapi" %>
   <%= csrf_meta_tags %>
 
-  <%= yield(:javascript_head) %>
+  <%= content_for?(:javascript_head) ? yield(:javascript_head) : "" %>
+
 </head>
 
 
@@ -123,8 +125,8 @@
 
 
   <%= javascript_include_tag "application" %>
-  
-  <%= yield(:admin_footer) %>
+  <%= content_for?(:admin_footer) ? yield(:admin_footer) : "" %>
+
 
   </body>
 </html>

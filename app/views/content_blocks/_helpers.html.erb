@@ -15,7 +15,11 @@
 				<i class="fi-wrench"></i> <%= link_to 'Image Block Helper', '#', data: { :"reveal-id" => "imageblockModal"} %><br/>
 				<div id="imageblockModal" class="reveal-modal" data-reveal>
 					<%= render partial: 'imageblock_helper_form'%>
-				</div>										
+				</div>		
+				<i class="fi-wrench"></i> <%= link_to 'Chart Helper', '#', data: { :"reveal-id" => "chartModal"} %><br/>
+				<div id="chartModal" class="reveal-modal" data-reveal>
+					<%= render partial: 'chart_helper_form'%>
+				</div>									
 				<% if @audit_subtype == 'five_minute_summary' %>
 				<i class="fi-wrench"></i> <%= link_to 'Key Finding Helper', '#', data: { :"reveal-id" => "keyFindingModal"} %><br/>
 					<div id="keyFindingModal" class="reveal-modal" data-reveal>

@@ -116,36 +116,22 @@ class ContentBlocksController < ApplicationController
 		@helper_type = params[:helper_type]
 
 		@imagelayout = params[:imagelayout]
-		@image_a = InlinePhoto.find(params[:image_a])
-		@image_b = InlinePhoto.find(params[:image_b])
-		@image_c = InlinePhoto.find(params[:image_c])
+
+		if params[:image_a]
+			@image_a = InlinePhoto.find(params[:image_a])
+		end
+		if params[:image_b]
+			@image_b = InlinePhoto.find(params[:image_b])
+		end
+		if params[:image_c]
+			@image_c = InlinePhoto.find(params[:image_c])
+		end
 		@imageblock_caption = params[:imageblock_caption]
 
 		# render template: "content_blocks/#{params[:helper_type]}.html.erb", layout: false
 		render layout: false
 
 	end
-
-	# def keyfindings
-	# 	@number = params[:number]
-	# 	@headline = params[:headline]
-	# 	@fulltext = params[:fulltext]
-	# 	render layout: false
-	# end
-	# def pagenumber
-	# 	@number = params[:number]
-	# 	render layout: false
-	# end
-	# def simpleformat
-	# 	@fulltext = params[:fulltext]
-	# 	render layout: false
-	# end
-	# def unorderedlist
-	# 	@fulltext = params[:fulltext]
-	# 	render layout: false
-	# end
-
-
 
 	private
   def content_block_params

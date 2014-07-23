@@ -10,7 +10,7 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
 
-    <%= yield(:javascript_head) %>
+    <%= content_for?(:javascript_head) ? yield(:javascript_head) : "" %>
   </head>
 
   <body>

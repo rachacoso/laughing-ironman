@@ -52,4 +52,12 @@
 </div> 
 <!-- Image Block END --> 
 
+<% when 'chart' %>
+
+<%= javascript_tag do %>
+
+<%= @fulltext.html_safe %>
+<div id="chart_div"></div>
+<% end %>
+
 <% end %>

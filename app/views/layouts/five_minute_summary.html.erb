@@ -9,7 +9,7 @@
   <%= javascript_include_tag "vendor/modernizr" %>
   <%= csrf_meta_tags %>
 
-  <%= yield(:javascript_head) %>
+  <%= content_for?(:javascript_head) ? yield(:javascript_head) : "" %>
 </head>
 
 
@@ -128,8 +128,7 @@
 
 
   <%= javascript_include_tag "application" %>
-  
-  <%= yield(:admin_footer) %>
+  <%= content_for?(:admin_footer) ? yield(:admin_footer) : "" %>
 
   </body>
 </html>
