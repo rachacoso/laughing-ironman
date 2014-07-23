@@ -34,4 +34,22 @@
 <%= simple_format(@fulltext, {}, wrapper_tag: "li") %>
 </ul>
 
+<% when 'imageblock' %>
+<!-- Image Block BEGIN --> 
+<div class="row imageblock notfullwidth"> 
+ <div class="small-12 columns small-centered"> 
+   <div class="photoset-grid-lightbox" data-layout="<%= @imagelayout %>" style="visibility: hidden;"> 
+     <img src="<%= @image_a.photo(:medium) %>" data-highres="<%= @image_a.photo(:large) %>" > 
+     <img src="<%= @image_b.photo(:medium) %>" data-highres="<%= @image_b.photo(:large) %>" > 
+     <% if @image_c %>
+     <img src="<%= @image_c.photo(:medium) %>" data-highres="<%= @image_c.photo(:large) %>" > 
+     <% end %>
+   </div> 
+   <div class="imagecaption">
+	   <%= simple_format(@imageblock_caption, {}, wrapper_tag: "em").gsub(/\n/, '').html_safe %>   
+   </div> 
+ </div> 
+</div> 
+<!-- Image Block END --> 
+
 <% end %>

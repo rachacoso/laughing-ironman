@@ -680,8 +680,10 @@ $( document ).ready(function() {
 		'#keyfindingsHelperForm, ' + 
 		'#simpleformatHelperForm, ' + 
 		'#pagenumberHelperForm, ' +
-		'#unorderedlistHelperForm'
+		'#unorderedlistHelperForm, ' +
+		'#imageblockHelperForm'
 		;
+
 	$( helperList ).submit(function( event ) {
 	 	
 	  // Stop form from submitting normally
@@ -701,6 +703,33 @@ $( document ).ready(function() {
 	  });
 	  $( helperList ).foundation('reveal', 'close');
 	});
+
+
+	$( "#image_a" ).change(function( ) {
+		$( "#imageAPreview" ).attr( "src", imageblockPreviewSource[$('#image_a').val()] );
+	});
+
+	$( "#image_b" ).change(function( ) {
+		$( "#imageBPreview" ).attr( "src", imageblockPreviewSource[$('#image_b').val()] );
+	});
+
+	$( "#image_c" ).change(function( ) {
+		$( "#imageCPreview" ).attr( "src", imageblockPreviewSource[$('#image_c').val()] );
+	});	
+
+
+  $('#imagelayout_2').click(function () {
+     $('#imageC').hide();
+  });
+  $('#imagelayout_21').click(function () {
+     $('#imageC').show();
+  });
+  $('#imagelayout_12').click(function () {
+     $('#imageC').show();
+  });
+
+
 });
+
 
 

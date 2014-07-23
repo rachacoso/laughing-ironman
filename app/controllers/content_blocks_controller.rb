@@ -4,6 +4,9 @@ class ContentBlocksController < ApplicationController
 	def edit
 		@block = ContentBlock.find(params[:id])
 		@audit_subtype = @block.section.five_minute_summary ? 'five_minute_summary' : 'full_audit'
+		sharedphotos = InlinePhoto.where(audit_id: nil)
+		auditphotos = @block.section.send(@audit_subtype).audit.inline_photos
+		@photos = auditphotos + sharedphotos
 
 		case @audit_subtype 	
 		when 'five_minute_summary'
@@ -38,6 +41,10 @@ class ContentBlocksController < ApplicationController
 		@newblock = ContentBlock.new
 		@position = params[:position]
 		@audit_subtype = @section.five_minute_summary ? 'five_minute_summary' : 'full_audit'
+		sharedphotos = InlinePhoto.where(audit_id: nil)
+		auditphotos = @section.send(@audit_subtype).audit.inline_photos
+		@photos = auditphotos + sharedphotos
+
 
 		case @audit_subtype 	
 		when 'five_minute_summary'
@@ -107,6 +114,12 @@ class ContentBlocksController < ApplicationController
 		@headline = params[:headline]
 		@fulltext = params[:fulltext]
 		@helper_type = params[:helper_type]
+
+		@imagelayout = params[:imagelayout]
+		@image_a = InlinePhoto.find(params[:image_a])
+		@image_b = InlinePhoto.find(params[:image_b])
+		@image_c = InlinePhoto.find(params[:image_c])
+		@imageblock_caption = params[:imageblock_caption]
 
 		# render template: "content_blocks/#{params[:helper_type]}.html.erb", layout: false
 		render layout: false

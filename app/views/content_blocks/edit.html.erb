@@ -33,7 +33,7 @@
 		<div class="row">
 
 
-			<div class="small-4 columns leftadminmenu">
+			<div class="small-3 columns leftadminmenu">
 				<div class="small-3 columns text-right">
 					<%= link_to @linkto do %>
 						<small>Back to<br><strong>Edit <%= @audit_typename %></strong><br>(Discard changes)</small> 
@@ -44,7 +44,7 @@
 				</div>
 			</div>
 
-			<div class="small-8 columns rightadminmenu">
+			<div class="small-9 columns rightadminmenu">
 				<div class="small-2 columns text-left inactive">
 					View<br><strong>Five Minute Summary</strong>
 				</div>
@@ -57,7 +57,10 @@
 				<div class="small-2 columns text-left inactive">
 					Edit<br><strong>Full Audit</strong>
 				</div>
-				<div class="small-4 columns text-right">
+				<div class="small-1 columns text-left inactive">
+					Media<br><strong>Library</strong>
+				</div>
+				<div class="small-3 columns text-right">
 					Los Angeles Controller <strong>Audits</strong><br>
 					Welcome, <strong><%= @current_user.email %></strong><br>
 					<%= link_to 'Logout', logout_url %>
