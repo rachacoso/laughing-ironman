@@ -1,31 +1,10 @@
-<!-- BEGIN FIVE MINUTE SUMMARY SECTION INTRO-->
+<% unless thissection.content_blocks.empty? %>
 
+	<% thissection.block_order.each do |bid| %>
+		<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
+		
+			<%= thisblock.content.html_safe %>
+		
+	<% end %>
 
-<div class="sectionWrapper" id="WPsummary">
-  <div class="row contentbg">
-    <div class="small-12 medium-10 columns small-centered">
-      
-      <div class="RAfull">
-             
-        <h4 data-magellan-destination="summary"></h4>
-        <div id="backgroundShadeTop"></div>
-
-				
-					<% unless thissection.content_blocks.empty? %>
-
-						<% thissection.block_order.each do |bid| %>
-							<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
-							
-								<%= thisblock.content.html_safe %>
-							
-						<% end %>
-
-					<% end %>
-
-
-        <div id="backgroundShadeBottom"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- END FIVE MINUTE SUMMARY SECTION INTRO-->
+<% end %>

@@ -34,9 +34,7 @@
 <% @fms.section_order.each do |sid| # iterate through sections in order%>
 
 	<% thissection = @fms.sections.find(sid) %>
-	
-
-		<%= render partial: "/shared/#{thissection.section_type.downcase}", locals: {thissection: thissection} %>
+	<%= render partial: "/shared/#{thissection.section_type.downcase}", layout: "/shared/#{thissection.section_type.downcase}_layout", locals: {thissection: thissection} %>
 	
 	<!-- BEGIN SECTION SPACER -->
 	<div class="RASectionSpacer">

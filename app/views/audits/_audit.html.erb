@@ -1,12 +1,12 @@
 
 
 <div class="row">
-	<div class="small-5 columns">
+	<div class="small-4 columns">
 		<strong><%= simple_format(audit.name, {}, wrapper_tag: "div") %></strong>
 		<%= audit.publication_date.strftime("%B %d, %Y") %>
 	</div>
 
-	<div class="small-7 columns">
+	<div class="small-4 columns">
 		<%= link_to edit_audit_url(audit) do %>
 			<i class="fi-pencil"></i> <small>Edit Audit Title/Pub Date</small>
 		<% end %><br/>
@@ -14,16 +14,15 @@
 		<%= link_to five_minute_summary_url(audit.five_minute_summary) do %>
 			<i class="fi-eye"></i> <small>View/Edit Audit</small>
 		<% end %><br/>
-
-		<%= link_to public_five_minute_summary_url(audit.five_minute_summary) do %>
-			<i class="fi-eye"></i> <small>View Public Version of Audit</small>
-		<% end %><br/>
 		
 		<a href="#" data-reveal-id="myModal_<%= audit.id %>">
 			<i class="fi-x"></i> <small>Delete this Audit</small>
 		</a>
-
-
+	</div>
+	<div class="small-4 columns end">
+		<%= link_to public_five_minute_summary_url(audit.five_minute_summary) do %>
+			<i class="fi-eye"></i> <small>View Public Version of Audit</small>
+		<% end %><br/>
 	</div>
 
 </div>
