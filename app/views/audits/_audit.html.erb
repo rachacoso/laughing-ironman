@@ -19,12 +19,26 @@
 			<i class="fi-x"></i> <small>Delete this Audit</small>
 		</a>
 	</div>
+
 	<div class="small-4 columns end">
 		<%= link_to public_five_minute_summary_url(audit.five_minute_summary) do %>
 			<i class="fi-eye"></i> <small>View Public Version of Audit</small>
 		<% end %><br/>
-	</div>
+		<%= link_to publish_url(1, audit) do %>
+			<i class="fi-plus"></i> <small>Publish/Update Audit</small>
+		<% end %><br/>
+		<%= link_to publish_url(0, audit) do %>
+			<i class="fi-minus"></i> <small>Unpublish Audit</small>
+		<% end %><br/>		
+		<small>Status: <strong>
+			<% if audit.public_five_minute_summary && audit.public_full_audit %>
+				Published (<%= audit.public_five_minute_summary.c_at.strftime("at %I:%M%p %Z on %m/%d/%Y") %>)
+			<% else %>
+				Not Published
+			<% end %>
+			</strong></small>
 
+	</div>
 </div>
 
 <div id="myModal_<%= audit.id %>" class="reveal-modal small" data-reveal>

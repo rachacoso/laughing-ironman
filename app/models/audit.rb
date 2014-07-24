@@ -2,6 +2,7 @@ class Audit
   include Mongoid::Document
   field :name, type: String
   field :publication_date, type: Date
+  field :public_update, type: Date
 
   validates :name, presence: true, uniqueness: true
 	validates :publication_date, presence: true
@@ -9,6 +10,11 @@ class Audit
   has_one :five_minute_summary, :dependent => :destroy
   has_one :full_audit, :dependent => :destroy
   has_many :inline_photos, :dependent => :destroy
+
+  has_one :public_five_minute_summary, class_name: 'PublicContent', :dependent => :destroy, inverse_of: :public_five_minute_summary_audit
+  has_one :public_full_audit, class_name: 'PublicContent', :dependent => :destroy, inverse_of: :public_full_audit_audit
+
+# has_many :posted_to_user, class_name: "Post", inverse_of: :posted_to
 
   def generate_new_fms
 

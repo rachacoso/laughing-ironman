@@ -13,6 +13,8 @@ class FiveMinuteSummary
   has_one :fourth_background_photo, class_name: 'BackgroundPhoto', :dependent => :destroy, inverse_of: :fms_bg_four
   has_one :fifth_background_photo, class_name: 'BackgroundPhoto', :dependent => :destroy, inverse_of: :fms_bg_five
 
+  embeds_one :public_content
+  
 	accepts_nested_attributes_for :sections, :audit
 
 end

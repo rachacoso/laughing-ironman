@@ -35,7 +35,7 @@
 
 	<% thissection = @fms.sections.find(sid) %>
 	
-	<%= render partial: "/shared/#{thissection.section_type.downcase}", layout: "/shared/#{thissection.section_type.downcase}_layout", locals: {thissection: thissection} %>
+	<%= render partial: "/shared/fms_section", layout: "/shared/#{thissection.section_type.downcase}_layout", locals: {thissection: thissection} %>
 	
 	<!-- BEGIN SECTION SPACER -->
 	<div class="RASectionSpacer">
