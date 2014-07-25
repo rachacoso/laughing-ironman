@@ -1,40 +1,38 @@
 <% content_for :title do %>
-  <%= @fms.audit.name  %>
+  <%= @fms.name  %>
 <% end %>
 <% content_for :bodytitle do %>
-  <%= simple_format(@fms.audit.name, {}, wrapper_tag: "div")  %>
+  <%= simple_format(@fms.name, {}, wrapper_tag: "div")  %>
 <% end %>
 <% content_for :publication_date do %>
-  <%= @fms.audit.publication_date.strftime("%B %d, %Y") %>
+  <%= @fms.publication_date.strftime("%B %d, %Y") %>
 <% end %>
-<% content_for :full_audit_link do %><%= public_full_audit_path(@fms.audit.full_audit).html_safe %><% end %>
+<% content_for :full_audit_link do %><%= public_full_audit_path(@audit).html_safe %><% end %>
 
 <% content_for :javascript_head do %>
 	<%= javascript_tag do %>
-		<% if @fms.first_background_photo %>
-		  window.bgOne = '<%= j @fms.first_background_photo.photo(:large) %>';
+		<% if !@fms.background_photos[0].blank? %>
+		  window.bgOne = '<%= j @fms.background_photos[0] %>';
 		<% end %>  
-		<% if @fms.second_background_photo %>
-		  window.bgTwo = '<%= j @fms.second_background_photo.photo(:large) %>';
+		<% if !@fms.background_photos[1].blank? %>
+		  window.bgTwo = '<%= j @fms.background_photos[1] %>';
 		<% end %>  
-		<% if @fms.third_background_photo %>
-		  window.bgThree = '<%= j @fms.third_background_photo.photo(:large) %>';
+		<% if !@fms.background_photos[2].blank? %>
+		  window.bgThree = '<%= j @fms.background_photos[2] %>';
 		<% end %>  
-		<% if @fms.fourth_background_photo %>
-		  window.bgFour = '<%= j @fms.fourth_background_photo.photo(:large) %>';
+		<% if !@fms.background_photos[3].blank? %>
+		  window.bgFour = '<%= j @fms.background_photos[3] %>';
 		<% end %>  
-		<% if @fms.fifth_background_photo %>
-		  window.bgFive = '<%= j @fms.fifth_background_photo.photo(:large) %>';
+		<% if !@fms.background_photos[4].blank? %>
+		  window.bgFive = '<%= j @fms.background_photos[4] %>';
 	  <% end %>
 	<% end %>
 <% end %>
 
 
 <%# display sections %>
-<% @fms.section_order.each do |sid| # iterate through sections in order%>
-
-	<% thissection = @fms.sections.find(sid) %>
-	<%= render partial: "/shared/fms_section", layout: "/shared/#{thissection.section_type.downcase}_layout", locals: {thissection: thissection} %>
+<% @fms.public_sections.each do |section| # iterate through sections in order%>
+	<%= render partial: "/shared/fms_public_section", layout: "/shared/#{section.section_type.downcase}_layout", locals: {thissection: section} %>
 	
 	<!-- BEGIN SECTION SPACER -->
 	<div class="RASectionSpacer">

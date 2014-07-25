@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
 root 'home#front'
+get '/404audit', :to => redirect('/404audit.html')
 
 get '/login' => 'session#new', as: 'login'
 post '/login' => 'session#create'
 get '/logout' => 'session#destroy', as: 'logout'
 
-resources :audits, only: [:new, :create, :index, :destroy, :update, :edit]
+resources :audits, only: [:new, :create, :index, :destroy, :update]
+get 'audits/:id/edit/:subtype' => 'audits#edit', as: 'edit_audit'
 
 resources :five_minute_summaries, only: [:show, :edit, :update]
 resources :content_blocks, only: [:edit, :update, :destroy]
@@ -39,7 +41,7 @@ post '/sections/new/:full_audit_id/:position' => 'sections#create'
 get 'publish/:switch/:id' => 'public_views#publish', as: 'publish'
 
 
-get '/public/audits/five_minute_summary/:id' => 'public_views#fms', as: 'public_five_minute_summary'
-get '/public/audits/full_audit/:id' => 'public_views#fa', as: 'public_full_audit'
+get '/public/audits/:id/five_minute_summary' => 'public_views#fms', as: 'public_five_minute_summary'
+get '/public/audits/:id/full_audit' => 'public_views#fa', as: 'public_full_audit'
 
 end

@@ -4,42 +4,44 @@
 
 
 <div class="row">
-  <div class="small-9 small-centered columns">
+  <div class="small-10 small-centered columns">
 
     <%= form_for @audit, url: audit_url do |f| %>
-
-    	<%= f.text_area :name, cols: 2, rows: 5 %>
-    	<%= f.label :publication_date %>
-    	<%= f.date_field :publication_date %>
-    	
-    	<%= f.submit 'Update this Audit' %> 
-
-
-
-    <% end %>
-	
-    <strong> Preview: </strong>
-    <div class="backpanel">
-    <div class="headWrapper topHead">
-      <div class="row" id="WPtop">
-        <div class="small-10 columns small-centered RAmargintop">
-          <div class="headback">
-                <h1><strong><%= simple_format(@audit.name, {}, wrapper_tag: "div")  %></strong></h1>
-                <h3>&mdash; Five Minute Summary &mdash;</h3>
-                <h4><%= @audit.publication_date.strftime("%B %d, %Y") %>
-                <object type="image/svg+xml" data="/img/RGsig.svg" width="275" class="rgsig">
-                  RG Signature <!-- fallback image in CSS -->
-                </object></h4>
-                <!-- <h3>Ron Galperin <small>City Controller</small></h3> -->
+    <%= hidden_field_tag 'subtype', @subtype %>
+      <div class="backpanel">
+      <div class="headWrapper topHead">
+        <div class="row" id="WPtop">
+          <div class="small-10 columns small-centered RAmargintop">
+            <div class="headback">
+              <div class="row">
+                <div class="small-12 columns">
+                  <%= f.text_area :name, rows: 5, style: "font-size:2em; font-weight:bold;" %>
+                </div>
+              </div>
+              <h3>&mdash; Five Minute Summary &mdash;</h3>
+              <div class="row">
+                <div class="small-4 columns">
+                  <%= f.date_field :publication_date, width: '10' %>
+                </div>
+                <div class="small-8 columns">
+                  <object type="image/svg+xml" data="/img/RGsig.svg" width="275" class="rgsig">
+                    RG Signature <!-- fallback image in CSS -->
+                  </object>
+                </div>
+              </div>
+              <!-- <h3>Ron Galperin <small>City Controller</small></h3> -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    </div>
-
+      </div>
+      <%= f.submit 'Update', class: "tiny radius success button" %> <%= link_to 'Cancel (Discard changes)', @linkback, class: "tiny radius info button" %>
+    <% end %>
+	
   </div>
 </div>
 
+    
 <% content_for :admin_footer do %>
 
 <!-- BEGIN SECTION SPACER -->

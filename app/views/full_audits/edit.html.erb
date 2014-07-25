@@ -21,6 +21,9 @@
         </div>
       </div>
     </div>
+		<%= link_to edit_audit_url(@fa.audit, 'fa') do %>
+			<i class="fi-pencil"></i> <small>Edit Title / Publication Date</small>
+		<% end %>       
     </div>
 		<!-- BEGIN SECTION SPACER -->
 		<div class="AdminSectionSpacer">
@@ -185,7 +188,7 @@
 					
 				</div>
 				<div class="small-1 columns text-left">
-					<%= link_to media_library_url(@fa) do %> 
+					<%= link_to media_library_url(@fa.audit) do %> 
 						Media<br><strong>Library</strong>
 					<% end %>
 				</div>

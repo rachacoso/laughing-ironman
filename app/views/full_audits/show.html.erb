@@ -7,6 +7,13 @@
 <% content_for :publication_date do %>
   <%= @fa.audit.publication_date.strftime("%B %d, %Y") %>
 <% end %>
+<% content_for :nav_items do %>
+  <% @fa.section_order.each_with_index do |sid, index| # iterate through sections in order%>
+    <% thissection = @fa.sections.find(sid) %>
+    <%= (index +1)%5 == 0 ? "<br>".html_safe : "" %>
+    <dd data-magellan-arrival="<%= thissection.id %>"><a href="#<%= thissection.id %>"><strong><%= thissection.display_name %></strong></a></dd>
+  <% end %>
+<% end %>
 <% content_for :five_minute_summary_link do %><%= five_minute_summary_path(@fa.audit.five_minute_summary).html_safe %><% end %>
 
 <% content_for :javascript_head do %>
@@ -25,7 +32,7 @@
 	<% thissection = @fa.sections.find(sid) %>
 	
 
-	<%= render partial: "/shared/#{thissection.section_type.downcase}", layout: "/shared/#{thissection.section_type.downcase}_layout", locals: {thissection: thissection} %>
+	<%= render partial: "/shared/#{thissection.section_type.downcase}", layout: "/shared/#{thissection.section_type.downcase}_layout", locals: {thissection: thissection, section_id: thissection.id} %>
 	
 	<!-- BEGIN SECTION SPACER -->
 	<div class="RASectionSpacer">
@@ -73,7 +80,7 @@
 					<% end %>
 				</div>
 				<div class="small-1 columns text-left">
-					<%= link_to media_library_url(@fa) do %> 
+					<%= link_to media_library_url(@fa.audit) do %> 
 						Media<br><strong>Library</strong>
 					<% end %>
 				</div>

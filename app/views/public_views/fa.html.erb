@@ -1,30 +1,33 @@
 <% content_for :title do %>
-  <%= @fa.audit.name  %>
+  <%= @fa.name  %>
 <% end %>
 <% content_for :bodytitle do %>
-  <%= simple_format(@fa.audit.name, {}, wrapper_tag: "div")  %>
+  <%= simple_format(@fa.name, {}, wrapper_tag: "div")  %>
 <% end %>
 <% content_for :publication_date do %>
-  <%= @fa.audit.publication_date.strftime("%B %d, %Y") %>
+  <%= @fa.publication_date.strftime("%B %d, %Y") %>
 <% end %>
-<% content_for :five_minute_summary_link do %><%= public_five_minute_summary_path(@fa.audit.five_minute_summary).html_safe %><% end %>
-
+<% content_for :five_minute_summary_link do %><%= public_five_minute_summary_path(@audit).html_safe %><% end %>
+<% content_for :nav_items do %>
+  <% @fa.public_sections.each_with_index do |section, index| # iterate through sections in order%>
+    <%= (index +1)%5 == 0 ? "<br>".html_safe : "" %>
+    <dd data-magellan-arrival="<%= section.section_id %>"><a href="#<%= section.section_id %>"><strong><%= section.display_name %></strong></a></dd>
+  <% end %>
+<% end %>
 <% content_for :javascript_head do %>
 	<%= javascript_tag do %>
-		<% if @fa.background_photo %>
-		  window.bgOne = '<%= j @fa.background_photo.photo(:large) %>';
-		<% end %>  
+		<% if !@fa.background_photos[0].blank? %>
+		  window.bgOne = '<%= j @fa.background_photos[0] %>';
+		<% end %> 
 	<% end %>
 <% end %>
 
 
 
 <%# display sections %>
-<% @fa.section_order.each do |sid| # iterate through sections in order%>
+<% @fa.public_sections.each do |section| # iterate through sections in order%>
 
-	<% thissection = @fa.sections.find(sid) %>
-	<%= render partial: "/shared/#{thissection.section_type.downcase}", layout: "/shared/#{thissection.section_type.downcase}_layout", locals: {thissection: thissection} %>
-	
+	<%= render partial: "/shared/#{section.section_type.downcase}_public", layout: "/shared/#{section.section_type.downcase}_layout", locals: {thissection: section,  section_id: section.section_id} %>
 	<!-- BEGIN SECTION SPACER -->
 	<div class="RASectionSpacer">
 

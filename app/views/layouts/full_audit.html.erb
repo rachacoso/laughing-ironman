@@ -77,12 +77,8 @@
         <dl class="sub-nav" id="fullauditnav">
           <dd class="subnav-auditName" data-magellan-arrival="audittop"><a href="#audittop">&#8593;</a></dd>
 
-          <% @fa.section_order.each_with_index do |sid, index| # iterate through sections in order%>
-            <% thissection = @fa.sections.find(sid) %>
-            <%= (index +1)%5 == 0 ? "<br>".html_safe : "" %>
-            <dd data-magellan-arrival="<%= thissection.id %>"><a href="#<%= thissection.id %>"><strong><%= thissection.display_name %></strong></a></dd>
- 
-          <% end %>
+          <%= yield(:nav_items) %>
+
           <dd>&nbsp;</dd>
           <dd class="subnav-auditName" data-magellan-arrival="audittop"><strong><%= yield(:bodytitle) %></strong></dd>
 

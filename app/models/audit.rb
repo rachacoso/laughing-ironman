@@ -2,7 +2,6 @@ class Audit
   include Mongoid::Document
   field :name, type: String
   field :publication_date, type: Date
-  field :public_update, type: Date
 
   validates :name, presence: true, uniqueness: true
 	validates :publication_date, presence: true

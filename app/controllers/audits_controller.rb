@@ -26,12 +26,24 @@ class AuditsController < ApplicationController
 
   def edit
     @audit = Audit.find(params[:id])
+    @subtype = params[:subtype]
+
+    @linkback = (@subtype == 'fms') ? edit_five_minute_summary_url(@audit.five_minute_summary) : edit_full_audit_url(@audit.full_audit)
+
   end
 
   def update
     audit = Audit.find(params[:id])
+    subtype = params[:subtype]
+
     audit.update(audit_parameters)
-    redirect_to edit_audit_path(audit)
+
+    if subtype == 'fms' 
+      redirect_to edit_five_minute_summary_url(audit.five_minute_summary)
+    else
+      redirect_to edit_full_audit_url(audit.full_audit)
+    end
+    # redirect_to audits_path
 
   end
 
