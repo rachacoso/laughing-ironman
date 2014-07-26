@@ -32,9 +32,15 @@
 		<!-- END SECTION SPACER -->
 
 		<%# display sections %>
-		<% @fa.section_order.each_with_index do |sid, index| # iterate through sections in order%>
-			<% thissection = @fa.sections.find(sid) %>
-
+		<% if @fa.section_order.empty? %>
+			<div class="backpanel">
+				<%= link_to new_section_url(@fa.id, 0 ) do %>
+					<i class="fi-plus"></i> <small>Add a section</small>
+				<% end %>
+			</div>
+		<% else %>		
+			<% @fa.section_order.each_with_index do |sid, index| # iterate through sections in order%>
+				<% thissection = @fa.sections.find(sid) %>
 				<h3><%= thissection.display_name %></h3>
 				<%= link_to new_section_url(@fa.id, index ), class: "adminsection" do %>
 					<i class="fi-arrow-up"></i> <small>Add a section before</small>
@@ -49,7 +55,7 @@
 					<i class="fi-pencil"></i> <small>Edit section title</small>
 				<% end %>
 				| 
-				<a href="#" data-reveal-id="mySectionModalDelete_<%= sid %>" class="adminsection">
+				<a href="#" data-reveal-id="mySectionModalDelete_<%= sid %>" class="adminsection deletelink">
 						<i class="fi-x"></i> <small>Delete this section</small>
 				</a>
 
@@ -69,64 +75,64 @@
 				  <a class="close-reveal-modal">&#215;</a>
 				</div>
 
+				<% if thissection.content_blocks.empty? %>
+					<div class="backpanel">
+						<%= link_to new_content_block_url(thissection.id, 0 ) do %>
+							<i class="fi-plus"></i> <small>Add a block</small>
+						<% end %>
+					</div>
+				<% else %>
+					<% thissection.block_order.each_with_index do |bid, index| %>
+						<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
+						<div class="backpanel">
+							
+							<%# to display the PDF page pointers in the edit interface %>
+							<% if /<a name="p/.match(thisblock.content) %>
+								<p><%= thisblock.content %></p>
+							<% else %>
+								<p><%= thisblock.content.html_safe %></p>
+							<% end %>
 
-			<% if thissection.content_blocks.empty? %>
-				<div class="backpanel">
-					<%= link_to new_content_block_url(thissection.id, 0 ) do %>
-						<i class="fi-plus"></i> <small>Add a block</small>
+							<%= link_to new_content_block_url(thissection.id, index ) do %>
+								<i class="fi-arrow-up"></i> <small>Add a block before</small>
+							<% end %>
+							| 
+							<%= link_to new_content_block_url(thissection.id, index + 1 ) do %>
+								<i class="fi-arrow-down"></i> <small>Add a block after</small>
+							<% end %>					
+							| 			
+							<%= link_to edit_content_block_url(thisblock) do %>
+								<i class="fi-pencil"></i> <small>Edit this block</small>
+							<% end %>
+							| 
+							<a href="#" data-reveal-id="myModal_<%= bid %>" class="deletelink">
+									<i class="fi-x"></i> <small>Delete this block</small>
+							</a>
+						</div>
+						<div id="myModal_<%= bid %>" class="reveal-modal" data-reveal>
+							<h2>Delete <strong>Content Block</strong></h2>
+							<div class="AdminSectionSpacer1"></div>
+							<% if /<a name="p/.match(thisblock.content) %>
+								<p><%= thisblock.content %></p>
+							<% else %>
+								<p><%= thisblock.content.html_safe %></p>
+							<% end %>
+						  <h6><strong>Are you sure you want to Delete this Content?</strong></h6>
+						  <%= button_to "Yes, Delete this content", content_block_path(thisblock), :method => 'delete', class: "tiny radius alert button" %> <a class="tiny radius info button custom-close-reveal-modal">No, I've changed my mind!</a>
+						  
+						  <a class="close-reveal-modal">&#215;</a>
+						</div>
 					<% end %>
-				</div>
-			<% else %>
-
-			 <% thissection.block_order.each_with_index do |bid, index| %>
-				<% thisblock = thissection.content_blocks.find(bid) # iterate through content blocks in order%>
-				<div class="backpanel">
-
-					<% if /<a name="p/.match(thisblock.content) %>
-						<p><%= thisblock.content %></p>
-					<% else %>
-						<p><%= thisblock.content.html_safe %></p>
-					<% end %>
-					<%= link_to new_content_block_url(thissection.id, index ) do %>
-						<i class="fi-arrow-up"></i> <small>Add a block before</small>
-					<% end %>
-					| 
-					<%= link_to new_content_block_url(thissection.id, index + 1 ) do %>
-						<i class="fi-arrow-down"></i> <small>Add a block after</small>
-					<% end %>					
-					| 			
-					<%= link_to edit_content_block_url(thisblock) do %>
-						<i class="fi-pencil"></i> <small>Edit this block</small>
-					<% end %>
-					| 
-					<a href="#" data-reveal-id="myModal_<%= bid %>">
-							<i class="fi-x"></i> <small>Delete this block</small>
-					</a>
-
-
-				</div>
-				<div id="myModal_<%= bid %>" class="reveal-modal" data-reveal>
-					<h2>Delete <strong>Content Block</strong></h2>
-					<div class="AdminSectionSpacer1"></div>
-					<% if /<a name="p/.match(thisblock.content) %>
-						<p><%= thisblock.content %></p>
-					<% else %>
-						<p><%= thisblock.content.html_safe %></p>
-					<% end %>
-				  <h6><strong>Are you sure you want to Delete this Content?</strong></h6>
-				  <%= button_to "Yes, Delete this content", content_block_path(thisblock), :method => 'delete', class: "tiny radius alert button" %> <a class="tiny radius info button custom-close-reveal-modal">No, I've changed my mind!</a>
-				  
-				  <a class="close-reveal-modal">&#215;</a>
-				</div>
-			 <% end %>
-
+				<% end %>
 			<% end %>
-			<!-- BEGIN SECTION SPACER -->
-			<div class="AdminSectionSpacer">
-
-			</div>
-			<!-- END SECTION SPACER -->
+		
 		<% end %>
+
+		<!-- BEGIN SECTION SPACER -->
+		<div class="AdminSectionSpacer">
+
+		</div>
+		<!-- END SECTION SPACER -->
 
 		<div class="backpanel">
 			<h3> Background Image </h3>

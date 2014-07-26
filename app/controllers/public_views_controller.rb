@@ -6,7 +6,7 @@ class PublicViewsController < ApplicationController
 
 	def fms
 		@audit = Audit.find(params[:id])
-    if @audit.public_five_minute_summary
+    if @audit.published?
       @fms = @audit.public_five_minute_summary
     else
       redirect_to '/404audit.html'
@@ -15,7 +15,7 @@ class PublicViewsController < ApplicationController
 
 	def fa
 		@audit = Audit.find(params[:id])
-    if @audit.public_full_audit
+    if @audit.published?
       @fa = @audit.public_full_audit
     else
       redirect_to '/404audit.html'

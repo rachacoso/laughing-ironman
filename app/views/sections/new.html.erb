@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="row">
-	<div class="small-12 columns">
+	<div class="small-8 columns">
 
 		<% if flash[:notice] %>
 			<p><%= flash[:notice] %></p>
@@ -16,7 +16,7 @@
 			</p>
 		<% end %>
 		
-		<h4>Add New Section</h4>
+		<h4>Add <strong>New Section</strong></h4>
 
 		<%= form_for @newsection, url: new_section_url(@fa, @position) do |f| %>
 			
@@ -44,7 +44,7 @@
 			<div class="small-3 columns leftadminmenu">
 				<div class="small-3 columns text-right">
 					<%= link_to edit_full_audit_url(@fa) do %>
-						Back to<br><strong>Edit Full Audit</strong><br> <small>(Discard changes)</small>
+						<small><strong>Cancel</strong><br> (Discard changes)</small>
 					<% end %>
 				</div>
 				<div class="small-9 columns text-left">

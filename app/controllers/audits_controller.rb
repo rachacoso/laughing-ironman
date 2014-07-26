@@ -28,7 +28,15 @@ class AuditsController < ApplicationController
     @audit = Audit.find(params[:id])
     @subtype = params[:subtype]
 
-    @linkback = (@subtype == 'fms') ? edit_five_minute_summary_url(@audit.five_minute_summary) : edit_full_audit_url(@audit.full_audit)
+    # Set UI correctly for each audit type
+    case @subtype
+    when 'fms'
+      @linkback = edit_five_minute_summary_url(@audit.five_minute_summary)
+      @audit_typename = 'Five Minute Summary'
+    when 'fa'
+      @linkback = edit_full_audit_url(@audit.full_audit)
+      @audit_typename = 'Full Audit'
+    end
 
   end
 

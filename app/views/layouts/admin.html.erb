@@ -12,6 +12,9 @@
     <%= csrf_meta_tags %>
 
     <%= content_for?(:javascript_head) ? yield(:javascript_head) : "" %>
+    <%= javascript_tag do %>
+      var adminPage = true;
+    <% end %>
   </head>
 
   <body>
@@ -27,5 +30,6 @@
 <%= content_for?(:admin_footer) ? yield(:admin_footer) : "" %>
 
 
+  
   </body>
 </html>

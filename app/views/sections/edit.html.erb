@@ -3,9 +3,9 @@
 <% end %>
 
 <div class="row">
-	<div class="small-12 columns">
+	<div class="small-8 columns">
 
-<h4>Edit Section Title</h4>
+<h4>Edit <strong>Section Title</strong></h4>
 
 
 <%= form_for @section, url: section_url do |f| %>
@@ -35,7 +35,7 @@
 			<div class="small-3 columns leftadminmenu">
 				<div class="small-3 columns text-right">
 					<%= link_to edit_full_audit_url(@section.full_audit) do %>
-						Back to<br><strong>Edit Full Audit</strong><br> <small>(Discard changes)</small>
+						<small><strong>Cancel</strong><br> (Discard changes)</small>
 					<% end %>
 				</div>
 				<div class="small-9 columns text-left">

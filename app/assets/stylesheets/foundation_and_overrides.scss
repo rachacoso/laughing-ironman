@@ -2097,9 +2097,10 @@ textarea {
 }
 
 .listspacer {
-	height: 1em;
-	background-color: #efefef;
-	margin: 0.5em 0em;
+	height: 0.25em;
+	background-color: #80E6CC;
+	margin: 2em 0em 1.5em 0em;
+
 }
 
 
@@ -2128,3 +2129,9 @@ textarea {
   background: #5c5c5c;
 }
 
+.deletelink {
+	color: #ff8080;
+	&:hover{
+		color: darken(#ff8080, 10%);
+	}
+}

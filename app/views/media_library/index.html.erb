@@ -13,30 +13,34 @@
 		
 
 		<div class="backpanel">
-			
-			<h5>Add <strong>Media</strong><br>
-			<small>(png, gif or jpeg only)</small><br>
-		<% if flash[:error] %>
-				<div data-alert class="alert-box alert">
-			  	<%= flash[:error] %>
-				  <a href="#" class="close">&times;</a>
+			<div class="row">
+				<div class="small-6 columns">
+					<h5>Add <strong>Media</strong></h5>
+					<h6><small>(png, gif or jpeg only)</small></h6>
+					<% if flash[:error] %>
+						<div data-alert class="alert-box alert">
+					  	<%= flash[:error] %>
+						  <a href="#" class="close">&times;</a>
+						</div>
+					<% end %>
+
+					<%= form_for @newphoto, url: media_library_url(@audit) do |f| %>
+						<%= f.file_field :photo, label: "&nbsp;".html_safe, accept: 'image/png,image/gif,image/jpeg' %>
+						<%= f.submit 'Add media', class: "tiny radius success button" %>
+					<% end %>
 				</div>
-		<% end %>
-
-		<%= form_for @newphoto, url: media_library_url(@audit) do |f| %>
-
-			<%= f.file_field :photo, label: "&nbsp;".html_safe, accept: 'image/png,image/gif,image/jpeg' %>
-			<%= f.submit 'Add media', class: "tiny radius success button" %>
-
-		<% end %>
-
+			</div>
 		</div>
 
-		<% if @allphotos %>
-			<ul class="small-block-grid-2 medium-block-grid-4 large-block-grid-6">
-				<%= render partial: 'shared/media_library_item', collection: @allphotos %>
-			</ul>
-		<% end %>
+		<div class="row">
+			<div class="small-12 columns">		
+				<% if @allphotos %>
+					<ul class="small-block-grid-2 medium-block-grid-4 large-block-grid-6">
+						<%= render partial: 'shared/media_library_item', collection: @allphotos %>
+					</ul>
+				<% end %>
+			</div>
+		</div>
 
 	</div>
 </div>

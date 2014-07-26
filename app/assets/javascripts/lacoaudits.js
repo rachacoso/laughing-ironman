@@ -38,15 +38,21 @@ $('.photoset-grid-lightbox').photosetGrid({
 // Check if the background images have been set
 // and set default background colors
 var has_bgOne = typeof bgOne != 'undefined';
-var bgOne_default = "#F9FBFB";
+var bgOne_default = "#D1E0E0";
 var has_bgTwo = typeof bgTwo != 'undefined';
-var bgTwo_default = "#F3F7F7";
+var bgTwo_default = "#DAE6E6";
 var has_bgThree = typeof bgThree != 'undefined';
-var bgThree_default = "#EDF3F3";
+var bgThree_default = "#E9F0F0";
 var has_bgFour = typeof bgFour != 'undefined';
-var bgFour_default = "#E7EFEF";
+var bgFour_default = "#EDF3F3";
 var has_bgFive = typeof bgFive != 'undefined';
-var bgFive_default = "#E0EAEA";
+var bgFive_default = "#F6F9F9";
+
+// change default for adminpages
+var isAdmin = typeof adminPage != 'undefined';
+if (isAdmin) {
+	var bgOne_default = "#ffffff";
+}
 
 if (has_bgOne) {
 	$.backstretch( bgOne, {fade: 500});	

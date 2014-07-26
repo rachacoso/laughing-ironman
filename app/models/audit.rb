@@ -57,4 +57,14 @@ class Audit
 
   end
 
+  def published?
+    # checking if any of the needed sections are missing before allowing viewing
+    published = false
+    if self.public_five_minute_summary && self.public_full_audit
+      unless self.public_five_minute_summary.public_sections.empty? || self.public_full_audit.public_sections.empty?
+        published = true
+      end
+    end
+  end
+
 end

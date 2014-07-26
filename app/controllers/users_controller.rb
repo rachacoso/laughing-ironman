@@ -62,14 +62,15 @@ class UsersController < ApplicationController
 
 		case params[:update_type]
 		when 'email'
-
-			if User.where(email: params[:user][:email]).exists?
-				flash.now[:notice] = "Someone else is already using that email address"
-				render :edit
-
-			elsif params[:user][:email].blank?
+			if params[:user][:email].blank?
 				flash.now[:notice] = "Email field cannot be blank"
 				@newuser = User.new
+				render :edit
+			elsif @user.email == params[:user][:email]
+				@newuser = User.new
+				render :edit
+			elsif User.where(email: params[:user][:email]).exists?
+				flash.now[:notice] = "Someone else is already using that email address"
 				render :edit
 			else
 				flash.now[:notice] = "Email has been changed from #{@user.email} to #{params[:user][:email]}"
@@ -80,6 +81,21 @@ class UsersController < ApplicationController
 
 		when 'password'
 
+			if params[:user][:new_password].blank? || params[:user][:new_password_confirmation].blank?
+				flash.now[:notice] = "Password fields cannot be blank"
+				@newuser = User.new
+				render :edit
+			elsif params[:user][:new_password] != params[:user][:new_password_confirmation]
+				flash.now[:notice] = "Passwords must match"
+				@newuser = User.new
+				render :edit				
+			else
+				@user.password = params[:user][:new_password]
+				@user.password_confirmation = params[:user][:new_password_confirmation]
+				flash.now[:notice] = "You have changed your password"
+				@user.save!
+				redirect_to users_path
+			end
 
 		end
 

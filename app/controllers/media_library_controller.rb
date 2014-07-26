@@ -13,11 +13,19 @@ class MediaLibraryController < ApplicationController
 
 	def create
 		audit = Audit.find(params[:audit_id])
-		newphoto = InlinePhoto.new(photo: params[:inline_photo][:photo])
-		if newphoto.valid?
-			audit.inline_photos << newphoto
+		if params[:inline_photo]
+			newfile = params[:inline_photo][:photo]
+		end
+
+		if newfile.nil?
+			flash[:error] = "Sorry, Please choose a file to upload"
 		else
-			flash[:error] = "Sorry, we're unable to upload that file"
+			newphoto = InlinePhoto.new(photo: newfile)
+			if newphoto.valid?
+				audit.inline_photos << newphoto
+			else
+				flash[:error] = "Sorry, we're unable to upload that file"
+			end
 		end
 		redirect_to media_library_url
 
