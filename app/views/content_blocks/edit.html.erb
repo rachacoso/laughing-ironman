@@ -4,11 +4,16 @@
 
 <div class="row">
 	<div class="small-12 small-centered columns">
-
+<% if flash[:alert] %>
+	<div data-alert class="alert-box alert round">
+  	<%= flash[:alert] %>
+	  <a href="#" class="close">&times;</a>
+	</div>
+<% end %>
 
 <%= form_for @block, url: content_block_url do |f| %>
 
-	<%= f.text_area :content, rows: "18", class: "resizeable" %>
+	<%= f.text_area :content, rows: "18", class: "resizeable", :required => true%>
 	
 	<%= f.submit 'Update this block', class: "tiny radius success button" %> <%= link_to 'Cancel (Discard changes)', @linkto, class: "tiny radius info button" %>
 

@@ -688,7 +688,8 @@ $( document ).ready(function() {
 		'#pagenumberHelperForm, ' +
 		'#unorderedlistHelperForm, ' +
 		'#chartHelperForm, ' +
-		'#imageblockHelperForm'
+		'#imageblockHelperForm, ' +
+		'#chartHelperForm'
 		;
 
 	$( helperList ).submit(function( event ) {

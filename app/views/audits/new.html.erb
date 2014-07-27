@@ -9,6 +9,12 @@
 
 		<div class="row">
 			<div class="small-6 columns">
+				<% if flash[:alert] %>
+					<div data-alert class="alert-box alert round">
+				  	<%= flash[:alert] %>
+					  <a href="#" class="close">&times;</a>
+					</div>
+				<% end %>				
 				<% if flash[:notice] %>
 					<div data-alert class="alert-box alert round">
 				  	<%= flash[:notice] %>

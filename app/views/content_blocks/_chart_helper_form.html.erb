@@ -1,15 +1,24 @@
-
-<h1> Google Chart </h1>
-
-<%= form_tag(content_block_helper_path('chart'), id: "chartHelperForm", method: "post") do %>
-
 	<div class="row">
 	  <div class="large-9 columns">
-  <%= label_tag(:fulltext, "Script") %>
-  <%= text_area_tag(:fulltext, "", placeholder: "Chart", size: "x10", autocomplete: "off") %>
 
-  <%= submit_tag("Submit", class: "tiny radius success button") %> <a class="tiny radius info button custom-close-reveal-modal">Cancel</a>
+			<h3> Google Charts <strong>Helper</strong></h3>
+			<h5>1) <%= link_to 'Create a chart via Google Charts', 'https://code.google.com/apis/ajax/playground/?type=visualization#column_chart', :target => '_blank' %></h5>
+				<div style="margin-left: 1em;"><small>Note: This helper only works with the following chart types: <br><strong>Area Chart, Bar Chart, Bubble Chart, Candlestick Chart, Column Chart, Combo Chart, Line Chart, Pie Chart, Scatter Chart, Stepped Area Chart</strong>
+				<br>Other charts may be implemented manually. Please ask an administrator for more information.</small></div><br>
+
+			<h5>2) Copy the code from the Edit Code panel</h5>
+
+			<h5>3) Paste into the box below</h5>
+
+			<div class="linespacer"></div>
+			<%= form_tag(content_block_helper_path('chart'), id: "chartHelperForm", method: "post") do %>
+		  <%= text_area_tag(:fulltext, "", placeholder: "Google Chart Code Goes Here", size: "x10", autocomplete: "off", :required => true) %>
+
+		  <%= submit_tag("Submit", class: "tiny radius success button") %> <a class="tiny radius info button custom-close-reveal-modal">Cancel</a>
 		</div>
 	</div>
 
+
 <% end %>
+
+

@@ -13,23 +13,23 @@
 			<div class="small-12 columns">
 				<div class="medium-3 columns">
 					<%= link_to five_minute_summary_url(audit.five_minute_summary) do %>
-						<i class="fi-eye"></i> <small>View/Edit Audit</small>
+						<small><i class="fi-eye"></i> View/Edit Audit</small>
 					<% end %><br/>
 					<a href="#" data-reveal-id="myModal_<%= audit.id %>" class="deletelink">
-						<i class="fi-x"></i> <small>Delete this Audit</small>
+						<small><i class="fi-x"></i> Delete this Audit</small>
 					</a>
 				</div>
 				<div class="medium-4 columns">
 					<% if audit.published? %>
 						<%= link_to publish_url(1, audit) do %>
-							<i class="fi-plus"></i> <small>Update Audit</small><br/>
+							<small><i class="fi-plus"></i> Update Audit</small><br/>
 						<% end %>					
 						<%= link_to publish_url(0, audit) do %>
-							<i class="fi-minus"></i> <small>Unpublish Audit</small>
+							<small><i class="fi-minus"></i> Un-publish Audit</small>
 						<% end %>
 					<% else %>
 						<%= link_to publish_url(1, audit) do %>
-							<i class="fi-plus"></i> <small>Publish Audit</small>
+							<small><i class="fi-plus"></i> Publish Audit</small>
 						<% end %>
 					<% end %>
 				</div>
@@ -60,7 +60,7 @@
 			<small><strong>Public Audit URL</strong></small>
 			<input type="text" value="<%= public_five_minute_summary_url(audit) %>">
 			<%= link_to public_five_minute_summary_url(audit), :target => :_blank do %>
-				<i class="fi-eye"></i> <small>View Public Version of Audit</small>
+				<small><i class="fi-eye"></i> View Public Version of Audit</small>
 			<% end %>			
 		</div>
 		<% end %>

@@ -1,9 +1,9 @@
 	<div class="row">
 		<div class="small-5 columns">
 			<div class="backpanel">
-				<h6> Content Block Helpers </h6>
+				<h6> Content Block <strong>Helpers</strong> </h6>
 				
-
+				<h6><small>Shared Helpers</small></h6>
 				<i class="fi-wrench"></i> <%= link_to 'Simple Format Helper', '#', data: { :"reveal-id" => "simpleformatModal"} %><br/>
 				<div id="simpleformatModal" class="reveal-modal" data-reveal>
 					<%= render partial: 'simpleformat_helper_form'%>
@@ -15,22 +15,27 @@
 				<i class="fi-wrench"></i> <%= link_to 'Image Block Helper', '#', data: { :"reveal-id" => "imageblockModal"} %><br/>
 				<div id="imageblockModal" class="reveal-modal" data-reveal>
 					<%= render partial: 'imageblock_helper_form'%>
-				</div>		
-				<i class="fi-wrench"></i> <%= link_to 'Chart Helper', '#', data: { :"reveal-id" => "chartModal"} %><br/>
-				<div id="chartModal" class="reveal-modal" data-reveal>
-					<%= render partial: 'chart_helper_form'%>
-				</div>									
+				</div>
+				
 				<% if @audit_subtype == 'five_minute_summary' %>
+				<h6><small>Five Minute Summary Helpers</small></h6>
 				<i class="fi-wrench"></i> <%= link_to 'Key Finding Helper', '#', data: { :"reveal-id" => "keyFindingModal"} %><br/>
 					<div id="keyFindingModal" class="reveal-modal" data-reveal>
 						<%= render partial: 'keyfinding_helper_form'%>
 					</div>				
 				<% end %>
+				
 				<% if @audit_subtype == 'full_audit' %>
+
+				<h6><small>Full Audit Helpers</small></h6>
 				<i class="fi-wrench"></i> <%= link_to 'Page Number Helper', '#', data: { :"reveal-id" => "pagenumberModal"} %><br/>
 					<div id="pagenumberModal" class="reveal-modal" data-reveal>
 						<%= render partial: 'pagenumber_helper_form'%>
-					</div>				
+					</div>
+				<i class="fi-wrench"></i> <%= link_to 'Google Chart Helper', '#', data: { :"reveal-id" => "chartModal"} %><br/>
+				<div id="chartModal" class="reveal-modal" data-reveal>
+					<%= render partial: 'chart_helper_form'%>
+				</div>					
 				<% end %>
 
 			</div>

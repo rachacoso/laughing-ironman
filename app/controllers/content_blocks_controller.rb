@@ -22,16 +22,21 @@ class ContentBlocksController < ApplicationController
 	end
 
 	def update
-		block = ContentBlock.find(params[:id])
-		audit_subtype = block.section.five_minute_summary ? 'five_minute_summary' : 'full_audit'
+		if params[:content_block][:content].blank?
+			flash[:alert] = "You submitted a blank form. Please enter some content."
+			redirect_to edit_content_block_path(params[:id])
+		else
 
-		block.update!(content_block_params)
+			block = ContentBlock.find(params[:id])
+			audit_subtype = block.section.five_minute_summary ? 'five_minute_summary' : 'full_audit'
+			block.update!(content_block_params)
 
-		case audit_subtype 	
-		when 'five_minute_summary'
-			redirect_to edit_five_minute_summary_path(block.section.five_minute_summary)
-		when 'full_audit'	
-			redirect_to edit_full_audit_path(block.section.full_audit)
+			case audit_subtype 	
+			when 'five_minute_summary'
+				redirect_to edit_five_minute_summary_path(block.section.five_minute_summary)
+			when 'full_audit'	
+				redirect_to edit_full_audit_path(block.section.full_audit)
+			end
 		end
 	
 	end
@@ -60,31 +65,35 @@ class ContentBlocksController < ApplicationController
 	end
 
 	def create
-		section = Section.find(params[:sectionid])
-		audit_subtype = section.five_minute_summary ? 'five_minute_summary' : 'full_audit'
+		if params[:content_block][:content].blank?
+			flash[:alert] = "You submitted a blank form. Please enter some content."
+			redirect_to new_content_block_path(params[:sectionid], params[:position])
+		else
 
-		new_block = ContentBlock.create(content_block_params)
-		if new_block.valid?
-			section.content_blocks << new_block
-			section.block_order.insert(params[:position].to_i, new_block.id)
-			section.save!
+			section = Section.find(params[:sectionid])
+			audit_subtype = section.five_minute_summary ? 'five_minute_summary' : 'full_audit'
+			new_block = ContentBlock.create(content_block_params)
+			if new_block.valid?
+				section.content_blocks << new_block
+				section.block_order.insert(params[:position].to_i, new_block.id)
+				section.save!
+				case audit_subtype 	
+				when 'five_minute_summary'
+					redirect_to edit_five_minute_summary_path(section.five_minute_summary)
+				when 'full_audit'	
+					redirect_to edit_full_audit_path(section.full_audit)
+				end
+			else 
+				@errors = new_block.errors
+				flash.now[:notice] = "Sorry there was an error. Your block was not created."
+				@section = section
+				@newblock = ContentBlock.new
+				@position = params[:position]
+				render action: "new"
+	    end
 
-			case audit_subtype 	
-			when 'five_minute_summary'
-				redirect_to edit_five_minute_summary_path(section.five_minute_summary)
-			when 'full_audit'	
-				redirect_to edit_full_audit_path(section.full_audit)
-			end
+	  end
 
-			
-		else 
-		  @errors = new_block.errors
-    	flash.now[:notice] = "Sorry there was an error. Your block was not created."
-			@section = section
-			@newblock = ContentBlock.new
-			@position = params[:position]
-      render action: "new"
-    end
 	end
 
 	def destroy
@@ -115,8 +124,13 @@ class ContentBlocksController < ApplicationController
 		@fulltext = params[:fulltext]
 		@helper_type = params[:helper_type]
 
-		@imagelayout = params[:imagelayout]
 
+		# for chart helper
+		@chart_title = params[:chart_title]
+		@chart_type = params[:chart_type]
+
+		# for image block helper
+		@imagelayout = params[:imagelayout]
 		if params[:image_a]
 			@image_a = InlinePhoto.find(params[:image_a])
 		end

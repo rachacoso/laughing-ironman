@@ -53,10 +53,22 @@
 <!-- Image Block END --> 
 
 <% when 'chart' %>
-
+<% div_id = Time.now.to_i.to_s + rand(100..999).to_s %>
 <%= javascript_tag do %>
-<%= @fulltext.html_safe %>
+
+google.load("visualization", "1", {packages:["corechart"]});
+
+
+<%= @fulltext.gsub(/getElementById\(\'visualization\'\)/, "getElementById\(\'#{div_id}\'\)").html_safe %>
+
+google.setOnLoadCallback(drawVisualization);
+
+
+
 <% end %>
-<div id="chart_div"></div>
+<div class="row imageblock notfullwidth"> 
+<div class="small-12 columns small-centered">
+<div id="<%= div_id %>"></div>
+</div></div>
 
 <% end %>

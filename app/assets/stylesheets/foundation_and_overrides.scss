@@ -1594,7 +1594,9 @@ $FAalpha_findingsandrecommendations: 0.95;
   height: 300px;
 }
 
-
+.linespacer {
+	margin: 2em;
+}
 
 /*Adjust font size for Key Findings List ordinals*/
 .KFNum {
@@ -2128,6 +2130,7 @@ textarea {
   color: white;
   background: #5c5c5c;
 }
+
 
 .deletelink {
 	color: #ff8080;
