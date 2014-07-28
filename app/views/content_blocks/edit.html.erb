@@ -13,8 +13,8 @@
 
 <%= form_for @block, url: content_block_url do |f| %>
 
-	<%= f.text_area :content, rows: "18", class: "resizeable", :required => true%>
-	
+	<%= f.cktext_area :content, rows: "18", class: "resizeable", :ckeditor => {:uiColor => '#AADC6E', :toolbar => 'mini', :removeButtons => 'Image,Flash,Smiley', :templates_files => [ '/assets/ckeditor/mytemplates.js' ], :allowedContent => true} , :required => true %>
+	<br>
 	<%= f.submit 'Update this block', class: "tiny radius success button" %> <%= link_to 'Cancel (Discard changes)', @linkto, class: "tiny radius info button" %>
 
 <% end %>

@@ -122,6 +122,7 @@ class ContentBlocksController < ApplicationController
 		@number = params[:number]
 		@headline = params[:headline]
 		@fulltext = params[:fulltext]
+		@linetext = params[:linetext]
 		@helper_type = params[:helper_type]
 
 

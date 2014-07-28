@@ -689,6 +689,7 @@ $( document ).ready(function() {
 		'#unorderedlistHelperForm, ' +
 		'#chartHelperForm, ' +
 		'#imageblockHelperForm, ' +
+		'#headerHelperForm, ' +
 		'#chartHelperForm'
 		;
 
@@ -706,9 +707,16 @@ $( document ).ready(function() {
 	  var posting = $.post( url, data );
 
 	  // Put the results in a div
+	  // posting.done(function( data ) {
+	  //   $( "#content_block_content" ).val( $('#content_block_content').val() + data );
+	  // });
+
 	  posting.done(function( data ) {
-	    $( "#content_block_content" ).val( $('#content_block_content').val() + data );
+	  	var instance = CKEDITOR.instances.content_block_content;
+	  	instance.setData(data);
+	    // $( "#content_block_content" ).ckeditor.setData(data);
 	  });
+
 	  $( helperList ).foundation('reveal', 'close');
 	});
 

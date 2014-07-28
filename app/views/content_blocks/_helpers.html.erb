@@ -8,6 +8,11 @@
 				<div id="simpleformatModal" class="reveal-modal" data-reveal>
 					<%= render partial: 'simpleformat_helper_form'%>
 				</div>
+				<i class="fi-wrench"></i> <%= link_to 'Header Helper', '#', data: { :"reveal-id" => "headerModal"} %><br/>
+				<div id="headerModal" class="reveal-modal" data-reveal>
+					<%= render partial: 'header_helper_form'%>
+				</div>
+
 				<i class="fi-wrench"></i> <%= link_to 'Un-ordered List Helper', '#', data: { :"reveal-id" => "unorderedlistModal"} %><br/>
 				<div id="unorderedlistModal" class="reveal-modal" data-reveal>
 					<%= render partial: 'unorderedlist_helper_form'%>

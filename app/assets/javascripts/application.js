@@ -27,6 +27,7 @@
 //= require waypoints.min
 //= require jquery.photoset-grid
 // = require jquery.colorbox
+//= require ckeditor/init
 
 // LACO CUSTOM JS
 //= require lacoaudits

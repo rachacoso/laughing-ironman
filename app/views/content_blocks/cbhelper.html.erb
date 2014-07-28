@@ -34,6 +34,10 @@
 <%= simple_format(@fulltext, {}, wrapper_tag: "li") %>
 </ul>
 
+<% when 'header' %>
+
+<h3><%= @linetext %></h3>
+
 <% when 'imageblock' %>
 <!-- Image Block BEGIN --> 
 <div class="row imageblock notfullwidth"> 

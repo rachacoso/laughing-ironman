@@ -70,7 +70,8 @@ class PublicViewsController < ApplicationController
 
       public_fa.background_photos = [ bgp ]
       public_fa.save!
-      fa.sections.each do |s|
+      fa.section_order.each do |so|
+        s = fa.sections.find(so)
         s_name = s.display_name
         s_type = s.section_type
         s_id = s.id
