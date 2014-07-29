@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-root 'home#front'
+root 'audits#index'
 get '/404audit', :to => redirect('/404audit.html')
 
 get '/login' => 'session#new', as: 'login'
