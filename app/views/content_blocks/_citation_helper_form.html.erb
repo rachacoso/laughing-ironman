@@ -1,0 +1,40 @@
+<!-- Citation Form BEGIN -->
+
+
+
+<div class="row">
+	<div class="small-12 columns">
+	<h4> Full Audit Footnote/Citation <strong>Helper</strong> </h4>		
+		<form accept-charset="UTF-8" action="#" id="citationHelperForm" method="post">
+
+<div class="row">
+	<div class="small-12 columns">	
+		<small>1) input citation text</small>
+		  <%= text_area_tag(:citation, "", placeholder: "citation/footnote text", size: "x2", autocomplete: "off", cols: "2") %>
+	</div>
+</div>
+<div class="row">
+	<div class="small-12 columns">
+		<small>2) </small><%= submit_tag("Click", class: "tiny radius success button") %>
+	</div>
+</div>
+<div class="row">
+	<div class="small-12 columns end">
+		<small>3) copy this snippet into the code at each citation location</small>
+		<textarea autocomplete="off" cols="" id="citation_result" name="citation_result" placeholder="footnote/citation number snippet appears here" rows="8"></textarea>
+	</div>
+</div>
+
+<div class="row">
+	<div class="small-12 columns"> 
+		<p><small>Note: This helper automatically changes the editing mode of the text input to SOURCE (i.e. raw HTML view). <br>You can change back to formatting view by clicking the SOURCE button on upper left of the text box menu bar)</small></p>
+	  <a class="tiny radius info button custom-close-reveal-modal">Close</a>
+		</form>
+	</div>
+</div>
+
+	</div>
+</div>
+
+
+<!-- Citation Form END -->

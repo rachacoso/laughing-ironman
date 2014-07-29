@@ -684,12 +684,8 @@ $( document ).ready(function() {
 	// Selectors for each helper type
 	var helperList = 
 		'#keyfindingsHelperForm, ' + 
-		'#simpleformatHelperForm, ' + 
-		'#pagenumberHelperForm, ' +
-		'#unorderedlistHelperForm, ' +
-		'#chartHelperForm, ' +
+		'#plaintextHelperForm, ' + 
 		'#imageblockHelperForm, ' +
-		'#headerHelperForm, ' +
 		'#chartHelperForm'
 		;
 
@@ -720,6 +716,23 @@ $( document ).ready(function() {
 	  $( helperList ).foundation('reveal', 'close');
 	});
 
+	$( '#pagenumberHelperForm' ).submit(function( event ) {	 	
+	  // Stop form from submitting normally
+	  event.preventDefault();
+	  CKEDITOR.instances.content_block_content.setMode( 'source' );
+	  var num = $('#pagenumber').val()
+		var setstring = '<a name=\"p' + num + '\" id=\"p' + num + '\"></a>'
+		$( "#pagenumber_result" ).val( setstring );
+	});
+
+	$( '#citationHelperForm' ).submit(function( event ) {	 	
+	  // Stop form from submitting normally
+	  event.preventDefault();
+	  CKEDITOR.instances.content_block_content.setMode( 'source' );
+	  var cit = $('#citation').val()
+		var setstring = '<span data-tooltip class=\"has-tip radius\" title=\"' + cit + '\"><sup><small>&ast; note</small></sup></span>&nbsp;'
+		$( "#citation_result" ).val( setstring );
+	});
 
 	// image preview for the imageblock/chart helper form
 	$( "#image_a" ).change(function( ) {

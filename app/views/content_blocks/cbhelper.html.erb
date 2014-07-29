@@ -21,22 +21,11 @@
 <a class="close-reveal-modal">&#8855;</a>
 </div>
 
-
-
-<% when 'simpleformat' %>
+<% when 'plaintext' %>
 <%= simple_format(@fulltext) %>
 
 <% when 'pagenumber' %>
 <a name="p<%= @number %>" id="p<%= @number %>"></a>
-
-<% when 'unorderedlist' %>
-<ul>
-<%= simple_format(@fulltext, {}, wrapper_tag: "li") %>
-</ul>
-
-<% when 'header' %>
-
-<h3><%= @linetext %></h3>
 
 <% when 'imageblock' %>
 <!-- Image Block BEGIN --> 

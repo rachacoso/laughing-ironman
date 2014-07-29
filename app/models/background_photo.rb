@@ -4,6 +4,8 @@ class BackgroundPhoto
 
 	field :position, type: Integer
   has_mongoid_attached_file :photo, 
+  	:path => ':attachment/:id/:style.:extension',
+	  :url => ":s3_domain_url",  
 	  :styles => {
 	    :small    => ['100x100#',   :jpg],
 	    :large    => ['1280',   :jpg]

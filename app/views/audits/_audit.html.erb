@@ -57,11 +57,13 @@
 	<div class="small-12 large-9 large-offset-3 columns">
 		<% if audit.published? %>
 		<div class="backpanel">
-			<small><strong>Public Audit URL</strong></small>
-			<input type="text" value="<%= public_five_minute_summary_url(audit) %>">
+			<small><strong>Public Audit URL</strong></small> 
+			<br>
+			<small> Use this URL to distribute the Public Version of the Audit</small>
+			<input type="text" value="<%= public_five_minute_summary_url(audit) %>">		
 			<%= link_to public_five_minute_summary_url(audit), :target => :_blank do %>
-				<small><i class="fi-eye"></i> View Public Version of Audit</small>
-			<% end %>			
+				<small><i class="fi-eye"></i> View Public Audit in new tab</small>
+			<% end %>	
 		</div>
 		<% end %>
 	</div> <!-- .small-12 -->

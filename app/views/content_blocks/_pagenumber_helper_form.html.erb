@@ -1,19 +1,45 @@
 <!-- Page Number Form BEGIN -->
 
 
-<h3> Page Number (for Full Audit) </h3>
+
 <div class="row">
-	<div class="small-1 columns">
+	<div class="small-12 columns">
+	<h4> Full Audit Page Number <strong>Helper</strong> </h4>		
+		<form accept-charset="UTF-8" action="#" id="pagenumberHelperForm" method="post">
+		<%#= form_tag(content_block_helper_path('pagenumber'), id: "pagenumberHelperForm", method: "post") do %>
 
-		<%= form_tag(content_block_helper_path('pagenumber'), id: "pagenumberHelperForm", method: "post") do %>
-
-		  <%= label_tag(:number, "Page") %>
-		  <%= text_field_tag(:number, "", autocomplete: "off", cols: "2") %>
-
-		  <%= submit_tag("Submit", class: "tiny radius success button") %> <a class="tiny radius info button custom-close-reveal-modal">Cancel</a>
-		<% end %>
+<div class="row">
+</div>
+<div class="row">
+	<div class="small-2 columns">	
+		<small>2) input page number</small>
+		  <%= number_field_tag(:pagenumber, "", placeholder: "page number", autocomplete: "off", cols: "2") %>
+	</div>
+	<div class="small-2 columns">
+		<small>3) click</small><br>
+		<%= submit_tag("click >>", class: "tiny radius success button") %>
+	</div>
+	<div class="small-8 columns end">
+		<small>4) copy this snippet into the code at each page location (making sure to paste in the SOURCE view)</small>
+		<input type="text" id="pagenumber_result" placeholder="page number snippet">
+		
 	</div>
 </div>
 
-<div id="result"></div>
+<div class="row">
+	<div class="small-12 columns">	
+		<p><small>Note: This helper automatically changes the editing mode of the text input to SOURCE (i.e. raw HTML view). <br>You can change back to formatting view by clicking the SOURCE button on upper left of the text box menu bar)</small></p>
+	</div>
+	<div class="small-12 columns"> 
+	  <a class="tiny radius info button custom-close-reveal-modal">Close</a>
+		<%# end %>
+		</form>
+	</div>
+</div>
+
+	</div>
+</div>
+
+
 <!-- Page Number Form END -->
+

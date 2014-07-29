@@ -39,6 +39,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem "mongoid", "~> 4.0.0"
 
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem 'aws-sdk', '~> 1.3.4'
+
 
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
@@ -46,6 +48,8 @@ gem 'foundation_rails_helper'
 gem 'foundation-icons-sass-rails'
 
 gem 'ckeditor'
+
+
 # for pretty URLS
 # gem 'friendly_id', '~> 5.0.0'
 

@@ -4,18 +4,9 @@
 				<h6> Content Block <strong>Helpers</strong> </h6>
 				
 				<h6><small>Shared Helpers</small></h6>
-				<i class="fi-wrench"></i> <%= link_to 'Simple Format Helper', '#', data: { :"reveal-id" => "simpleformatModal"} %><br/>
-				<div id="simpleformatModal" class="reveal-modal" data-reveal>
-					<%= render partial: 'simpleformat_helper_form'%>
-				</div>
-				<i class="fi-wrench"></i> <%= link_to 'Header Helper', '#', data: { :"reveal-id" => "headerModal"} %><br/>
-				<div id="headerModal" class="reveal-modal" data-reveal>
-					<%= render partial: 'header_helper_form'%>
-				</div>
-
-				<i class="fi-wrench"></i> <%= link_to 'Un-ordered List Helper', '#', data: { :"reveal-id" => "unorderedlistModal"} %><br/>
-				<div id="unorderedlistModal" class="reveal-modal" data-reveal>
-					<%= render partial: 'unorderedlist_helper_form'%>
+				<i class="fi-wrench"></i> <%= link_to 'Paste as Plain Text Helper', '#', data: { :"reveal-id" => "plaintextModal"} %><br/>
+				<div id="plaintextModal" class="reveal-modal" data-reveal>
+					<%= render partial: 'plaintext_helper_form'%>
 				</div>
 				<i class="fi-wrench"></i> <%= link_to 'Image Block Helper', '#', data: { :"reveal-id" => "imageblockModal"} %><br/>
 				<div id="imageblockModal" class="reveal-modal" data-reveal>
@@ -37,6 +28,11 @@
 					<div id="pagenumberModal" class="reveal-modal" data-reveal>
 						<%= render partial: 'pagenumber_helper_form'%>
 					</div>
+				<i class="fi-wrench"></i> <%= link_to 'Footnote/Citation Helper', '#', data: { :"reveal-id" => "citationModal"} %><br/>
+					<div id="citationModal" class="reveal-modal" data-reveal>
+						<%= render partial: 'citation_helper_form'%>
+					</div>
+
 				<i class="fi-wrench"></i> <%= link_to 'Google Chart Helper', '#', data: { :"reveal-id" => "chartModal"} %><br/>
 				<div id="chartModal" class="reveal-modal" data-reveal>
 					<%= render partial: 'chart_helper_form'%>

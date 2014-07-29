@@ -47,7 +47,8 @@ class PublicViewsController < ApplicationController
 
       public_fms.background_photos = [ p_a, p_b, p_c, p_d, p_e ]
       public_fms.save!
-      fms.sections.each do |s|
+      fms.section_order.each do |so|
+        s = fms.sections.find(so)
         s_name = s.display_name
         s_type = s.section_type
         pub_content = String.new
