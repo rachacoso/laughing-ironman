@@ -6,7 +6,7 @@
 
   <%= label_tag(:fulltext, "Paste text below and submit to paste into editor as plain text") %>
   <%= text_area_tag(:fulltext, "", placeholder: "Paste Text Here", size: "x10", autocomplete: "off") %>
-
+	<small><strong> NOTE: This will append to the bottom of any text currently in the editor window</strong></small><br>
   <%= submit_tag("Submit", class: "tiny radius success button") %> <a class="tiny radius info button custom-close-reveal-modal">Cancel</a>
 <% end %>
 </form>

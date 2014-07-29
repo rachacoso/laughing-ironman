@@ -709,7 +709,8 @@ $( document ).ready(function() {
 
 	  posting.done(function( data ) {
 	  	var instance = CKEDITOR.instances.content_block_content;
-	  	instance.setData(data);
+	  	predata = instance.getData();
+	  	instance.setData(predata + data);
 	    // $( "#content_block_content" ).ckeditor.setData(data);
 	  });
 
