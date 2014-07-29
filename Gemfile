@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use SCSS for stylesheets
@@ -48,7 +47,7 @@ gem 'foundation_rails_helper'
 gem 'foundation-icons-sass-rails'
 
 gem 'ckeditor'
-
+gem 'rails_12factor'
 
 # for pretty URLS
 # gem 'friendly_id', '~> 5.0.0'
