@@ -713,6 +713,9 @@ $( document ).ready(function() {
 	  	instance.setData(predata + data);
 	    // $( "#content_block_content" ).ckeditor.setData(data);
 	  });
+	  if (url.match('keyfindings') || url.match('imageblock') ) {
+			CKEDITOR.instances.content_block_content.setMode( 'source' );
+	  }
 
 	  $( helperList ).foundation('reveal', 'close');
 	});
