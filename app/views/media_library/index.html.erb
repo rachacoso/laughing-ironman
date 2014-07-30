@@ -14,20 +14,32 @@
 
 		<div class="backpanel">
 			<div class="row">
-				<div class="small-6 columns">
+				<div class="small-2 columns">
 					<h5>Add <strong>Media</strong></h5>
 					<h6><small>(png, gif or jpeg only)</small></h6>
-					<% if flash[:error] %>
-						<div data-alert class="alert-box alert">
-					  	<%= flash[:error] %>
-						  <a href="#" class="close">&times;</a>
+				</div>
+				<div class="small-10 columns">
+					<div class="row">
+						<div class="small-12">
+							<% if flash[:error] %>
+								<div data-alert class="alert-box alert">
+							  	<%= flash[:error] %>
+								  <a href="#" class="close">&times;</a>
+								</div>
+							<% end %>
 						</div>
-					<% end %>
-
-					<%= form_for @newphoto, url: media_library_url(@audit) do |f| %>
-						<%= f.file_field :photo, label: "&nbsp;".html_safe, accept: 'image/png,image/gif,image/jpeg' %>
-						<%= f.submit 'Add media', class: "tiny radius success button" %>
-					<% end %>
+					</div>
+					
+						<%= form_for @newphoto, url: media_library_url(@audit) do |f| %>
+						<div class="row">
+							<div class="small-6">
+								<%= f.file_field :photo, label: "&nbsp;".html_safe, accept: 'image/png,image/gif,image/jpeg' %>
+							</div>
+							<div class="small-6">
+								<%= f.submit 'Add media', class: "tiny radius success button" %>
+							</div>
+						</div>
+						<% end %>
 				</div>
 			</div>
 		</div>

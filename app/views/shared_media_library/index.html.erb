@@ -7,20 +7,17 @@
 			
 			<h5>Add <strong>Media</strong><br>
 			<small>(png, gif or jpeg only)</small><br>
-		<% if flash[:error] %>
+			<% if flash[:error] %>
 				<div data-alert class="alert-box alert">
 			  	<%= flash[:error] %>
 				  <a href="#" class="close">&times;</a>
 				</div>
-		<% end %>
+			<% end %>
 
-		<%= form_for @newphoto, url: shared_media_library_url do |f| %>
-
-			<%= f.file_field :photo, label: "&nbsp;".html_safe, accept: 'image/png,image/gif,image/jpeg' %>
-
-			<%= f.submit 'Add media', class: "tiny radius success button" %>
-
-		<% end %>
+			<%= form_for @newphoto, url: shared_media_library_url do |f| %>
+				<%= f.file_field :photo, label: "&nbsp;".html_safe, accept: 'image/png,image/gif,image/jpeg' %>
+				<%= f.submit 'Add media', class: "tiny radius success button" %>
+			<% end %>
 
 		</div>
 

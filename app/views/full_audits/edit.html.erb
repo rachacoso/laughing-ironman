@@ -88,7 +88,7 @@
 							
 							<%# to display the PDF page pointers in the edit interface %>
 							<% if /<a name="p/.match(thisblock.content) %>
-								<p><%= thisblock.content %></p>
+								<p><%= thisblock.content.gsub(/<a name="p(?<page>\d+)" id="p\d+"><\/a>/, '<span style="color:red;">[PAGE MARKER] \k<page> [PAGE MARKER]</span>' ).html_safe %></p>
 							<% else %>
 								<p><%= thisblock.content.html_safe %></p>
 							<% end %>
