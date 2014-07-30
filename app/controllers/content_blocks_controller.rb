@@ -132,18 +132,26 @@ class ContentBlocksController < ApplicationController
 
 		# for image block helper
 		@imagelayout = params[:imagelayout]
-		if params[:image_a]
-			@image_a = InlinePhoto.find(params[:image_a])
-		end
-		if params[:image_b]
-			@image_b = InlinePhoto.find(params[:image_b])
-		end
-		if params[:image_c]
-			@image_c = InlinePhoto.find(params[:image_c])
-		end
 		@imageblock_caption = params[:imageblock_caption]
 
-		# render template: "content_blocks/#{params[:helper_type]}.html.erb", layout: false
+		case @imagelayout
+		when '2'
+			if params[:image_a].blank? || params[:image_b].blank?
+				flash.now[:error] = "ERROR: MISSING A PHOTO REFERENCE - PLEASE SELECT 2 PHOTOS FOR THIS LAYOUT"
+			else
+				@image_a = InlinePhoto.find(params[:image_a])
+				@image_b = InlinePhoto.find(params[:image_b])
+			end
+		when '21', '12'
+			if params[:image_a].blank? || params[:image_b].blank? || params[:image_c].blank?
+				flash.now[:error] = "ERROR: MISSING A PHOTO REFERENCE - PLEASE SELECT 3 PHOTOS FOR THIS LAYOUT"
+			else
+				@image_a = InlinePhoto.find(params[:image_a])
+				@image_b = InlinePhoto.find(params[:image_b])
+				@image_c = InlinePhoto.find(params[:image_c])
+			end
+		end
+
 		render layout: false
 
 	end

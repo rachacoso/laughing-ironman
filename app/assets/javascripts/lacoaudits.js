@@ -702,16 +702,10 @@ $( document ).ready(function() {
 	  // Send the data using post
 	  var posting = $.post( url, data );
 
-	  // Put the results in a div
-	  // posting.done(function( data ) {
-	  //   $( "#content_block_content" ).val( $('#content_block_content').val() + data );
-	  // });
-
 	  posting.done(function( data ) {
 	  	var instance = CKEDITOR.instances.content_block_content;
 	  	predata = instance.getData();
 	  	instance.setData(predata + data);
-	    // $( "#content_block_content" ).ckeditor.setData(data);
 	  });
 	  if (url.match('keyfindings') || url.match('imageblock') ) {
 			CKEDITOR.instances.content_block_content.setMode( 'source' );
@@ -740,30 +734,46 @@ $( document ).ready(function() {
 
 	// image preview for the imageblock/chart helper form
 	$( "#image_a" ).change(function( ) {
-		$( "#imageAPreview" ).attr( "src", imageblockPreviewSource[$('#image_a').val()] );
+		if ($('#image_a').val()) {
+			$( "#imageAPreview" ).attr( "src", imageblockPreviewSource[$('#image_a').val()] );
+		} else {
+			$( "#imageAPreview" ).attr( "src", '');
+		}
 	});
 	$( "#image_b" ).change(function( ) {
-		$( "#imageBPreview" ).attr( "src", imageblockPreviewSource[$('#image_b').val()] );
+		if ($('#image_b').val()) {
+			$( "#imageBPreview" ).attr( "src", imageblockPreviewSource[$('#image_b').val()] );
+		} else {
+			$( "#imageBPreview" ).attr( "src", '');
+		}
 	});
 	$( "#image_c" ).change(function( ) {
-		$( "#imageCPreview" ).attr( "src", imageblockPreviewSource[$('#image_c').val()] );
+		if ($('#image_c').val()) {
+			$( "#imageCPreview" ).attr( "src", imageblockPreviewSource[$('#image_c').val()] );
+		} else {
+			$( "#imageCPreview" ).attr( "src", '');
+		}
+		
 	});	
 	$( "#chart" ).change(function( ) {
 		$( "#chartPreview" ).attr( "src", chartPreviewSource[$('#chart').val()] );
 	});		
   // UI controls for imageblock helper form (hide unused select control)
 	$('#imagelayout_2').click(function () {
-     $('#imageC').hide();
+		$('#imageC').hide();
   });
   $('#imagelayout_21').click(function () {
-     $('#imageC').show();
+		$('#imageC').show();
   });
   $('#imagelayout_12').click(function () {
-     $('#imageC').show();
+		$('#imageC').show();
+
   });
+
 
 
 });
+
 
 
 

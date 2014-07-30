@@ -28,6 +28,13 @@
 <a name="p<%= @number %>" id="p<%= @number %>"></a>
 
 <% when 'imageblock' %>
+
+<% if flash[:error] %>
+
+  <%= flash[:error] %>
+
+<% else %>
+
 <!-- Image Block BEGIN --> 
 <div class="row imageblock notfullwidth"> 
  <div class="small-12 columns small-centered"> 
@@ -44,6 +51,8 @@
  </div> 
 </div> 
 <!-- Image Block END --> 
+
+<% end %>
 
 <% when 'chart' %>
 <% div_id = Time.now.to_i.to_s + rand(100..999).to_s %>
